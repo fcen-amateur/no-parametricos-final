@@ -116,6 +116,114 @@ b. Aplique a) al estadístico del test de rangos signados de Wilcoxon para demos
 
 ## Consistencia del test de Wilcoxon
 
+Sea $\bar{X}=(X_1, ..., X_n)$ una muestra aleatoria tal  que $\forall i =1,....n ,\ X_i \stackrel{iid}{\sim} F \in \Omega_s$ (distribuciones simétricas con única mediana en 0), y definamos 
+- la posicion o rango de $X_i$ en la muestra ordenada segun valores absolutos: $R_i = \#\{j : |X_j| \leq |X_i|, j = 1,... n\}$,
+- la "funcion signo" $s(X_i) = I(X_i > 0)$, y
+- el estadistico $T^+ = \sum_{i=1}^{n} R_i \ s(X_i)$
+
+Recordemos que $T^+$ admite la siguiente definicion equivalente en base a los promedios de Walsh, 
+$$
+T^+ = \#\left\{ i, j : \frac{X_i + X_j}{2} > 0, \ 1 \leq i \leq j \leq n \right\} = \sum_{i=1}^{j} \sum_{j=1}^{n} I(X_i + X_j > 0) = \sum_{i=1}^{j} \sum_{j=1}^{n} T_{ij}
+$$
+
+donde $I(\cdot)$ es la funcion indicadora. 
+
+Utilicemos esta ultima forma para desarrollar la esperanza y varianza de $T^+$, dada cierta distribucion subyacente fija $F_0$. Gracias a la linealidad de la esperanza, y el hecho de que $E(I(Q)) = P(Q)$
+$$
+\begin{split}
+E(T^+)&= E\left(\sum_{i=1}^{j} \sum_{j=1}^{n} I(X_i + X_j > 0) \right) =\sum_{i=1}^{j} \sum_{j=1}^{n} E(I(X_i + X_j > 0) ) =\sum_{i=1}^{j} \sum_{j=1}^{n} P(X_i + X_j > 0) \\
+&=\sum_{i=j}P(X_i > 0) + \sum_{i<j} P(X_i + X_j > 0)
+\end{split}
+$$
+Sean ahora $p_1=P(X_i > 0), \ \  p_2=P(X_i + X_j > 0 | i < j)$. Se observa que hay $n$ sumandos donde $i=j$ (1 por cada elemento $j$), y $(n-1)n/2$ sumandos donde $i<j$. Luego, $E(T^+)= np_1 + (n-1)n p_2$.
+
+Para el calculo de la varianza de $T^+$, usaremos el hecho de que, en general, si $Y = \sum_i X_i \Rightarrow Var(Y) = \mathbb{cov}(Y, Y) = \mathbb{cov}(\sum_i X_i, \sum_i X_i) = \sum_i Var(X_i) + 2 \sum_{i<j} \mathbb{cov}(X_i, X_j)$. Para ello, tendremos que encontrar la expresion de la covarianza para todas las combinaciones unicas de subindices. 
+
+$$
+\begin{split}
+Var(T^+) &= Var\left(\sum_{i=1}^{j} \sum_{j=1}^{n} T_{ij} \right) = \sum_{i=1}^{j} \sum_{j=1}^{n} Var(T_{ij}) + 2 \sum_{i=1}^{k} \sum_{j=1}^{l} \sum_{k=1}^{l} \sum_{l=1}^{n} \mathbb{cov}(T_{ij},T_{kl})
+\end{split}
+$$
+
+Recordemos que si $X \perp Y$ (las VA $X$ y $Y$ son independientes entre si, $cov(X, Y)=0$. Ademas, para funciones deterministicas arbitrarias $f, g$, $X \perp Y \Rightarrow f(X) \perp g(Y)$. Como $T_{ij}=f(X_i, X_j)$, y $X_i \perp X_j \ \forall i \neq j$, siempre y cuando los pares$(i,j),(k,l)$ no compartan ningun indice, $\mathbb{cov}(T_{ij},T_{kl})=0$ . Consideremos a continuacion los casos en que "ambos T" comparten algun subindice:
+- Hay Usando que $cov(X, Y)=cov(Y,X)$ y $T_{ij}=T_{ji}$, podemos limitarnos sin perdida de generalidad a los $i \leq k \leq j \leq l$ y nos basta con limitarnos a los siguientes casos:
+
+$$
+cov(T_{ij}, T_{kl}) = \begin{cases}
+Var(T_{ii}) = Var(T_{11}) &\text{si } i = k = j = l \\
+Var(T_{ij}) = Var(T_{12}) &\text{si } i = k < j = l \\
+cov(T_{ii}, T_{il}) = cov(T_{11}, T_{12}) &\text{si } i = k = j < l \\
+cov(T_{ij}, T_{il}) = cov(T_{12}, T_{13}) &\text{si } i = k < j < l \\
+0 &\text{en otro caso} \\
+\end{cases}
+$$
+
+Usando que $cov(X, Y) = E(XY) - E(X)E(Y)$ e $I(P) \cdot I(Q) = I(P \land Q)$ (y por ende $I(P)^2=I(P \land P)=I(P)$), calculamos
+
+$$
+\begin{split}
+Var(T_{ii}) &= E(T_{11}^2)- E(T_{11})^2 = E(I(X_1>0)^2) - E(I( X_1 > 0))^2 = E(I(X_1>0))(1 - E(I( X_1 > 0))) \\
+&=  P(X_1>0)(1 - P( X_1 > 0)) \\
+&= p_1 (1-p_1) \\
+Var(T_{ij}) &= E(T_{12}^2)- E(T_{ij})^2 = E(I(X_1 + X_2>0)^2) - E(I( X_1 + X_2> 0))^2 \\
+&= E(I(X_1+ X_2>0))(1 - E(I( X_1 + X_2> 0))) =  P(X_1+ X_2>0)(1 - P( X_1 + X_2> 0)) \\
+&= p_2 (1-p_2) \\
+cov(T_{ii}, T_{il}) &= E(T_{11}T_{12}) -E(T_{11})E(T_{12}) = E(I(X_1 >0 \land X_1 + X_2 > 0)) - E(I(X_1 >0)E(I(X_1+X_2>0)) \\
+&= P(X_1 >0 \land X_1 + X_2 > 0) - p_1 \cdot p_2 \\
+&= p_3 - p_1 \cdot p_2 \quad \text{, digamos} \\
+cov(T_{ij}, T_{il}) &= E(T_{12}T_{13}) -E(T_{12})E(T_{13}) = E(I(X_1 + X_2 >0 \land X_1 + X_3 > 0)) - E(I(X_1 + X_2 >0)E(I(X_1+X_3>0)) \\
+&= P(X_1 + X_2 >0 \land X_1 + X_3 > 0) - p_2 ^ 2 \\
+&= p_4 - p_2^2 \quad \text{, digamos} \\
+\end{split}
+$$
+
+Para concluir, basta ver cuantos de cada tipo de termino en la expansion de $Var(T^+)$ en sus terminos de covarianza. Cuando los 4 subindices son identicos, $cov(T_{ij}, T_{kl})=Var(T_{ii})$, y hay ${n \choose 1}=n$ de elegir un subindice entre $n$, asi que $Var(T_{ii})$ aparece $n$ veces.
+Similarmente, hay ${n \choose 2}=n(n-1)/2$ formas de elegir 2 subindices unicos, asi que tanto $cov(T_{11}, T_{22}), cov(T_11), T_tanto $cov(T_{ii}, T_{ij})$ como $Var(T_{ij})$ aparecen ${n \choose 2}=n(n-1)/2$ veces. Por ultimo, hay ${n \choose 3}=n(n-1)(n-2)/6$ formas de elegir 3 subindices unicos, de manera que 
+
+formas de elegir 2 subindices, de manera que $Var(T_{ij})$ aparece $(n-1)n/2$ veces, y tanto $cov(T_{ii}, T_{ij})$ como $cov(T_{ij}, T_{ii})$aparece 
+- $cov(T_{ii}, T_{il})$ aparece tambien $n(n-1)/2$ veces ($l-1$ veces por cada $l=1,...,n$), al igual que $cov(T_{il}, T_{ii})$, para un total de $n(n-1)$ veces, y
+-en  $cov(T_{ij}, T_{il})$
+
+
+
+\begin{split}
+Var(T_ii) = E
 ## Teorema de Proyeccion
 
 ## MWW: Distribución exacta de los estadistico del test de Mann-Whitney-Wilcoxon (MWW) bajo $H_0$
+
+# Apendice
+
+## Condiciones suficientes de consistencia
+
+### Definicion:
+
+Sea $X_1, ..., X_n$ una muestra aleatoria tal que $\forall \ i=1,..., n \Rightarrow\ X_i \stackrel{iid}{\sim} F \in \Omega$. Se dice que la sucesion de tests $\{\Phi_n\}$ de nivel asintotico $\alpha$ es consistente para las hipotesis $H_0 : F \in \Omega_{0} \subset \Omega\text{ vs. } H_1 : F \in \Omega_1\subset \Omega$, si
+- $\alpha \geq E_{F_0}(\Phi_n) \geq \gamma > 0 \quad \forall \ F_0 \in \Omega_0$, y
+- $E_{F_1}(\Phi_n) \to 1 \quad \forall \ F_1 \in \Omega_1$,
+donde $E_G(T(X_1, ..., X_n)) = E(T | F = G)$.
+Es decir, que el nivel de significacion del test se mantiene acotado encima del cero para la sucesion, mientras que la potencia tiende a 1 para la alternativa, a medida que aumenta el tamano muestral.
+
+El conjunto de todas las distribuciones para las cuales $\{\Phi_n\}$ es consistente se denomina _clase de consistencia_ $\Omega_c \subset \Omega_1$.
+
+El siguiente teorema es util para determinar la clase de consistencia en ciertos test comunes.
+
+### Teorema
+Sea $\Phi_n$ un test de nivel asintotico $\alpha$ basado en $T_n$ que rechaza $H_0$ para valores grandes, para las hipotesis previamente definidas. Si
+
+
+$$
+T_n \stackrel{p}{\to} \mu(F) = \begin{cases}
+\mu_0 &\forall F \in \Omega_0 \\
+> \mu_0 &\forall F \in \Omega_c \\ 
+\end{cases}
+$$ 
+y ademas existe $\sigma_0$ tal que 
+
+$$
+\sqrt{n}\frac{T_n - \mu_0}{\sigma_0} \stackrel{D}{\to} N(0,1) \quad \forall F \in \Omega_0
+$$
+entonces existe una sucesion de valores $k_n$ tal que la sucesion de tests  $\Phi_n = I(T_n \geq k_n)$ es consistente para la clase $\Omega_c$.
+
+### Demostracion
+
