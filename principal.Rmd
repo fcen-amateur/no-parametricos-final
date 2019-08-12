@@ -26,20 +26,35 @@ e. Con el tamaño de muestra dado, ¿es posible obtener un test de nivel 0.05? H
 muestra mínimo para obtener un test de nivel 0.05, manteniendo la misma región de rechazo que el
 test anterior.
 
-Sea $X_i=1$ si el i-esimo frasco de cafe tiene menos cafe del que garantiza la etiqueta, y 0 en caso contrario, de manera que bajo $H_0$, $X_i \stackrel{iid}{\sim} Ber(p = 0.1)$ y $\sum_i X_i = T\sim Bi(15, 0.1)$. Las hipotesis a testear seran:
+El planteo de las hipotesis a testear suele ser un poco idiosincratico. Tradicionalmente, "lo que se desea probar" se coloca en la hipotesis alternativa, y en este caso uno esperaria que lo que se desea probar, es que la afirmacion del empresario. Sin embargo, la frase "su afirmacion sera _aceptada_" (id est, "no rechazada"), nos sugiere que la coloquemos en la hipotesis nula. El empresario asegura que "menos del 10% de sus frascos de café instantáneo contiene menos café del que garantiza la etiqueta", que sera nuestra hipotesis nula, y su complemento sera la hipotesis alternativa.
 
 $$
-H_0: p \geq 0.1 \quad vs. H_1: p < 0.1
+\begin{split}
+&H_0: \text{Menos del 10% de los frascos contienen menos café del garantizado} \\
+vs. \quad &H_1: \text{Mas del 10% de los frascos contiene menos cafe del garantizado} \\
+\end{split}
+$$
+
+Sea $X_i=1$ si el i-esimo frasco de cafe tiene menos cafe del que garantiza la etiqueta, y 0 en caso contrario. Supongamos ademas que la probabilidad de que un frasco de cafe contenga menos cafe del garantizado, es constante e identica para todos los frascos de manera que $X_i \stackrel{iid}{\sim} Ber(p), i=1,...,n$, y $\sum_{i=1}^n X_i = T\sim Bi(n, p)$ (en nuestro caso, $n=15$). Bajo estos supuestos, una forma matematicamente tratable de las hipotesis originales es $H_0: p \leq 0.1 \quad vs. H_1: p > 0.1$.
+
+La region de aceptacion es $RA={0, 1, 2}$, y la region de rechazo, que define el test, es su complemento, $RR=\{3, 4, ..., 15\}$. El test asociado es simplemente $\Phi(T)=I(T \in RR)$. Su nivel de significacion $\alpha$ es igual al supremo de su esperanza bajo la hipotesis nula:
+$$
+E(\Phi|p=p_0) = E_{p_0}(I(T\in RR)) = P_{p_0}(T>2) = P(Bi(15, p_0) > 2) = 1 - P(Bi(15, p_0) \leq 2)
+$$
+Sea $f_{n,k}(p)=Pr(Bi(n,p) > k)$ (la probabilidad acumulada a _derecha_  para una VA binomial, como funcion de $p$ para $n,k$ dados). $f$ es evidentemente _creciente_ en $p$, de manera que   
+$$
+\alpha = \sup_{p_0 \in [0, .1]} E_{p_0}(I(T\in RR)) = \sup_{p_0 \in [0, .1]} P_{p_0}(T>2)  = P_{p_0=0.1}(T>2) = \sum_{i=3}^{15} {15 \choose i} 0.1^i \ 0.9^{15-i} = 
 $$
 con region de rechazo $RR=\{0,1,2\}$. Los puntos (b) y (c) piden el nivel de significacion y la probabilidadde error de tipo II, para lo cual ya hemos generado funciones. Para el punto (c), calculamos la funcion de potencia en una grilla de valores de $p$, y la graficamos con `ggplot`:
 
 ```{r p1e4}
 n <- 15
 p_null <- 0.1 # Usamos el p_null de la igualdad para calcular la significacion 
-RR <- 0:2
+RR <- 3:1
 prob_rechazo <- function(n, p, RR) {
   return(sum(dbinom(RR, n, p)))
 }
+alfa <- prob_rechazo(15, 0.1, 3:15)
 potencia <- prob_rechazo
 significacion <- prob_rechazo
 prob_etII <- function(n, p_alt, RR) { 1 - potencia(n, p_alt, RR)}
