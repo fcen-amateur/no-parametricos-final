@@ -1,0 +1,1296 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Metodos No Parametricos - Final
+\end_layout
+
+\begin_layout Author
+Gonzalo Barrera Borla
+\end_layout
+
+\begin_layout Date
+Lunes 15/08/2019
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\ind}{\mathbb{{I}}}
+{\mathbb{\mathbb{{I}}}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Notación
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $[n]$
+\end_inset
+
+ representa el conjunto de los naturales de 1 hasta n, 
+\begin_inset Formula ${1,2,3,\dots,n}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\ind$
+\end_inset
+
+ representa la función indicadora, 
+\begin_inset Formula $\ind(P)=\begin{cases}
+1 & \text{{si\,P\,es\,verdadera}}\\
+0 & \text{{si\,P\,es\,falsa}}
+\end{cases}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Section
+Ejercicios
+\end_layout
+
+\begin_layout Subsection
+Practica 1, ej.
+ 4
+\end_layout
+
+\begin_layout Standard
+Un empresario de la industria alimenticia asegura que menos del 10% de sus
+ frascos de café instantáneo contiene menos café del que garantiza la etiqueta.
+ Para probar esta afirmación se eligen al azar 15 frascos de café y se pesa
+ su contenido.
+ Su afirmación es aceptada si a lo sumo dos frascos contienen menos café
+ del garantizado.
+\end_layout
+
+\begin_layout Enumerate
+¿Qué hipótesis se deben testear? 
+\end_layout
+
+\begin_layout Enumerate
+¿Cuál es el nivel de la regla de decisión planteada? ¿Le parece razonable?
+ 
+\end_layout
+
+\begin_layout Enumerate
+Encuentre la probabilidad de que la afirmación del empresario sea aceptada
+ cuando el porcentaje real de frascos que contienen menos café del garantizado
+ en la etiqueta es 5%, 10% y 20%.
+\end_layout
+
+\begin_layout Enumerate
+Grafique la función de potencia del test planteado inicialmente.
+ Muestre que es insesgado.
+\end_layout
+
+\begin_layout Enumerate
+Con el tamaño de muestra dado, ¿es posible obtener un test de nivel 0.05?
+ Hallar el tamaño de muestra mínimo para obtener un test de nivel 0.05, mantenien
+do la misma región de rechazo que el test anterior.
+\end_layout
+
+\begin_layout Standard
+El planteo de las hipótesis a testear suele ser un poco idiosincrático.
+ Tradicionalmente, "lo que se desea probar" se coloca en la hipótesis alternativ
+a, y en este caso uno esperaría que lo que se desea probar, es que la afirmación
+ del empresario.
+ Sin embargo, la frase "su afirmacion sera 
+\emph on
+aceptada
+\emph default
+" (id est, 
+\emph on
+no rechazada
+\emph default
+), nos sugiere que la coloquemos en la hipótesis nula.
+ El empresario asegura que "menos del 10% de sus frascos de café instantáneo
+ contiene menos café del que garantiza la etiqueta", que será entonces la
+ hiótesis nula, y su complemento será la hipotesis alternativa:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\begin{split} & H_{0}:\text{Menos del 10\% de los frascos contienen menos café del garantizado}\\
+vs.\quad & H_{1}:\text{Mas del 10\% de los frascos contiene menos cafe del garantizado}
+\end{split}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Sea 
+\begin_inset Formula $X_{i}=1$
+\end_inset
+
+ si el i-ésimo frasco de cafe tiene menos cafe del que garantiza la etiqueta,
+ y 0 en caso contrario.
+ Supongamos además que la probabilidad 
+\begin_inset Formula $p$
+\end_inset
+
+ de que un frasco de café contenga menos café del garantizado, es constante
+ e identica para todos los frascos de manera que 
+\begin_inset Formula $X_{i}\stackrel{iid}{\sim}Ber(p),i=1,...,n$
+\end_inset
+
+, y 
+\begin_inset Formula $\sum_{i=1}^{n}X_{i}=T\sim Bi(n,p)$
+\end_inset
+
+ (en nuestro caso, 
+\begin_inset Formula $n=15$
+\end_inset
+
+).
+ Bajo estos supuestos, una forma matemáticamente tratable de las hipótesis
+ originales es 
+\begin_inset Formula $H_{0}:p\leq0.1\quad vs.H_{1}:p>0.1$
+\end_inset
+
+ o 
+\begin_inset Formula $H_{0}:p\in\Theta_{0}=[0,0.1]\quad vs.H_{1}:p\in\Theta_{1}=[0.,1]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Sea 
+\begin_inset Formula $\Phi(T)=\ind(T>k)$
+\end_inset
+
+ un test que rechaza la hipótesis nula para valores altos de 
+\begin_inset Formula $T$
+\end_inset
+
+.
+ El nivel de significación 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ es igual al supremo de su esperanza bajo la hipótesis nula.
+ En general, 
+\begin_inset Formula 
+\[
+E(\Phi|p=p_{0})=E_{p_{0}}(I(T>k))=P_{p_{0}}(T>k)=P(Bi(n,p_{0})>k)
+\]
+
+\end_inset
+
+Y en particular, 
+\begin_inset Formula $n=15,k=2$
+\end_inset
+
+ nos dan el test planteado.
+ Sea 
+\begin_inset Formula $f_{n,k}(p)=Pr(Bi(n,p)>k)$
+\end_inset
+
+ la probabilidad acumulada a 
+\emph on
+derecha
+\emph default
+ para una VA binomial, como función de 
+\begin_inset Formula $p$
+\end_inset
+
+ para 
+\begin_inset Formula $0<k<n$
+\end_inset
+
+ dados.
+ 
+\begin_inset Formula $f$
+\end_inset
+
+ es 
+\emph on
+estrictamente creciente
+\emph default
+ en 
+\begin_inset Formula $p$
+\end_inset
+
+, ya que a mayor 
+\begin_inset Formula $p$
+\end_inset
+
+, menor es la probabilidad de que 
+\begin_inset Formula $T$
+\end_inset
+
+ realice un valor por debajo de 
+\begin_inset Formula $k$
+\end_inset
+
+ , de manera que 
+\begin_inset Formula $\sup_{p\in[a,b]}f_{n,k}(p)=f(b)$
+\end_inset
+
+.
+ Luego, 
+\begin_inset Formula 
+\[
+\alpha=\sup_{p_{0}\in\Theta_{o}}E_{p_{0}}(\Phi)=P_{0.1}(T>2)=\sum_{i=3}^{15}{15 \choose i}0.1^{i}\ 0.9^{15-i}\approx0.184
+\]
+
+\end_inset
+
+En general, un test que rechace la hipótesis nula (
+\begin_inset Quotes eld
+\end_inset
+
+no acepte
+\begin_inset Quotes erd
+\end_inset
+
+ la afirmación del empresario) casi una de cada 5 veces aún cuando éste
+ esté diciendo la verdad, no es razonable, ya que deja demasiado 
+\begin_inset Quotes eld
+\end_inset
+
+librado al azar
+\begin_inset Quotes erd
+\end_inset
+
+ el resultado.
+ Tradicionalmente, esperaríamos 
+\begin_inset Formula $\alpha\leq0.5$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Los puntos (b) y (c) piden el nivel de significacion y la probabilidadde
+ error de tipo II, para lo cual ya hemos generado funciones.
+ Para el punto (c), calculamos la funcion de potencia en una grilla de valores
+ de $p$, y la graficamos con `ggplot`:
+\end_layout
+
+\begin_layout Standard
+```{r p1e4} n <- 15 p_null <- 0.1 # Usamos el p_null de la igualdad para
+ calcular la significacion RR <- 3:1 prob_rechazo <- function(n, p, RR)
+ { return(sum(dbinom(RR, n, p))) } alfa <- prob_rechazo(15, 0.1, 3:15) potencia
+ <- prob_rechazo significacion <- prob_rechazo prob_etII <- function(n,
+ p_alt, RR) { 1 - potencia(n, p_alt, RR)} alfa <- significacion(n, p_null,
+ RR) p1ej4 <- list( b = alfa, c = list( etII.05 = prob_etII(n, 0.05, RR),
+ etII.1 = prob_etII(n, 0.1, RR), etII.2 = prob_etII(n, 0.2, RR))) ```
+\end_layout
+
+\begin_layout Standard
+Notese que para esta $RR$, como $Pr(Bi(15, 0.1) 
+\backslash
+in 
+\backslash
+{0,1,2
+\backslash
+}) =$ `r round(p1ej4$b, 3)`, cuando $p=0.1$ rechazaremos la hipotesis nula
+ alrededor del `r round(p1ej4$b * 100, 2)`% de las veces, lo cual no suena
+ muy razonable.
+ Aun asi, el test $
+\backslash
+Phi$ es insesgado cuando $$ 
+\backslash
+begin{split} Pr(
+\backslash
+text{rech } H_0 | H_0 
+\backslash
+text{ Verdadera}) &< Pr(
+\backslash
+text{rech } H_0 | H_0 
+\backslash
+text{ Falsa}) 
+\backslash
+
+\backslash
+ Pr(
+\backslash
+Phi=1 | H_0 
+\backslash
+text{ V}) &< Pr(
+\backslash
+Phi=1 | H_0 
+\backslash
+text{ F}) 
+\backslash
+
+\backslash
+ Pr_{
+\backslash
+theta_0}(
+\backslash
+Phi=1) &< Pr_{
+\backslash
+theta_1}(
+\backslash
+Phi=1) 
+\backslash
+quad 
+\backslash
+forall 
+\backslash
+quad
+\backslash
+theta_0 
+\backslash
+in 
+\backslash
+Theta_0, 
+\backslash
+theta_1 
+\backslash
+in 
+\backslash
+Theta_1 
+\backslash
+end{split} $$
+\end_layout
+
+\begin_layout Standard
+y como $
+\backslash
+Phi$ es una uncion indicadora, la probabilidad de que valga 1 es igual a
+ su esperanza.
+ Considerando que la desigualdad se tiene que cumplir para todo par de elementos
+ en la hipotesis nula y la alternativa, concluimos que un test es insesgado
+ cuando: $$ 
+\backslash
+begin{split} 
+\backslash
+forall 
+\backslash
+quad
+\backslash
+theta_0 
+\backslash
+in 
+\backslash
+Theta_0, &
+\backslash
+quad Pr_{
+\backslash
+theta_0}(
+\backslash
+Phi=1) 
+\backslash
+leq 
+\backslash
+sup_{
+\backslash
+theta 
+\backslash
+in 
+\backslash
+Theta_0}E_{
+\backslash
+theta}(
+\backslash
+Phi)
+\backslash
+
+\backslash
+ 
+\backslash
+forall 
+\backslash
+quad
+\backslash
+theta_1 
+\backslash
+in 
+\backslash
+Theta_1, &
+\backslash
+quad Pr_{
+\backslash
+theta_1}(
+\backslash
+Phi=1) 
+\backslash
+geq 
+\backslash
+inf_{
+\backslash
+theta 
+\backslash
+in 
+\backslash
+Theta_1}E_{
+\backslash
+theta}(
+\backslash
+Phi) 
+\backslash
+
+\backslash
+ 
+\backslash
+Phi 
+\backslash
+text{ es insesgado} 
+\backslash
+Leftrightarrow & 
+\backslash
+sup_{
+\backslash
+theta 
+\backslash
+in 
+\backslash
+Theta_0}E_{
+\backslash
+theta}(
+\backslash
+Phi) < 
+\backslash
+inf_{
+\backslash
+theta 
+\backslash
+in 
+\backslash
+Theta_1}E_{
+\backslash
+theta}(
+\backslash
+Phi) 
+\backslash
+end{split} $$
+\end_layout
+
+\begin_layout Standard
+Y recordemos que la funcion `prob_rechazo` es, justamente, la esperanza
+ del test, bajo $H_0$ y $H_1$.
+ El siguiente grafico muestra claramente la insesgadez del test, a pesar
+ de su pesima significacion.
+\end_layout
+
+\begin_layout Standard
+```{r grafico p1ej4d} densidad <- 0.001 p1ej4$d <- tibble( p = seq(0, 1,
+ densidad), potencia = map_dbl(p, ~prob_rechazo(n, ., RR))) %>% ggplot(aes(p,
+ potencia)) + geom_line() + geom_vline(xintercept = p_null, alpha = 0.3)
+ + # Referencia: p_null geom_hline(yintercept = alfa, alpha = 0.3) # Referencia:
+ signif.
+ de la RR ```
+\end_layout
+
+\begin_layout Standard
+Manteniendo la RR propuesta, el punto (e) nos pide $
+\backslash
+min n : Pr(Bi(n, 0.1) 
+\backslash
+in 
+\backslash
+{0,1,2
+\backslash
+}) 
+\backslash
+leq 0.05$.
+ Escribamos la funcion que lo busca: ```{r p1e4e}
+\end_layout
+
+\begin_layout Standard
+n_requerido <- function(RR, alfa, p_null, max_n = 10000) { n_req <- 0 while
+ (n_req < max_n) { if (significacion(n_req, p_null, RR) <= alfa) { return(n_req)
+ } else { n_req <- n_req + 1 } } return(NA) # Devuelve NA si no encuentra
+ n antes de max_n } p1ej4$e <- n_requerido(RR, 0.05, p_null) ```
+\end_layout
+
+\begin_layout Standard
+## Practica 2, ej.
+ 2
+\end_layout
+
+\begin_layout Standard
+Construya el gráfico de $S(
+\backslash
+theta)$ para $n$ impar y deduzca el estimador y el intervalo de confianza
+ para $
+\backslash
+theta$.
+\end_layout
+
+\begin_layout Standard
+## Practica 3, ej.
+ 8
+\end_layout
+
+\begin_layout Standard
+Suponga que $
+\backslash
+forall i =1,....n ,
+\backslash
+ X_i 
+\backslash
+stackrel{iid}{
+\backslash
+sim} F 
+\backslash
+in 
+\backslash
+Omega_s$ (distribuciones simétricas con única mediana en 0).
+\end_layout
+
+\begin_layout Standard
+a.
+ Usando que $g(X_1, ...,X_n)$ y $g(-X_1, ...,-X_n)$ tienen la misma distribución,
+ muestre que si $g(X_1, ...,X_n) + g(-X_1, ...,-X_n) = 
+\backslash
+mu_0$, entonces $g(X_1, ...,X_n)$ está simétricamente distribuída alrededor
+ de $
+\backslash
+mu_0/2$, Hint: Muestre que $P(g(X_1, ...,X_n) 
+\backslash
+leq 
+\backslash
+mu_0/2 - t) = P(g(X_1, ...,X_n) 
+\backslash
+leq 
+\backslash
+mu_0/2 + t)$.
+ b.
+ Aplique a) al estadístico del test de rangos signados de Wilcoxon para
+ demostrar que $T^+$ tiene distribución simétrica bajo la hipótesis nula.
+ ¿Cuál es el punto de simetría?
+\end_layout
+
+\begin_layout Standard
+# Demostraciones
+\end_layout
+
+\begin_layout Standard
+## Consistencia del test de Wilcoxon
+\end_layout
+
+\begin_layout Standard
+Sea $
+\backslash
+bar{X}=(X_1, ..., X_n)$ una muestra aleatoria tal que $
+\backslash
+forall i =1,....n ,
+\backslash
+ X_i 
+\backslash
+stackrel{iid}{
+\backslash
+sim} F 
+\backslash
+in 
+\backslash
+Omega_s$ (distribuciones simétricas con única mediana en 0), y definamos
+ - la posicion o rango de $X_i$ en la muestra ordenada segun valores absolutos:
+ $R_i = 
+\backslash
+#
+\backslash
+{j : |X_j| 
+\backslash
+leq |X_i|, j = 1,...
+ n
+\backslash
+}$, - la "funcion signo" $s(X_i) = I(X_i > 0)$, y - el estadistico $T^+
+ = 
+\backslash
+sum_{i=1}^{n} R_i 
+\backslash
+ s(X_i)$
+\end_layout
+
+\begin_layout Standard
+Recordemos que $T^+$ admite la siguiente definicion equivalente en base
+ a los promedios de Walsh, $$ T^+ = 
+\backslash
+#
+\backslash
+left
+\backslash
+{ i, j : 
+\backslash
+frac{X_i + X_j}{2} > 0, 
+\backslash
+ 1 
+\backslash
+leq i 
+\backslash
+leq j 
+\backslash
+leq n 
+\backslash
+right
+\backslash
+} = 
+\backslash
+sum_{i=1}^{j} 
+\backslash
+sum_{j=1}^{n} I(X_i + X_j > 0) = 
+\backslash
+sum_{i=1}^{j} 
+\backslash
+sum_{j=1}^{n} T_{ij} $$
+\end_layout
+
+\begin_layout Standard
+donde $I(
+\backslash
+cdot)$ es la funcion indicadora.
+ 
+\end_layout
+
+\begin_layout Standard
+Utilicemos esta ultima forma para desarrollar la esperanza y varianza de
+ $T^+$, dada cierta distribucion subyacente fija $F_0$.
+ Gracias a la linealidad de la esperanza, y el hecho de que $E(I(Q)) = P(Q)$
+ $$ 
+\backslash
+begin{split} E(T^+)&= E
+\backslash
+left(
+\backslash
+sum_{i=1}^{j} 
+\backslash
+sum_{j=1}^{n} I(X_i + X_j > 0) 
+\backslash
+right) =
+\backslash
+sum_{i=1}^{j} 
+\backslash
+sum_{j=1}^{n} E(I(X_i + X_j > 0) ) =
+\backslash
+sum_{i=1}^{j} 
+\backslash
+sum_{j=1}^{n} P(X_i + X_j > 0) 
+\backslash
+
+\backslash
+ &=
+\backslash
+sum_{i=j}P(X_i > 0) + 
+\backslash
+sum_{i<j} P(X_i + X_j > 0) 
+\backslash
+end{split} $$ Sean ahora $p_1=P(X_i > 0), 
+\backslash
+ 
+\backslash
+ p_2=P(X_i + X_j > 0 | i < j)$.
+ Se observa que hay $n$ sumandos donde $i=j$ (1 por cada elemento $j$),
+ y $(n-1)n/2$ sumandos donde $i<j$.
+ Luego, $E(T^+)= np_1 + (n-1)n p_2$.
+\end_layout
+
+\begin_layout Standard
+Para el calculo de la varianza de $T^+$, usaremos el hecho de que, en general,
+ si $Y = 
+\backslash
+sum_i X_i 
+\backslash
+Rightarrow Var(Y) = 
+\backslash
+mathbb{cov}(Y, Y) = 
+\backslash
+mathbb{cov}(
+\backslash
+sum_i X_i, 
+\backslash
+sum_i X_i) = 
+\backslash
+sum_i Var(X_i) + 2 
+\backslash
+sum_{i<j} 
+\backslash
+mathbb{cov}(X_i, X_j)$.
+ Para ello, tendremos que encontrar la expresion de la covarianza para todas
+ las combinaciones unicas de subindices.
+ 
+\end_layout
+
+\begin_layout Standard
+$$ 
+\backslash
+begin{split} Var(T^+) &= Var
+\backslash
+left(
+\backslash
+sum_{i=1}^{j} 
+\backslash
+sum_{j=1}^{n} T_{ij} 
+\backslash
+right) = 
+\backslash
+sum_{i=1}^{j} 
+\backslash
+sum_{j=1}^{n} Var(T_{ij}) + 2 
+\backslash
+sum_{i=1}^{k} 
+\backslash
+sum_{j=1}^{l} 
+\backslash
+sum_{k=1}^{l} 
+\backslash
+sum_{l=1}^{n} 
+\backslash
+mathbb{cov}(T_{ij},T_{kl}) 
+\backslash
+end{split} $$
+\end_layout
+
+\begin_layout Standard
+Recordemos que si $X 
+\backslash
+perp Y$ (las VA $X$ y $Y$ son independientes entre si, $cov(X, Y)=0$.
+ Ademas, para funciones deterministicas arbitrarias $f, g$, $X 
+\backslash
+perp Y 
+\backslash
+Rightarrow f(X) 
+\backslash
+perp g(Y)$.
+ Como $T_{ij}=f(X_i, X_j)$, y $X_i 
+\backslash
+perp X_j 
+\backslash
+ 
+\backslash
+forall i 
+\backslash
+neq j$, siempre y cuando los pares$(i,j),(k,l)$ no compartan ningun indice,
+ $
+\backslash
+mathbb{cov}(T_{ij},T_{kl})=0$ .
+ Consideremos a continuacion los casos en que "ambos T" comparten algun
+ subindice: - Hay Usando que $cov(X, Y)=cov(Y,X)$ y $T_{ij}=T_{ji}$, podemos
+ limitarnos sin perdida de generalidad a los $i 
+\backslash
+leq k 
+\backslash
+leq j 
+\backslash
+leq l$ y nos basta con limitarnos a los siguientes casos:
+\end_layout
+
+\begin_layout Standard
+$$ cov(T_{ij}, T_{kl}) = 
+\backslash
+begin{cases} Var(T_{ii}) = Var(T_{11}) &
+\backslash
+text{si } i = k = j = l 
+\backslash
+
+\backslash
+ Var(T_{ij}) = Var(T_{12}) &
+\backslash
+text{si } i = k < j = l 
+\backslash
+
+\backslash
+ cov(T_{ii}, T_{il}) = cov(T_{11}, T_{12}) &
+\backslash
+text{si } i = k = j < l 
+\backslash
+
+\backslash
+ cov(T_{ij}, T_{il}) = cov(T_{12}, T_{13}) &
+\backslash
+text{si } i = k < j < l 
+\backslash
+
+\backslash
+ 0 &
+\backslash
+text{en otro caso} 
+\backslash
+
+\backslash
+ 
+\backslash
+end{cases} $$
+\end_layout
+
+\begin_layout Standard
+Usando que $cov(X, Y) = E(XY) - E(X)E(Y)$ e $I(P) 
+\backslash
+cdot I(Q) = I(P 
+\backslash
+land Q)$ (y por ende $I(P)^2=I(P 
+\backslash
+land P)=I(P)$), calculamos
+\end_layout
+
+\begin_layout Standard
+$$ 
+\backslash
+begin{split} Var(T_{ii}) &= E(T_{11}^2)- E(T_{11})^2 = E(I(X_1>0)^2) - E(I(
+ X_1 > 0))^2 = E(I(X_1>0))(1 - E(I( X_1 > 0))) 
+\backslash
+
+\backslash
+ &= P(X_1>0)(1 - P( X_1 > 0)) 
+\backslash
+
+\backslash
+ &= p_1 (1-p_1) 
+\backslash
+
+\backslash
+ Var(T_{ij}) &= E(T_{12}^2)- E(T_{ij})^2 = E(I(X_1 + X_2>0)^2) - E(I( X_1
+ + X_2> 0))^2 
+\backslash
+
+\backslash
+ &= E(I(X_1+ X_2>0))(1 - E(I( X_1 + X_2> 0))) = P(X_1+ X_2>0)(1 - P( X_1
+ + X_2> 0)) 
+\backslash
+
+\backslash
+ &= p_2 (1-p_2) 
+\backslash
+
+\backslash
+ cov(T_{ii}, T_{il}) &= E(T_{11}T_{12}) -E(T_{11})E(T_{12}) = E(I(X_1 >0
+ 
+\backslash
+land X_1 + X_2 > 0)) - E(I(X_1 >0)E(I(X_1+X_2>0)) 
+\backslash
+
+\backslash
+ &= P(X_1 >0 
+\backslash
+land X_1 + X_2 > 0) - p_1 
+\backslash
+cdot p_2 
+\backslash
+
+\backslash
+ &= p_3 - p_1 
+\backslash
+cdot p_2 
+\backslash
+quad 
+\backslash
+text{, digamos} 
+\backslash
+
+\backslash
+ cov(T_{ij}, T_{il}) &= E(T_{12}T_{13}) -E(T_{12})E(T_{13}) = E(I(X_1 +
+ X_2 >0 
+\backslash
+land X_1 + X_3 > 0)) - E(I(X_1 + X_2 >0)E(I(X_1+X_3>0)) 
+\backslash
+
+\backslash
+ &= P(X_1 + X_2 >0 
+\backslash
+land X_1 + X_3 > 0) - p_2 ^ 2 
+\backslash
+
+\backslash
+ &= p_4 - p_2^2 
+\backslash
+quad 
+\backslash
+text{, digamos} 
+\backslash
+
+\backslash
+ 
+\backslash
+end{split} $$
+\end_layout
+
+\begin_layout Standard
+Para concluir, basta ver cuantos de cada tipo de termino en la expansion
+ de $Var(T^+)$ en sus terminos de covarianza.
+ Cuando los 4 subindices son identicos, $cov(T_{ij}, T_{kl})=Var(T_{ii})$,
+ y hay ${n 
+\backslash
+choose 1}=n$ de elegir un subindice entre $n$, asi que $Var(T_{ii})$ aparece
+ $n$ veces.
+ Similarmente, hay ${n 
+\backslash
+choose 2}=n(n-1)/2$ formas de elegir 2 subindices unicos, asi que tanto
+ $cov(T_{11}, T_{22}), cov(T_11), T_tanto $cov(T_{ii}, T_{ij})$ como $Var(T_{ij}
+)$ aparecen ${n 
+\backslash
+choose 2}=n(n-1)/2$ veces.
+ Por ultimo, hay ${n 
+\backslash
+choose 3}=n(n-1)(n-2)/6$ formas de elegir 3 subindices unicos, de manera
+ que 
+\end_layout
+
+\begin_layout Standard
+formas de elegir 2 subindices, de manera que $Var(T_{ij})$ aparece $(n-1)n/2$
+ veces, y tanto $cov(T_{ii}, T_{ij})$ como $cov(T_{ij}, T_{ii})$aparece
+ - $cov(T_{ii}, T_{il})$ aparece tambien $n(n-1)/2$ veces ($l-1$ veces por
+ cada $l=1,...,n$), al igual que $cov(T_{il}, T_{ii})$, para un total de $n(n-1)$
+ veces, y -en $cov(T_{ij}, T_{il})$
+\end_layout
+
+\begin_layout Standard
+$$ 
+\backslash
+begin{matrix} T_{11} & T_{12} & ...
+ & T_{1i} & ...
+ & T_{1j} & ...
+ & T_{1n} 
+\backslash
+
+\backslash
+ & T_{22} & ...
+ & T_{2i} & ...
+ & T_{2j} & ...
+ & T_{2n} 
+\backslash
+
+\backslash
+ & & ...
+ & ...
+ & ...
+ & ...
+ & ...
+ & ...
+ 
+\backslash
+
+\backslash
+ & & & T_{ii} & ...
+ & T_{ij} & ...
+ & T_{in} 
+\backslash
+
+\backslash
+ & & & & ...
+ & ...
+ & ...
+ & ...
+ 
+\backslash
+
+\backslash
+ & & & & & T_{jj} & ...
+ & T_{jn} 
+\backslash
+
+\backslash
+ & & & & & & ...
+ & ...
+ 
+\backslash
+
+\backslash
+ & & & & & & & T_{nn} 
+\backslash
+end{matrix} $$
+\end_layout
+
+\begin_layout Standard
+
+\backslash
+begin{split} Var(T_ii) = E ## Teorema de Proyeccion
+\end_layout
+
+\begin_layout Standard
+## MWW: Distribución exacta de los estadistico del test de Mann-Whitney-Wilcoxon
+ (MWW) bajo $H_0$
+\end_layout
+
+\begin_layout Standard
+# Apendice
+\end_layout
+
+\begin_layout Standard
+## Condiciones suficientes de consistencia
+\end_layout
+
+\begin_layout Standard
+### Definicion:
+\end_layout
+
+\begin_layout Standard
+Sea $X_1, ..., X_n$ una muestra aleatoria tal que $
+\backslash
+forall 
+\backslash
+ i=1,..., n 
+\backslash
+Rightarrow
+\backslash
+ X_i 
+\backslash
+stackrel{iid}{
+\backslash
+sim} F 
+\backslash
+in 
+\backslash
+Omega$.
+ Se dice que la sucesion de tests $
+\backslash
+{
+\backslash
+Phi_n
+\backslash
+}$ de nivel asintotico $
+\backslash
+alpha$ es consistente para las hipotesis $H_0 : F 
+\backslash
+in 
+\backslash
+Omega_{0} 
+\backslash
+subset 
+\backslash
+Omega
+\backslash
+text{ vs.
+ } H_1 : F 
+\backslash
+in 
+\backslash
+Omega_1
+\backslash
+subset 
+\backslash
+Omega$, si - $
+\backslash
+alpha 
+\backslash
+geq E_{F_0}(
+\backslash
+Phi_n) 
+\backslash
+geq 
+\backslash
+gamma > 0 
+\backslash
+quad 
+\backslash
+forall 
+\backslash
+ F_0 
+\backslash
+in 
+\backslash
+Omega_0$, y - $E_{F_1}(
+\backslash
+Phi_n) 
+\backslash
+to 1 
+\backslash
+quad 
+\backslash
+forall 
+\backslash
+ F_1 
+\backslash
+in 
+\backslash
+Omega_1$, donde $E_G(T(X_1, ..., X_n)) = E(T | F = G)$.
+ Es decir, que el nivel de significacion del test se mantiene acotado encima
+ del cero para la sucesion, mientras que la potencia tiende a 1 para la
+ alternativa, a medida que aumenta el tamano muestral.
+\end_layout
+
+\begin_layout Standard
+El conjunto de todas las distribuciones para las cuales $
+\backslash
+{
+\backslash
+Phi_n
+\backslash
+}$ es consistente se denomina _clase de consistencia_ $
+\backslash
+Omega_c 
+\backslash
+subset 
+\backslash
+Omega_1$.
+\end_layout
+
+\begin_layout Standard
+El siguiente teorema es util para determinar la clase de consistencia en
+ ciertos test comunes.
+\end_layout
+
+\begin_layout Standard
+### Teorema Sea $
+\backslash
+Phi_n$ un test de nivel asintotico $
+\backslash
+alpha$ basado en $T_n$ que rechaza $H_0$ para valores grandes, para las
+ hipotesis previamente definidas.
+ Si
+\end_layout
+
+\begin_layout Standard
+$$ T_n 
+\backslash
+stackrel{p}{
+\backslash
+to} 
+\backslash
+mu(F) = 
+\backslash
+begin{cases} 
+\backslash
+mu_0 &
+\backslash
+forall F 
+\backslash
+in 
+\backslash
+Omega_0 
+\backslash
+
+\backslash
+ > 
+\backslash
+mu_0 &
+\backslash
+forall F 
+\backslash
+in 
+\backslash
+Omega_c 
+\backslash
+
+\backslash
+ 
+\backslash
+end{cases} $$ y ademas existe $
+\backslash
+sigma_0$ tal que 
+\end_layout
+
+\begin_layout Standard
+$$ 
+\backslash
+sqrt{n}
+\backslash
+frac{T_n - 
+\backslash
+mu_0}{
+\backslash
+sigma_0} 
+\backslash
+stackrel{D}{
+\backslash
+to} N(0,1) 
+\backslash
+quad 
+\backslash
+forall F 
+\backslash
+in 
+\backslash
+Omega_0 $$ entonces existe una sucesion de valores $k_n$ tal que la sucesion
+ de tests $
+\backslash
+Phi_n = I(T_n 
+\backslash
+geq k_n)$ es consistente para la clase $
+\backslash
+Omega_c$.
+\end_layout
+
+\begin_layout Standard
+### Demostracion
+\end_layout
+
+\begin_layout Part
+Demostraciones
+\end_layout
+
+\begin_layout Part
+Anexo
+\end_layout
+
+\end_body
+\end_document
