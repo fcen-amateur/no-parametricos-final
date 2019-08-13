@@ -4,10 +4,13 @@
 \begin_header
 \textclass article
 \use_default_options true
+\begin_modules
+sweave
+\end_modules
 \maintain_unincluded_children false
 \language english
 \language_package default
-\inputencoding auto
+\inputencoding utf8
 \fontencoding global
 \font_roman default
 \font_sans default
@@ -25,10 +28,11 @@
 \bibtex_command default
 \index_command default
 \paperfontsize default
+\spacing single
 \use_hyperref false
 \papersize default
 \use_geometry false
-\use_package amsmath 1
+\use_package amsmath 2
 \use_package amssymb 1
 \use_package cancel 1
 \use_package esint 1
@@ -98,6 +102,33 @@ LatexCommand tableofcontents
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\pr}{\mathrm{\mathrm{{Pr}}}}
+{\mathrm{\mathrm{{Pr}}}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\e}{\mathrm{{E}}}
+{\mathbf{\mathrm{{E}}}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\var}{\mathrm{{Var}}}
+{\mathbf{\mathrm{{Var}}}}
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Notación
 \end_layout
@@ -125,6 +156,24 @@ Notación
 \end_inset
 
  
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\pr(X)$
+\end_inset
+
+ es la probabilidad del evento 
+\begin_inset Formula $X$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\e,\var$
+\end_inset
+
+ son los operadores esperanza y varianza, respectivamente
 \end_layout
 
 \begin_layout Section
@@ -230,11 +279,23 @@ Sea
 ).
  Bajo estos supuestos, una forma matemáticamente tratable de las hipótesis
  originales es 
-\begin_inset Formula $H_{0}:p\leq0.1\quad vs.H_{1}:p>0.1$
+\begin_inset Formula 
+\[
+H_{0}:p\leq0.1\quad vs.H_{1}:p>0.1
+\]
+
 \end_inset
 
- o 
-\begin_inset Formula $H_{0}:p\in\Theta_{0}=[0,0.1]\quad vs.H_{1}:p\in\Theta_{1}=[0.,1]$
+
+\end_layout
+
+\begin_layout Standard
+o 
+\begin_inset Formula 
+\[
+H_{0}:p\in\Theta_{0}=[0,0.1]\quad vs.H_{1}:p\in\Theta_{1}=[0.,1]
+\]
+
 \end_inset
 
 .
@@ -258,7 +319,7 @@ Sea
  En general, 
 \begin_inset Formula 
 \[
-E(\Phi|p=p_{0})=E_{p_{0}}(I(T>k))=P_{p_{0}}(T>k)=P(Bi(n,p_{0})>k)
+\e(\Phi|p=p_{0})=\e_{p_{0}}(\ind(T>k))=\pr_{p_{0}}(T>k)=\pr(Bi(n,p_{0})>k)
 \]
 
 \end_inset
@@ -269,7 +330,7 @@ Y en particular,
 
  nos dan el test planteado.
  Sea 
-\begin_inset Formula $f_{n,k}(p)=Pr(Bi(n,p)>k)$
+\begin_inset Formula $f_{n,k}(p)=\pr(Bi(n,p)>k)$
 \end_inset
 
  la probabilidad acumulada a 
@@ -317,7 +378,7 @@ estrictamente creciente
  Luego, 
 \begin_inset Formula 
 \[
-\alpha=\sup_{p_{0}\in\Theta_{o}}E_{p_{0}}(\Phi)=P_{0.1}(T>2)=\sum_{i=3}^{15}{15 \choose i}0.1^{i}\ 0.9^{15-i}\approx0.184
+\alpha=\sup_{p_{0}\in\Theta_{o}}\e_{p_{0}}(\Phi)=\pr_{0.1}(T>2)=\sum_{i=3}^{15}{15 \choose i}0.1^{i}\ 0.9^{15-i}\approx0.1841
 \]
 
 \end_inset
@@ -348,6 +409,34 @@ librado al azar
 \end_layout
 
 \begin_layout Standard
+La probabilidad de que la afirmación del empresario sea aceptada cuando
+ la proporción real de frascos de café es 
+\begin_inset Formula $p_{1}$
+\end_inset
+
+, es simplemente la probabilidad de que 
+\begin_inset Formula $T$
+\end_inset
+
+ 
+\emph on
+no
+\emph default
+ caiga en la región de rechaz
+\begin_inset Formula 
+\begin{align*}
+\pr(\Phi=0|p=p_{1})= & \pr_{p_{1}}(T\leq k)=\pr(Bi(n,p_{1})\leq k)=\sum_{i=0}^{k}{n \choose i}p_{1}^{i}(1-p_{1})^{n-i}\\
+\pr_{0.05}(T\leq2)= & \sum_{i=0}^{2}{15 \choose i}0.05^{i}0.95^{15-i}\approx0.9638\\
+\pr_{0.1}(T\leq2)\approx & 0.8159\\
+\pr_{0.2}(T\leq2)\approx & 0.3980
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Los puntos (b) y (c) piden el nivel de significacion y la probabilidadde
  error de tipo II, para lo cual ya hemos generado funciones.
  Para el punto (c), calculamos la funcion de potencia en una grilla de valores
@@ -355,194 +444,99 @@ Los puntos (b) y (c) piden el nivel de significacion y la probabilidadde
 \end_layout
 
 \begin_layout Standard
-```{r p1e4} n <- 15 p_null <- 0.1 # Usamos el p_null de la igualdad para
- calcular la significacion RR <- 3:1 prob_rechazo <- function(n, p, RR)
- { return(sum(dbinom(RR, n, p))) } alfa <- prob_rechazo(15, 0.1, 3:15) potencia
- <- prob_rechazo significacion <- prob_rechazo prob_etII <- function(n,
- p_alt, RR) { 1 - potencia(n, p_alt, RR)} alfa <- significacion(n, p_null,
- RR) p1ej4 <- list( b = alfa, c = list( etII.05 = prob_etII(n, 0.05, RR),
- etII.1 = prob_etII(n, 0.1, RR), etII.2 = prob_etII(n, 0.2, RR))) ```
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<iris-pairs,fig=TRUE,width=4.5,height=4.5,eps=TRUE,pdf=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(tidyverse)
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(tibble(x=seq(0,2*pi, 0.01), y=sin(x)), aes(x, y)) + geom_line()
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Notese que para esta $RR$, como $Pr(Bi(15, 0.1) 
-\backslash
-in 
-\backslash
-{0,1,2
-\backslash
-}) =$ `r round(p1ej4$b, 3)`, cuando $p=0.1$ rechazaremos la hipotesis nula
- alrededor del `r round(p1ej4$b * 100, 2)`% de las veces, lo cual no suena
- muy razonable.
- Aun asi, el test $
-\backslash
-Phi$ es insesgado cuando $$ 
-\backslash
-begin{split} Pr(
-\backslash
-text{rech } H_0 | H_0 
-\backslash
-text{ Verdadera}) &< Pr(
-\backslash
-text{rech } H_0 | H_0 
-\backslash
-text{ Falsa}) 
-\backslash
+Se dice que el test 
+\begin_inset Formula $\Phi(T)$
+\end_inset
 
-\backslash
- Pr(
-\backslash
-Phi=1 | H_0 
-\backslash
-text{ V}) &< Pr(
-\backslash
-Phi=1 | H_0 
-\backslash
-text{ F}) 
-\backslash
+ es insesgado para las hipótesis 
+\begin_inset Formula $H_{0},H_{1}$
+\end_inset
 
-\backslash
- Pr_{
-\backslash
-theta_0}(
-\backslash
-Phi=1) &< Pr_{
-\backslash
-theta_1}(
-\backslash
-Phi=1) 
-\backslash
-quad 
-\backslash
-forall 
-\backslash
-quad
-\backslash
-theta_0 
-\backslash
-in 
-\backslash
-Theta_0, 
-\backslash
-theta_1 
-\backslash
-in 
-\backslash
-Theta_1 
-\backslash
-end{split} $$
-\end_layout
+cuando es menos probable rechazar la hipótesis nula en caso de que esta
+ sea verdadera, que cuando es falsa.
+ Más formalmente, dado un test 
+\begin_inset Formula $\Phi(T)=\ind(T\in RR)$
+\end_inset
 
-\begin_layout Standard
-y como $
-\backslash
-Phi$ es una uncion indicadora, la probabilidad de que valga 1 es igual a
- su esperanza.
- Considerando que la desigualdad se tiene que cumplir para todo par de elementos
- en la hipotesis nula y la alternativa, concluimos que un test es insesgado
- cuando: $$ 
-\backslash
-begin{split} 
-\backslash
-forall 
-\backslash
-quad
-\backslash
-theta_0 
-\backslash
-in 
-\backslash
-Theta_0, &
-\backslash
-quad Pr_{
-\backslash
-theta_0}(
-\backslash
-Phi=1) 
-\backslash
-leq 
-\backslash
-sup_{
-\backslash
-theta 
-\backslash
-in 
-\backslash
-Theta_0}E_{
-\backslash
-theta}(
-\backslash
-Phi)
-\backslash
+ basado en un estadístico cuya función de distribución está unívocamente
+ determinada por un único parámetro 
+\begin_inset Formula $\theta:T\sim F_{\theta}$
+\end_inset
 
-\backslash
+ y un par de hipotesis
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
  
-\backslash
-forall 
-\backslash
-quad
-\backslash
-theta_1 
-\backslash
-in 
-\backslash
-Theta_1, &
-\backslash
-quad Pr_{
-\backslash
-theta_1}(
-\backslash
-Phi=1) 
-\backslash
-geq 
-\backslash
-inf_{
-\backslash
-theta 
-\backslash
-in 
-\backslash
-Theta_1}E_{
-\backslash
-theta}(
-\backslash
-Phi) 
-\backslash
+\begin_inset Formula $H_{0}:\theta\in\Theta_{0}\quad vs.\quad H_{1}:\theta\in\Theta_{1}$
+\end_inset
 
-\backslash
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
  
-\backslash
-Phi 
-\backslash
-text{ es insesgado} 
-\backslash
-Leftrightarrow & 
-\backslash
-sup_{
-\backslash
-theta 
-\backslash
-in 
-\backslash
-Theta_0}E_{
-\backslash
-theta}(
-\backslash
-Phi) < 
-\backslash
-inf_{
-\backslash
-theta 
-\backslash
-in 
-\backslash
-Theta_1}E_{
-\backslash
-theta}(
-\backslash
-Phi) 
-\backslash
-end{split} $$
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\pr(\text{rech }H_{0}|H_{0}\text{ Verdadera}) & <\pr(\text{rech }H_{0}|H_{0}\text{ Falsa})\\
+\pr(\Phi=1|H_{0}\text{ V}) & <\pr(\Phi=1|H_{0}\text{ F})\\
+\e(\Phi|H_{0}\text{ V}) & <\e(\Phi|H_{0}\text{ F})\\
+\e_{\theta_{0}}(\Phi) & <\e_{\theta_{1}}(\Phi) & \forall\quad\theta_{0}\in\Theta_{0},\theta_{1}\in\Theta_{1}\\
+\sup_{\theta\in\Theta_{0}}\e(\Phi) & <\inf_{\theta\in\Theta_{1}}\e(\Phi) & \Rightarrow\Phi\text{{es\,insesgado\,para\,}}H_{0},H_{1}
+\end{align*}
+
+\end_inset
+
+ 
 \end_layout
 
 \begin_layout Standard
@@ -904,84 +898,30 @@ land P)=I(P)$), calculamos
 \end_layout
 
 \begin_layout Standard
-$$ 
-\backslash
-begin{split} Var(T_{ii}) &= E(T_{11}^2)- E(T_{11})^2 = E(I(X_1>0)^2) - E(I(
- X_1 > 0))^2 = E(I(X_1>0))(1 - E(I( X_1 > 0))) 
-\backslash
+\begin_inset Formula 
+\[
+\begin{split}Var(T_{ii}) & =E(T_{11}^{2})-E(T_{11})^{2}=E(I(X_{1}>0)^{2})-E(I(X_{1}>0))^{2}\\
+ & =E(I(X_{1}>0))(1-E(I(X_{1}>0)))\\
+ & =P(X_{1}>0)(1-P(X_{1}>0))\\
+ & =p_{1}(1-p_{1})\\
+Var(T_{ij}) & =E(T_{12}^{2})-E(T_{ij})^{2}=E(I(X_{1}+X_{2}>0)^{2})-E(I(X_{1}+X_{2}>0))^{2}\\
+ & =E(I(X_{1}+X_{2}>0))(1-E(I(X_{1}+X_{2}>0)))\\
+ & =P(X_{1}+X_{2}>0)(1-P(X_{1}+X_{2}>0))\\
+ & =p_{2}(1-p_{2})\\
+cov(T_{ii},T_{il}) & =E(T_{11}T_{12})-E(T_{11})E(T_{12})\\
+ & =E(I(X_{1}>0\land X_{1}+X_{2}>0))-E(I(X_{1}>0)E(I(X_{1}+X_{2}>0))\\
+ & =P(X_{1}>0\land X_{1}+X_{2}>0)-p_{1}\cdot p_{2}\\
+ & =p_{3}-p_{1}\cdot p_{2}\quad\text{, digamos}\\
+cov(T_{ij},T_{il}) & =E(T_{12}T_{13})-E(T_{12})E(T_{13})\\
+ & =E(I(X_{1}+X_{2}>0\land X_{1}+X_{3}>0))-E(I(X_{1}+X_{2}>0)E(I(X_{1}+X_{3}>0))\\
+ & =P(X_{1}+X_{2}>0\land X_{1}+X_{3}>0)-p_{2}^{2}\\
+ & =p_{4}-p_{2}^{2}\quad\text{, digamos}
+\end{split}
+\]
 
-\backslash
- &= P(X_1>0)(1 - P( X_1 > 0)) 
-\backslash
+\end_inset
 
-\backslash
- &= p_1 (1-p_1) 
-\backslash
 
-\backslash
- Var(T_{ij}) &= E(T_{12}^2)- E(T_{ij})^2 = E(I(X_1 + X_2>0)^2) - E(I( X_1
- + X_2> 0))^2 
-\backslash
-
-\backslash
- &= E(I(X_1+ X_2>0))(1 - E(I( X_1 + X_2> 0))) = P(X_1+ X_2>0)(1 - P( X_1
- + X_2> 0)) 
-\backslash
-
-\backslash
- &= p_2 (1-p_2) 
-\backslash
-
-\backslash
- cov(T_{ii}, T_{il}) &= E(T_{11}T_{12}) -E(T_{11})E(T_{12}) = E(I(X_1 >0
- 
-\backslash
-land X_1 + X_2 > 0)) - E(I(X_1 >0)E(I(X_1+X_2>0)) 
-\backslash
-
-\backslash
- &= P(X_1 >0 
-\backslash
-land X_1 + X_2 > 0) - p_1 
-\backslash
-cdot p_2 
-\backslash
-
-\backslash
- &= p_3 - p_1 
-\backslash
-cdot p_2 
-\backslash
-quad 
-\backslash
-text{, digamos} 
-\backslash
-
-\backslash
- cov(T_{ij}, T_{il}) &= E(T_{12}T_{13}) -E(T_{12})E(T_{13}) = E(I(X_1 +
- X_2 >0 
-\backslash
-land X_1 + X_3 > 0)) - E(I(X_1 + X_2 >0)E(I(X_1+X_3>0)) 
-\backslash
-
-\backslash
- &= P(X_1 + X_2 >0 
-\backslash
-land X_1 + X_3 > 0) - p_2 ^ 2 
-\backslash
-
-\backslash
- &= p_4 - p_2^2 
-\backslash
-quad 
-\backslash
-text{, digamos} 
-\backslash
-
-\backslash
- 
-\backslash
-end{split} $$
 \end_layout
 
 \begin_layout Standard
@@ -1014,60 +954,22 @@ formas de elegir 2 subindices, de manera que $Var(T_{ij})$ aparece $(n-1)n/2$
 \end_layout
 
 \begin_layout Standard
-$$ 
-\backslash
-begin{matrix} T_{11} & T_{12} & ...
- & T_{1i} & ...
- & T_{1j} & ...
- & T_{1n} 
-\backslash
+\begin_inset Formula 
+\[
+\begin{matrix}T_{11} & T_{12} & ... & T_{1i} & ... & T_{1j} & ... & T_{1n}\\
+ & T_{22} & ... & T_{2i} & ... & T_{2j} & ... & T_{2n}\\
+ &  & ... & ... & ... & ... & ... & ...\\
+ &  &  & T_{ii} & ... & T_{ij} & ... & T_{in}\\
+ &  &  &  & ... & ... & ... & ...\\
+ &  &  &  &  & T_{jj} & ... & T_{jn}\\
+ &  &  &  &  &  & ... & ...\\
+ &  &  &  &  &  &  & T_{nn}
+\end{matrix}
+\]
 
-\backslash
- & T_{22} & ...
- & T_{2i} & ...
- & T_{2j} & ...
- & T_{2n} 
-\backslash
+\end_inset
 
-\backslash
- & & ...
- & ...
- & ...
- & ...
- & ...
- & ...
- 
-\backslash
 
-\backslash
- & & & T_{ii} & ...
- & T_{ij} & ...
- & T_{in} 
-\backslash
-
-\backslash
- & & & & ...
- & ...
- & ...
- & ...
- 
-\backslash
-
-\backslash
- & & & & & T_{jj} & ...
- & T_{jn} 
-\backslash
-
-\backslash
- & & & & & & ...
- & ...
- 
-\backslash
-
-\backslash
- & & & & & & & T_{nn} 
-\backslash
-end{matrix} $$
 \end_layout
 
 \begin_layout Standard
