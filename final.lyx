@@ -134,7 +134,7 @@ Notación
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $[n]$
+\begin_inset Formula $\left[n\right]$
 \end_inset
 
  representa el conjunto de los naturales de 1 hasta n, 
@@ -221,11 +221,9 @@ do la misma región de rechazo que el test anterior.
 \end_layout
 
 \begin_layout Standard
-El planteo de las hipótesis a testear suele ser un poco idiosincrático.
- Tradicionalmente, "lo que se desea probar" se coloca en la hipótesis alternativ
-a, y en este caso uno esperaría que lo que se desea probar, es que la afirmación
- del empresario.
- Sin embargo, la frase "su afirmacion sera 
+El planteo de las hipótesis a testear suele ser un poco idiosincrático,
+ y dependerá de dónde queramos que caiga la carga de la prueba.
+ La frase "su afirmación sera 
 \emph on
 aceptada
 \emph default
@@ -233,18 +231,69 @@ aceptada
 \emph on
 no rechazada
 \emph default
-), nos sugiere que la coloquemos en la hipótesis nula.
- El empresario asegura que "menos del 10% de sus frascos de café instantáneo
- contiene menos café del que garantiza la etiqueta", que será entonces la
- hiótesis nula, y su complemento será la hipotesis alternativa:
+), nos sugiere que coloquemos la afirmación del empresario en la hipótesis
+ nula.
+ Este arreglo es equivalente a la 
+\begin_inset Quotes eld
+\end_inset
+
+inocencia hasta que se pruebe lo contario
+\begin_inset Quotes erd
+\end_inset
+
+, e implica que salvo que haya clara evidencia contra la proporción de frascos
+ defectuosos, asumiremos que está debajo del 10%:
 \end_layout
 
 \begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
 \begin_inset Formula 
 \begin{align*}
-\begin{split} & H_{0}:\text{Menos del 10\% de los frascos contienen menos café del garantizado}\\
-vs.\quad & H_{1}:\text{Mas del 10\% de los frascos contiene menos cafe del garantizado}
-\end{split}
+ & H_{0}:\text{Menos del 10\% de los frascos contienen menos café del garantizado.}\\
+vs.\quad & H_{1}:\text{Más del 10\% de los frascos contiene menos café del garantizado.}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La estrategia tradicional, sin embargo, consiste en colocar "lo que se desea
+ probar" en la hipótesis alternativa, de manera que sólo se acepte su afirmación
+ si la evidencia está a su favor.
+ Por razones que quedarán claras al resolver el punto (5), esta parece ser
+ la estrategia correcta en el ejercicio:
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\begin{align*}
+ & H_{0}:\text{10\% o más de los frascos contienen menos café del garantizado.}\\
+vs.\quad & H_{1}:\text{Menos del 10\% de los frascos contiene menos café del garantizado.}
 \end{align*}
 
 \end_inset
@@ -257,19 +306,19 @@ Sea
 \begin_inset Formula $X_{i}=1$
 \end_inset
 
- si el i-ésimo frasco de cafe tiene menos cafe del que garantiza la etiqueta,
+ si el i-ésimo frasco de café tiene menos café del que garantiza la etiqueta,
  y 0 en caso contrario.
  Supongamos además que la probabilidad 
 \begin_inset Formula $p$
 \end_inset
 
  de que un frasco de café contenga menos café del garantizado, es constante
- e identica para todos los frascos de manera que 
-\begin_inset Formula $X_{i}\stackrel{iid}{\sim}Ber(p),i=1,...,n$
+ e idéntica para todos los frascos de manera que 
+\begin_inset Formula $X_{i}\stackrel{iid}{\sim}Ber\left(p\right)\,\forall i\in\left[n\right]$
 \end_inset
 
 , y 
-\begin_inset Formula $\sum_{i=1}^{n}X_{i}=T\sim Bi(n,p)$
+\begin_inset Formula $\sum_{i=1}^{n}X_{i}=T\sim Bi\left(n,p\right)$
 \end_inset
 
  (en nuestro caso, 
@@ -281,7 +330,7 @@ Sea
  originales es 
 \begin_inset Formula 
 \[
-H_{0}:p\leq0.1\quad vs.H_{1}:p>0.1
+H_{0}\coloneqq p\geq0.1\quad vs.\quad H_{1}\coloneqq p<0.1
 \]
 
 \end_inset
@@ -293,7 +342,7 @@ H_{0}:p\leq0.1\quad vs.H_{1}:p>0.1
 o 
 \begin_inset Formula 
 \[
-H_{0}:p\in\Theta_{0}=[0,0.1]\quad vs.H_{1}:p\in\Theta_{1}=[0.,1]
+H_{0}\coloneqq p\in\Theta_{0}=\left[0.1,1\right]\quad vs.\quad H_{1}\coloneqq p\in\Theta_{1}=\left[0,0.1\right)
 \]
 
 \end_inset
@@ -303,10 +352,14 @@ H_{0}:p\in\Theta_{0}=[0,0.1]\quad vs.H_{1}:p\in\Theta_{1}=[0.,1]
 
 \begin_layout Standard
 Sea 
-\begin_inset Formula $\Phi(T)=\ind(T>k)$
+\begin_inset Formula $\Phi(T)=\ind\left(T\leq k\right)$
 \end_inset
 
- un test que rechaza la hipótesis nula para valores altos de 
+ un test que rechaza la hipótesis nula (
+\emph on
+acepta
+\emph default
+ la afirmación del empresario) para valores bajos de 
 \begin_inset Formula $T$
 \end_inset
 
@@ -319,7 +372,7 @@ Sea
  En general, 
 \begin_inset Formula 
 \[
-\e(\Phi|p=p_{0})=\e_{p_{0}}(\ind(T>k))=\pr_{p_{0}}(T>k)=\pr(Bi(n,p_{0})>k)
+\e\left(\Phi|p=p_{0}\right)=\e_{p_{0}}\left(\ind\left(T\leq k\right)\right)=\pr_{p_{0}}\left(T\leq k\right)=\pr\left(Bi\left(n,p_{0}\right)\leq k\right)
 \]
 
 \end_inset
@@ -328,14 +381,18 @@ Y en particular,
 \begin_inset Formula $n=15,k=2$
 \end_inset
 
- nos dan el test planteado.
+ nos dan el test del enunciado, con región de rechazo 
+\begin_inset Formula $RR=\left\{ 0,1,2\right\} $
+\end_inset
+
+.
  Sea 
-\begin_inset Formula $f_{n,k}(p)=\pr(Bi(n,p)>k)$
+\begin_inset Formula $f_{n,k}(p)=\pr\left(Bi\left(n,p\right)\leq k\right)$
 \end_inset
 
  la probabilidad acumulada a 
 \emph on
-derecha
+izquierda
 \emph default
  para una VA binomial, como función de 
 \begin_inset Formula $p$
@@ -352,7 +409,7 @@ derecha
 
  es 
 \emph on
-estrictamente creciente
+estrictamente decreciente
 \emph default
  en 
 \begin_inset Formula $p$
@@ -371,36 +428,25 @@ estrictamente creciente
 \end_inset
 
  , de manera que 
-\begin_inset Formula $\sup_{p\in[a,b]}f_{n,k}(p)=f(b)$
+\begin_inset Formula $\sup_{p\in[a,b]}f_{n,k}(p)=f(a)$
 \end_inset
 
 .
  Luego, 
 \begin_inset Formula 
 \[
-\alpha=\sup_{p_{0}\in\Theta_{o}}\e_{p_{0}}(\Phi)=\pr_{0.1}(T>2)=\sum_{i=3}^{15}{15 \choose i}0.1^{i}\ 0.9^{15-i}\approx0.1841
+\alpha=\sup_{p_{0}\in\left[0.1,1\right]}\e_{p_{0}}\left(\Phi\right)=\pr_{0.1}\left(T\leq2\right)=\sum_{i=0}^{2}{15 \choose i}0.1^{i}\ 0.9^{15-i}\approx0.8159
 \]
 
 \end_inset
 
-En general, un test que rechace la hipótesis nula (
-\begin_inset Quotes eld
-\end_inset
-
-no acepte
-\begin_inset Quotes erd
-\end_inset
-
- la afirmación del empresario) casi una de cada 5 veces aún cuando éste
- esté diciendo la verdad, no es razonable, ya que deja demasiado 
-\begin_inset Quotes eld
-\end_inset
-
-librado al azar
-\begin_inset Quotes erd
-\end_inset
-
- el resultado.
+En general, un test que rechace la hipótesis nula aún cuando ésta es verdadera
+ (
+\emph on
+id est, 
+\emph default
+acepte la afirmación del empresario aún cuando miente) 4 de cada 5 veces,
+ no es razonable.
  Tradicionalmente, esperaríamos 
 \begin_inset Formula $\alpha\leq0.5$
 \end_inset
@@ -411,61 +457,21 @@ librado al azar
 \begin_layout Standard
 La probabilidad de que la afirmación del empresario sea aceptada cuando
  la proporción real de frascos de café es 
-\begin_inset Formula $p_{1}$
+\begin_inset Formula $p_{0}$
 \end_inset
 
 , es simplemente la probabilidad de que 
 \begin_inset Formula $T$
 \end_inset
 
- 
-\emph on
-no
-\emph default
- caiga en la región de rechaz
+ caiga en la región de rechazo
 \begin_inset Formula 
 \begin{align*}
-\pr(\Phi=0|p=p_{1})= & \pr_{p_{1}}(T\leq k)=\pr(Bi(n,p_{1})\leq k)=\sum_{i=0}^{k}{n \choose i}p_{1}^{i}(1-p_{1})^{n-i}\\
-\pr_{0.05}(T\leq2)= & \sum_{i=0}^{2}{15 \choose i}0.05^{i}0.95^{15-i}\approx0.9638\\
-\pr_{0.1}(T\leq2)\approx & 0.8159\\
-\pr_{0.2}(T\leq2)\approx & 0.3980
+\pr\left(\Phi=1|p=p_{0}\right)= & \pr_{p_{0}}\left(T\leq k\right)=\pr\left(Bi\left(n,p_{0}\right)\leq k\right)=\sum_{i=0}^{k}{n \choose i}p_{0}^{i}(1-p_{0})^{n-i}\\
+\pr_{0.05}\left(T\leq2\right)= & \sum_{i=0}^{2}{15 \choose i}0.05^{i}0.95^{15-i}\approx0.9638\\
+\pr_{0.1}\left(T\leq2\right)\approx & 0.8159\\
+\pr_{0.2}\left(T\leq2\right)\approx & 0.3980
 \end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Los puntos (b) y (c) piden el nivel de significacion y la probabilidadde
- error de tipo II, para lo cual ya hemos generado funciones.
- Para el punto (c), calculamos la funcion de potencia en una grilla de valores
- de $p$, y la graficamos con `ggplot`:
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<<iris-pairs,fig=TRUE,width=4.5,height=4.5,eps=TRUE,pdf=TRUE>>=
-\end_layout
-
-\begin_layout Plain Layout
-
-library(tidyverse)
-\end_layout
-
-\begin_layout Plain Layout
-
-ggplot(tibble(x=seq(0,2*pi, 0.01), y=sin(x)), aes(x, y)) + geom_line()
-\end_layout
-
-\begin_layout Plain Layout
-
-@
-\end_layout
 
 \end_inset
 
@@ -484,7 +490,7 @@ Se dice que el test
 cuando es menos probable rechazar la hipótesis nula en caso de que esta
  sea verdadera, que cuando es falsa.
  Más formalmente, dado un test 
-\begin_inset Formula $\Phi(T)=\ind(T\in RR)$
+\begin_inset Formula $\Phi(T)=\ind\left(T\in RR\right)$
 \end_inset
 
  basado en un estadístico cuya función de distribución está unívocamente
@@ -492,7 +498,7 @@ cuando es menos probable rechazar la hipótesis nula en caso de que esta
 \begin_inset Formula $\theta:T\sim F_{\theta}$
 \end_inset
 
- y un par de hipotesis
+ y un par de hipótesis
 \family roman
 \series medium
 \shape up
@@ -527,11 +533,10 @@ cuando es menos probable rechazar la hipótesis nula en caso de que esta
 
 \begin_inset Formula 
 \begin{align*}
-\pr(\text{rech }H_{0}|H_{0}\text{ Verdadera}) & <\pr(\text{rech }H_{0}|H_{0}\text{ Falsa})\\
-\pr(\Phi=1|H_{0}\text{ V}) & <\pr(\Phi=1|H_{0}\text{ F})\\
-\e(\Phi|H_{0}\text{ V}) & <\e(\Phi|H_{0}\text{ F})\\
-\e_{\theta_{0}}(\Phi) & <\e_{\theta_{1}}(\Phi) & \forall\quad\theta_{0}\in\Theta_{0},\theta_{1}\in\Theta_{1}\\
-\sup_{\theta\in\Theta_{0}}\e(\Phi) & <\inf_{\theta\in\Theta_{1}}\e(\Phi) & \Rightarrow\Phi\text{{es\,insesgado\,para\,}}H_{0},H_{1}
+\pr\left(\text{rech. }H_{0}|H_{0}\text{ es V}\right) & <\pr\left(\text{rech. }H_{0}|H_{0}\text{ es F}\right)\\
+\pr\left(\Phi=1|\theta\in\Theta_{0}\right) & <\pr\left(\Phi=1|\theta\in\Theta_{1}\right)\\
+\e_{\theta_{0}}\left(\Phi\right) & <\e_{\theta_{1}}\left(\Phi\right) & \forall\quad\theta_{0}\in\Theta_{0},\theta_{1}\in\Theta_{1}\\
+\sup_{\theta\in\Theta_{0}}\e_{\theta}\left(\Phi\right) & <\inf_{\theta\in\Theta_{1}}\e_{\theta}\left(\Phi\right) & \Rightarrow\Phi\text{{es\,insesgado\,para\,}}H_{0},H_{1}
 \end{align*}
 
 \end_inset
@@ -540,107 +545,467 @@ cuando es menos probable rechazar la hipótesis nula en caso de que esta
 \end_layout
 
 \begin_layout Standard
-Y recordemos que la funcion `prob_rechazo` es, justamente, la esperanza
- del test, bajo $H_0$ y $H_1$.
- El siguiente grafico muestra claramente la insesgadez del test, a pesar
- de su pesima significacion.
+En nuestro caso particular, 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\Theta_{0}=\left[0.1,1\right],\,\Theta_{1}=\left[0,0.1\right)$
+\end_inset
+
+ y 
+\begin_inset Formula $\e\left(\Phi\right)=f_{n,k}\left(p\right)$
+\end_inset
+
+ es una función estrictamente 
+\family default
+\series default
+\shape default
+\size default
+\emph on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+decreciente
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+.
+ Como 
+\begin_inset Formula $\inf\Theta_{0}=0.1<\sup\Theta_{1}$
+\end_inset
+
+, entonces 
+\begin_inset Formula $\sup_{\theta\in\Theta_{0}}\e_{\theta}\left(\Phi\right)<\inf_{\theta\in\Theta_{1}}\e_{\theta}\left(\Phi\right)$
+\end_inset
+
+ y 
+\begin_inset Formula $\Phi$
+\end_inset
+
+ es insesgado para 
+\begin_inset Formula $H_{0},H_{1}$
+\end_inset
+
+.
+ La 
+\family default
+\series default
+\shape default
+\size default
+\emph on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+potencia
+\emph default
+ de un test, es justamente la probabilidad de rechazar 
+\begin_inset Formula $H_{0}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Itemize
+cuando 
+\begin_inset Formula $\theta\in\Theta_{0}$
+\end_inset
+
+, el supremo de la funcion de potencia nos da el nivel de signifcacion 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ del test, y
+\end_layout
+
+\begin_layout Itemize
+cuando 
+\begin_inset Formula $\theta\in\Theta_{1}$
+\end_inset
+
+, obtenemos la probabilidad de detectar la hipotesis alternativa (la potencia
+ propiamente dicha).
 \end_layout
 
 \begin_layout Standard
-```{r grafico p1ej4d} densidad <- 0.001 p1ej4$d <- tibble( p = seq(0, 1,
- densidad), potencia = map_dbl(p, ~prob_rechazo(n, ., RR))) %>% ggplot(aes(p,
- potencia)) + geom_line() + geom_vline(xintercept = p_null, alpha = 0.3)
- + # Referencia: p_null geom_hline(yintercept = alfa, alpha = 0.3) # Referencia:
- signif.
- de la RR ```
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Con una simple función de R, agregando referencias horizontales para el
+ nivel de significacion del test (
+\begin_inset Formula $\alpha\approx0.8159$
+\end_inset
+
+) y 
+\begin_inset Formula $p=0.1$
+\end_inset
+
+, se intuye claramente la insesgadez que antes demostramos:
 \end_layout
 
 \begin_layout Standard
-Manteniendo la RR propuesta, el punto (e) nos pide $
-\backslash
-min n : Pr(Bi(n, 0.1) 
-\backslash
-in 
-\backslash
-{0,1,2
-\backslash
-}) 
-\backslash
-leq 0.05$.
- Escribamos la funcion que lo busca: ```{r p1e4e}
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<potencia-phi,fig=T,width=7,height=7,eps=T,pdf=T,echo=F>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(tidyverse)
+\end_layout
+
+\begin_layout Plain Layout
+
+prob_rechazo <- function(p, n, RR) { sum(dbinom(RR, n, p)) }
+\end_layout
+
+\begin_layout Plain Layout
+
+df <- tibble(
+\end_layout
+
+\begin_layout Plain Layout
+
+  p = seq(0, 1, 0.01),
+\end_layout
+
+\begin_layout Plain Layout
+
+  E_phi = map_dbl(p, prob_rechazo, n = 15, RR = 0:2))
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(df, aes(p, E_phi)) +
+\end_layout
+
+\begin_layout Plain Layout
+
+  geom_line() +
+\end_layout
+
+\begin_layout Plain Layout
+
+  geom_vline(xintercept = 0.1, color = 'gray') +
+\end_layout
+
+\begin_layout Plain Layout
+
+  geom_hline(yintercept = 0.8159, color = 'gray')
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-n_requerido <- function(RR, alfa, p_null, max_n = 10000) { n_req <- 0 while
- (n_req < max_n) { if (significacion(n_req, p_null, RR) <= alfa) { return(n_req)
- } else { n_req <- n_req + 1 } } return(NA) # Devuelve NA si no encuentra
- n antes de max_n } p1ej4$e <- n_requerido(RR, 0.05, p_null) ```
+Finalmente, debemos encontrar el mínimo 
+\begin_inset Formula $n$
+\end_inset
+
+ tal que el nivel de significación del test sea 
+\begin_inset Formula $\leq0.05$
+\end_inset
+
+, manteniendo la misma 
+\begin_inset Formula $RR=\left\{ 0,1,2\right\} $
+\end_inset
+
+.
+ Si al comienzo del ejercicio nos hubiésemos decidido por el 
+\emph on
+set 
+\emph default
+de hipótesis que coloca la afirmación del empresario en 
+\begin_inset Formula $H_{0}$
+\end_inset
+
+, la región de rechazo hubiese sido 
+\begin_inset Formula $RR=\left\{ 3,...,15\right\} $
+\end_inset
+
+, ¡que rechaza para valores 
+\begin_inset Quotes eld
+\end_inset
+
+centrales
+\begin_inset Quotes erd
+\end_inset
+
+ de T! Aún siendo razonables y tomando 
+\begin_inset Formula $RR=\left\{ 3,...,n\right\} $
+\end_inset
+
+, consideremos 
+\begin_inset Formula $g_{k,p}\left(n\right)=\pr_{p}\left(T\in RR\right)=\pr\left(Bi\left(n,p\right)>k\right)$
+\end_inset
+
+ para 
+\begin_inset Formula $0\leq k<n,\,0<p<1$
+\end_inset
+
+ dados.
+ 
+\begin_inset Formula $g_{k,p}$
+\end_inset
+
+ es una función estrictamente creciente en 
+\begin_inset Formula $n$
+\end_inset
+
+, de manera que subiendo el tamaño muestral, ¡aumentaría 
+\begin_inset Formula $\alpha$
+\end_inset
+
+! Evidentemente, esta última consigna sólo tiene sentido si planteamos las
+ hipótesis con la afirmación del empresario en 
+\begin_inset Formula $H_{1}.$
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-## Practica 2, ej.
+Estamos buscando 
+\begin_inset Formula $\min n\,:\,\pr\left(Bi\left(n,p\right)\leq k\right)=1-g_{k,p}\left(n\right)\leq\alpha$
+\end_inset
+
+, y si 
+\begin_inset Formula $g$
+\end_inset
+
+ era estrictamente creciente, 
+\begin_inset Formula $1-g$
+\end_inset
+
+ será estrictamente decreciente en 
+\begin_inset Formula $n$
+\end_inset
+
+.
+ Además, ya vimos que 
+\begin_inset Formula $\pr\left(Bi\left(n,p\right)\leq k\right)$
+\end_inset
+
+ es 
+\emph on
+estrictamente decreciente
+\emph default
+ en 
+\begin_inset Formula $p$
+\end_inset
+
+, y por ende alcanza su máximo en 
+\begin_inset Formula $p=\inf\Theta_{0}=0.1\,\forall n$
+\end_inset
+
+.
+ Tomando 
+\begin_inset Formula $\alpha=0.05,p=0.1,k=2$
+\end_inset
+
+, podemos buscar 
+\begin_inset Formula $n$
+\end_inset
+
+ con la ayuda de R, y encontramos que 
+\begin_inset Formula $\pr\left(Bi\left(60,0.1\right)\leq2\right)\approx0.0530>0.05>0.0491\approx\pr\left(Bi\left(61,0.1\right)\leq2\right),$
+\end_inset
+
+de manera que el mínimo tamaño muestral que nos garantiza 
+\begin_inset Formula $\alpha\leq0.05$
+\end_inset
+
+ dada 
+\begin_inset Formula $RR=\left\{ 0,1,2\right\} $
+\end_inset
+
+, es 
+\begin_inset Formula $n=61$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<alfa-n,fig=T,width=7,height=7,eps=T,pdf=T,echo=F>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+df <- tibble(
+\end_layout
+
+\begin_layout Plain Layout
+
+  n = seq.int(100),
+\end_layout
+
+\begin_layout Plain Layout
+
+  alfa = map_dbl(n, ~prob_rechazo(0.1, ., 0:2)))
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(df, aes(n, alfa)) +
+\end_layout
+
+\begin_layout Plain Layout
+
+  geom_line() +
+\end_layout
+
+\begin_layout Plain Layout
+
+  geom_vline(xintercept = 60.5, color = 'gray') +
+\end_layout
+
+\begin_layout Plain Layout
+
+  geom_hline(yintercept = 0.05, color = 'gray')
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Práctica 2, ej.
  2
 \end_layout
 
 \begin_layout Standard
-Construya el gráfico de $S(
-\backslash
-theta)$ para $n$ impar y deduzca el estimador y el intervalo de confianza
- para $
-\backslash
-theta$.
+Construya el gráfico de 
+\begin_inset Formula $S(\theta)$
+\end_inset
+
+ para 
+\begin_inset Formula $n$
+\end_inset
+
+ impar y deduzca el estimador y el intervalo de confianza para 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
-## Practica 3, ej.
+\begin_inset Formula $S(\theta)=\#\left\{ i:X_{i}>\theta,\,i\in\left[n\right]\right\} $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Práctica 3, ej.
  8
 \end_layout
 
 \begin_layout Standard
-Suponga que $
-\backslash
-forall i =1,....n ,
-\backslash
- X_i 
-\backslash
-stackrel{iid}{
-\backslash
-sim} F 
-\backslash
-in 
-\backslash
-Omega_s$ (distribuciones simétricas con única mediana en 0).
+Suponga que 
+\begin_inset Formula $\forall i\in\left[n\right],\ X_{i}\stackrel{iid}{\sim}F\in\Omega_{s}$
+\end_inset
+
+ (distribuciones simétricas con única mediana en 0).
 \end_layout
 
-\begin_layout Standard
-a.
- Usando que $g(X_1, ...,X_n)$ y $g(-X_1, ...,-X_n)$ tienen la misma distribución,
- muestre que si $g(X_1, ...,X_n) + g(-X_1, ...,-X_n) = 
-\backslash
-mu_0$, entonces $g(X_1, ...,X_n)$ está simétricamente distribuída alrededor
- de $
-\backslash
-mu_0/2$, Hint: Muestre que $P(g(X_1, ...,X_n) 
-\backslash
-leq 
-\backslash
-mu_0/2 - t) = P(g(X_1, ...,X_n) 
-\backslash
-leq 
-\backslash
-mu_0/2 + t)$.
- b.
- Aplique a) al estadístico del test de rangos signados de Wilcoxon para
- demostrar que $T^+$ tiene distribución simétrica bajo la hipótesis nula.
+\begin_layout Enumerate
+Usando que 
+\begin_inset Formula $g(X_{1},...,X_{n})$
+\end_inset
+
+ y 
+\begin_inset Formula $g(-X_{1},...,-X_{n})$
+\end_inset
+
+ tienen la misma distribución, muestre que si 
+\begin_inset Formula $g(X_{1},...,X_{n})+g(-X_{1},...,-X_{n})=\mu_{0}$
+\end_inset
+
+, entonces 
+\begin_inset Formula $g(X_{1},...,X_{n})$
+\end_inset
+
+ está simétricamente distribuída alrededor de 
+\begin_inset Formula $\mu_{0}/2$
+\end_inset
+
+, Hint: Muestre que 
+\begin_inset Formula $P(g(X_{1},...,X_{n})\leq\mu_{0}/2-t)=P(g(X_{1},...,X_{n})\leq\mu_{0}/2+t)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Aplique (1) al estadístico del test de rangos signados de Wilcoxon para
+ demostrar que 
+\begin_inset Formula $T^{+}$
+\end_inset
+
+ tiene distribución simétrica bajo la hipótesis nula.
  ¿Cuál es el punto de simetría?
 \end_layout
 
-\begin_layout Standard
-# Demostraciones
+\begin_layout Section
+Demostraciones
 \end_layout
 
-\begin_layout Standard
-## Consistencia del test de Wilcoxon
+\begin_layout Subsection
+Consistencia del test de Wilcoxon
 \end_layout
 
 \begin_layout Standard
@@ -972,19 +1337,21 @@ formas de elegir 2 subindices, de manera que $Var(T_{ij})$ aparece $(n-1)n/2$
 
 \end_layout
 
-\begin_layout Standard
-
-\backslash
-begin{split} Var(T_ii) = E ## Teorema de Proyeccion
+\begin_layout Subsection
+Teorema de Proyeccion
 \end_layout
 
-\begin_layout Standard
-## MWW: Distribución exacta de los estadistico del test de Mann-Whitney-Wilcoxon
- (MWW) bajo $H_0$
+\begin_layout Subsection
+Distribución exacta de los estadísticos del test de Mann-Whitney-Wilcoxon
+ (MWW) bajo 
+\begin_inset Formula $H_{0}$
+\end_inset
+
+
 \end_layout
 
-\begin_layout Standard
-# Apendice
+\begin_layout Section
+Apendice
 \end_layout
 
 \begin_layout Standard
