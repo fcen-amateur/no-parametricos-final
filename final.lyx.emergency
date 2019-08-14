@@ -1373,20 +1373,20 @@ Aplique (1) al estadístico del test de rangos signados de Wilcoxon para
 
 \begin_layout Standard
 Para simplificar la notación, consideremos el vector aleatorio 
-\begin_inset Formula $\bar{X}=\left(X_{1},\dots,X_{n}\right)$
+\begin_inset Formula $\overrightarrow{X}=\left(X_{1},\dots,X_{n}\right)$
 \end_inset
 
 .
  Además, por hipótesis 
-\begin_inset Formula $g\left(\bar{X}\right)=\mu_{0}-g\left(-\bar{X}\right)$
+\begin_inset Formula $g\left(\overrightarrow{X}\right)=\mu_{0}-g\left(-\textbackslash{}bar\right)$
 \end_inset
 
  y como 
-\begin_inset Formula $g\left(\bar{X}\right),\:g\left(-\bar{X}\right)$
+\begin_inset Formula $g\left(\textbackslash{}bar\right),\:g\left(-\textbackslash{}bar\right)$
 \end_inset
 
  tienen la misma distribución, 
-\begin_inset Formula $\pr\left(g\left(\bar{X}\right)\leq k\right)=\pr\left(g\left(-\bar{X}\right)\leq k\right)$
+\begin_inset Formula $\pr\left(g\left(\overrightarrow{X}\right)\leq k\right)=\pr\left(g\left(-\overrightarrow{X}\right)\leq k\right)$
 \end_inset
 
 .
@@ -1395,7 +1395,7 @@ Para simplificar la notación, consideremos el vector aleatorio
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\forall k\in\mathbb{R},\:\pr\left(g\left(\bar{X}\right)\leq k\right)=\pr\left(\mu_{0}-g\left(-\bar{X}\right)\leq k\right)=\pr\left(\mu_{0}-k\leq g\left(-\bar{X}\right)\right)=\pr\left(\mu_{0}-k\leq g\left(\bar{X}\right)\right)
+\forall k\in\mathbb{R},\:\pr\left(g\left(\overrightarrow{X}\right)\leq k\right)=\pr\left(\mu_{0}-g\left(-\overrightarrow{X}\right)\leq k\right)=\pr\left(\mu_{0}-k\leq g\left(-\overrightarrow{X}\right)\right)=\pr\left(\mu_{0}-k\leq g\left(\overrightarrow{X}\right)\right)
 \]
 
 \end_inset
@@ -1409,7 +1409,7 @@ Tomando
 \end_inset
 
 , 
-\begin_inset Formula $\pr\left(g\left(\bar{X}\right)\leq\frac{\mu_{0}}{2}-t\right)=\pr\left(\mu_{0}-\frac{\mu_{0}}{2}-t\leq g\left(\bar{X}\right)\right)=\pr\left(g\left(\bar{X}\right)\geq\frac{\mu_{0}}{2}+t\right)$
+\begin_inset Formula $\pr\left(g\left(\overrightarrow{X}\right)\leq\frac{\mu_{0}}{2}-t\right)=\pr\left(\mu_{0}-\frac{\mu_{0}}{2}-t\leq g\left(\overrightarrow{X}\right)\right)=\pr\left(g\left(\overrightarrow{X}\right)\geq\frac{\mu_{0}}{2}+t\right)$
 \end_inset
 
  y por definición, 
@@ -1455,40 +1455,18 @@ En particular,
  
 \emph on
 es función de 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-
-\begin_inset Formula $\bar{X}$
+\begin_inset Formula $\overrightarrow{X}$
 \end_inset
 
 
-\family default
-\series default
-\shape default
-\size default
 \emph default
-\bar default
-\strikeout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
  y entre los supuestos del test, se encuentra que 
 \begin_inset Formula $\forall i\in\left[n\right],\ X_{i}\stackrel{iid}{\sim}F\in\Omega_{s}$
 \end_inset
 
 .
  Luego, 
-\begin_inset Formula $T^{+}\left(\bar{X}\right),T^{+}\left(-\bar{X}\right)$
+\begin_inset Formula $T^{+}\left(\overrightarrow{X}\right),T^{+}\left(-\overrightarrow{X}\right)$
 \end_inset
 
  tienen la misma distribución
@@ -1553,7 +1531,7 @@ usando...
  & =\sum_{i\in\left[n\right]}\ind\left(X_{i}>0\right)R\left(X_{i}\right)+\sum_{i\in\left[n\right]}\ind\left(X_{i}<0\right)R\left(X_{i}\right)\\
  & =\sum_{i\in\left[n\right]}\ind\left(X_{i}>0\right)R\left(X_{i}\right)+\sum_{i\in\left[n\right]}\ind\left(-X_{i}>0\right)R\left(-X_{i}\right)\\
  & =\sum_{i\in\left[n\right]}sg\left(X_{i}\right)R\left(X_{i}\right)+\sum_{i\in\left[n\right]}sg\left(-X_{i}\right)R\left(-X_{i}\right)\\
-\frac{n(n+1)}{2} & =T^{+}\left(\bar{X}\right)+T^{+}\left(-\bar{X}\right)
+\frac{n(n+1)}{2} & =T^{+}\left(\overrightarrow{X}\right)+T^{+}\left(-\overrightarrow{X}\right)
 \end{align*}
 
 \end_inset
