@@ -326,12 +326,12 @@ Sea
 \end_inset
 
 ).
- Bajo estos supuestos, una forma matemáticamente tratable de las hipótesis
- originales es 
+ Bajo estos supuestos, dos formas equivalentes y matemáticamente tratables
+ de las hipótesis son 
 \begin_inset Formula 
-\[
-H_{0}\coloneqq p\geq0.1\quad vs.\quad H_{1}\coloneqq p<0.1
-\]
+\begin{align*}
+H_{0}\coloneqq p & \geq0.1\quad vs.\quad H_{1}\coloneqq p<0.1
+\end{align*}
 
 \end_inset
 
@@ -339,7 +339,6 @@ H_{0}\coloneqq p\geq0.1\quad vs.\quad H_{1}\coloneqq p<0.1
 \end_layout
 
 \begin_layout Standard
-o 
 \begin_inset Formula 
 \[
 H_{0}\coloneqq p\in\Theta_{0}=\left[0.1,1\right]\quad vs.\quad H_{1}\coloneqq p\in\Theta_{1}=\left[0,0.1\right)
@@ -928,7 +927,7 @@ Práctica 2, ej.
 
 \begin_layout Standard
 Construya el gráfico de 
-\begin_inset Formula $S(\theta)$
+\begin_inset Formula $S\left(\theta\right)$
 \end_inset
 
  para 
@@ -943,10 +942,362 @@ Construya el gráfico de
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $S(\theta)=\#\left\{ i:X_{i}>\theta,\,i\in\left[n\right]\right\} $
+Supongamos que 
+\begin_inset Formula $\forall i\in\left[n\right],\ X_{i}\stackrel{iid}{\sim}F\left(t-\theta\right),\:F\in\Omega_{0}$
+\end_inset
+
+ (distribuciones absolutamente continuas con única mediana en 0) de manera
+ que las 
+\begin_inset Formula $X_{i}$
+\end_inset
+
+ tienen única mediana en 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+ Definamos el estadístico 
+\begin_inset Formula $S\left(\theta\right)=\#\left\{ i\,:\,X_{i}-\theta>0,\,i\in\left[n\right]\right\} $
+\end_inset
+
+, y considerando que los conjuntos 
+\begin_inset Formula $\left\{ X_{1},\dots,X_{n}\right\} $
+\end_inset
+
+ y 
+\begin_inset Formula $\left\{ X^{\left(1\right)},\dots,X^{\left(n\right)}\right\} $
+\end_inset
+
+son idénticos, reescribámoslo como
+\begin_inset Formula 
+\[
+S\left(\theta\right)=\#\left\{ X_{i}-\theta>0\right\} =\#\left\{ X^{\left(i\right)}-\theta>0\right\} =\#\left\{ X^{\left(i\right)}>\theta\right\} =n-k\Leftrightarrow X^{\left(k\right)}\leq\theta<X^{\left(k+1\right)}
+\]
+
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Así se ve claramente que 
+\begin_inset Formula $S\left(\theta\right)$
+\end_inset
+
+ es una función continua a derecha, en escalera decreciente con saltos de
+ tamaño 1 en los estadísticos de orden 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $X^{\left(i\right)}$
+\end_inset
+
+.
+ Visto de otra forma, 
+\begin_inset Formula $S\left(\theta\right)\leq k\Leftrightarrow\theta\geq X^{\left(n-k\right)}$
+\end_inset
+
+ y 
+\begin_inset Formula $S\left(\theta\right)>k\Leftrightarrow\theta<X^{\left(n-k\right)}$
+\end_inset
+
+.
+ Nótese que bajo 
+\begin_inset Formula $H_{0},\:\forall\left(F,\theta,i\right)\in\left(\Omega_{0}\times\mathbb{R}\times\left[n\right]\right),\:Y_{i}=\ind\left(X_{i}-\theta>0\right)\stackrel{iid}{\sim}Ber\left(\frac{1}{2}\right)$
+\end_inset
+
+, y por ende 
+\begin_inset Formula $S\left(\theta\right)\sim Bi\left(n,\frac{1}{2}\right)$
+\end_inset
+
+ y es simétrica alrededor de 
+\begin_inset Formula $\frac{n}{2}$
+\end_inset
+
+.
+ Luego, si elegimos 
+\begin_inset Formula $k\::\:\pr\left(Bi\left(n,\frac{1}{2}\right)\leq k\right)=\pr\left(Bi\left(n,\frac{1}{2}\right)\geq n-k\right)=\frac{\alpha}{2}$
+\end_inset
+
+,
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+
+\begin_inset Formula 
+\begin{align*}
+1-\alpha= & 1-\frac{\alpha}{2}-\frac{\alpha}{2}\\
+= & \pr\left(S\in\mathbb{R}\right)-\pr\left(S\leq k\right)-\pr\left(S\geq n-k\right)\\
+= & \pr\left(k<S<n-k\right)\\
+\pr\left(k<S<n-k\right)= & \pr\left(S\leq n-(k+1)\cap S>k\right)\\
+= & \pr\left(\theta\geq X^{\left(n-\left[n-\left(k+1\right)\right]\right)}\cap\theta<X^{\left(n-k\right)}\right)\\
+= & \pr\left(X^{\left(k+1\right)}\leq\theta<X^{\left(n-k\right)}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Y resulta que 
+\begin_inset Formula $\left[X^{\left(k+1\right)},X^{\left(n-k\right)}\right)$
+\end_inset
+
+ es un intervalo de confianza de nivel 
+\begin_inset Formula $1-\alpha$
+\end_inset
+
+ para 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+ Como la distribución de S es simétrica alrededor de 
+\begin_inset Formula $\frac{n}{2}$
+\end_inset
+
+, buscamos un estimador puntual 
+\begin_inset Formula $\hat{\theta}:S\left(\hat{\theta}\right)=\frac{n}{2}$
+\end_inset
+
+.
+ Graficando la función (por ejemplo, para 
+\begin_inset Formula $n=9$
+\end_inset
+
+),
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<S-tita,fig=T,width=7,height=7,eps=T,pdf=T,echo=F>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+theta <- "
+\backslash
+u03B8"
+\end_layout
+
+\begin_layout Plain Layout
+
+xord <- function(i) bquote(X^(.(i)))
+\end_layout
+
+\begin_layout Plain Layout
+
+max_x <- 100
+\end_layout
+
+\begin_layout Plain Layout
+
+n <- 9
+\end_layout
+
+\begin_layout Plain Layout
+
+d <- 10
+\end_layout
+
+\begin_layout Plain Layout
+
+MA <- d*seq.int(n) + max_x/(3*(n-1)) * runif(n, -.1, .1)
+\end_layout
+
+\begin_layout Plain Layout
+
+lineas <- tibble(
+\end_layout
+
+\begin_layout Plain Layout
+
+  x = c(0, MA),
+\end_layout
+
+\begin_layout Plain Layout
+
+  xend = c(MA, d*(n+1)),
+\end_layout
+
+\begin_layout Plain Layout
+
+  y = n:0,
+\end_layout
+
+\begin_layout Plain Layout
+
+  yend = y)
+\end_layout
+
+\begin_layout Plain Layout
+
+barras <- tibble(
+\end_layout
+
+\begin_layout Plain Layout
+
+  x=0,
+\end_layout
+
+\begin_layout Plain Layout
+
+  xend=- d*n*dbinom(0:n, n, 0.5),
+\end_layout
+
+\begin_layout Plain Layout
+
+  y=0:n,
+\end_layout
+
+\begin_layout Plain Layout
+
+  yend=y)
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(lineas, aes(x=x, y=y, xend=xend, yend=yend)) +
+\end_layout
+
+\begin_layout Plain Layout
+
+  geom_vline(xintercept = 0, color = 'gray') +
+\end_layout
+
+\begin_layout Plain Layout
+
+  geom_hline(yintercept = 0, color = 'gray') +
+\end_layout
+
+\begin_layout Plain Layout
+
+  geom_point() +  # Solid points to left
+\end_layout
+
+\begin_layout Plain Layout
+
+  geom_point(aes(x=xend, y=y), shape=1) +  # Open points to right
+\end_layout
+
+\begin_layout Plain Layout
+
+  geom_segment() +
+\end_layout
+
+\begin_layout Plain Layout
+
+  geom_segment(
+\end_layout
+
+\begin_layout Plain Layout
+
+    data = barras, size = 3, color = 'gray') +
+\end_layout
+
+\begin_layout Plain Layout
+
+  scale_x_continuous(
+\end_layout
+
+\begin_layout Plain Layout
+
+    name = expression(theta),
+\end_layout
+
+\begin_layout Plain Layout
+
+    breaks = MA,
+\end_layout
+
+\begin_layout Plain Layout
+
+    labels = map(1:n, xord)) +
+\end_layout
+
+\begin_layout Plain Layout
+
+  scale_y_continuous(
+\end_layout
+
+\begin_layout Plain Layout
+
+    name = expression(S(theta)),
+\end_layout
+
+\begin_layout Plain Layout
+
+    breaks = c(0:3, (n-2):n),
+\end_layout
+
+\begin_layout Plain Layout
+
+    labels = c(0:3, (n-2):n)
+\end_layout
+
+\begin_layout Plain Layout
+
+  ) +
+\end_layout
+
+\begin_layout Plain Layout
+
+  theme(line = element_blank(),
+\end_layout
+
+\begin_layout Plain Layout
+
+        panel.grid.major.x = element_line(color = "white"))
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+vemos que cuando 
+\begin_inset Formula $\theta<X^{\left(\frac{n+1}{2}\right)}\Rightarrow S\left(\theta\right)<\frac{n-1}{2}$
+\end_inset
+
+ y si 
+\begin_inset Formula $\theta\geq X^{\left(\frac{n+1}{2}\right)}\Rightarrow S\left(\theta\right)>\frac{n+1}{2}$
+\end_inset
+
+ .
+ Luego, el valor más razonable del estimador puntual será la única mediana
+ de la muestra, 
+\begin_inset Formula $\hat{\theta}=X^{\left(\frac{n+1}{2}\right)}$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection
