@@ -6,9 +6,10 @@
 \use_default_options true
 \begin_modules
 sweave
+theorems-ams
 \end_modules
 \maintain_unincluded_children false
-\language english
+\language spanish
 \language_package default
 \inputencoding utf8
 \fontencoding global
@@ -59,7 +60,7 @@ sweave
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language english
+\quotes_language french
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -173,7 +174,18 @@ Notación
 \begin_inset Formula $\e,\var$
 \end_inset
 
- son los operadores esperanza y varianza, respectivamente
+ son los operadores esperanza y varianza, respectivamente.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $X\perp Y$
+\end_inset
+
+ indica que las VAs 
+\begin_inset Formula $X,\:Y$
+\end_inset
+
+ son independientes entre sí.
 \end_layout
 
 \begin_layout Section
@@ -1583,19 +1595,24 @@ Sea
 \end_inset
 
  una muestra aleatoria tal que 
-\begin_inset Formula $\forall i\in\left[n\right],\ X_{i}\stackrel{iid}{\sim}F\in\Omega_{s}$
+\begin_inset Formula $\forall i\in\left[n\right],\ X_{i}\stackrel{iid}{\sim}F\left(t-\theta\right),\:F\in\Omega_{s}$
 \end_inset
 
- (distribuciones simétricas con única mediana en 0), y definamos 
+ (distribuciones simétricas con única mediana en 0), y las hipótesis a testear
+ 
+\begin_inset Formula $H_{0}:\theta=0\quad vs.\quad H_{1}:\theta>0.$
+\end_inset
+
+ Definamos 
 \end_layout
 
 \begin_layout Itemize
-la posicion o rango de 
-\begin_inset Formula $X_{i}$
+el rango de 
+\begin_inset Formula $\left|X_{i}\right|$
 \end_inset
 
  en la muestra ordenada segun valores absolutos: 
-\begin_inset Formula $R_{i}=\#\{j:|X_{j}|\leq|X_{i}|,\:j\in\left[n\right]\}$
+\begin_inset Formula $R\left(X_{i}\right)=R_{i}=\#\{j:\left|X_{j}\right|\leq\left|X_{i}\right|,\:j\in\left[n\right]\}$
 \end_inset
 
 ,
@@ -1652,19 +1669,334 @@ el estadistico
 \end_layout
 
 \begin_layout Standard
-Nótese que sin empates, 
-\begin_inset Formula $D_{R_{i}}=i$
+Nótese que con 
+\begin_inset Formula $F$
+\end_inset
+
+ absolutamente continua no hay empates, y 
+\begin_inset Formula $D_{R_{i}}=i,\:R_{D_{j}}=j,\:\left[n\right]=\left\{ 1,\dots,n\right\} =\left\{ R_{1},\dots,R_{n}\right\} =\left\{ D_{1},\dots,D_{n}\right\} .$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para probar la consistencia de 
+\begin_inset Formula $T_{n}^{+}$
+\end_inset
+
+ para las hipótesis usando el teorema del anexo
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+COMPLETAR ANEXO
+\end_layout
+
+\end_inset
+
+, necesitamos las siguientes condiciones:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $T_{n}^{+}\stackrel{{p}}{\rightarrow}\mu\left(G\right)=\begin{cases}
+\mu_{0} & \forall\:G\in\Omega_{nul}\\
+>\mu_{0} & \forall\:G\in\Omega_{c}\subset\Omega_{alt}
+\end{cases}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Bajo 
+\begin_inset Formula $H_{0,\:}\exists\sigma_{0}:\:\sqrt{n}\frac{T^{+}-\mu_{0}}{\sigma_{0}}\stackrel{D}{\rightarrow}N\left(0,1\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para probar la normalidad asintótica, veremos que bajo 
+\begin_inset Formula $H_{0},\:T^{+}$
+\end_inset
+
+se puede expresar como combinación lineal de variables independientes entre
+ sí.
+\end_layout
+
+\begin_layout Theorem
+Bajo 
+\begin_inset Formula $H_{0}:\theta=0,\:F\in\Omega_{s}$
+\end_inset
+
+ las VA 
+\begin_inset Formula $sg\left(X_{1}\right),\dots,sg\left(X_{n}\right)$
+\end_inset
+
+y el vector 
+\begin_inset Formula $\left(R_{1},\dots,R_{n}\right)$
+\end_inset
+
+son mutuamente independientes.
+\end_layout
+
+\begin_layout Proof
+Como 
+\begin_inset Formula $X_{i}\perp X_{j}\forall i\neq j$
+\end_inset
+
+ por definición, y las funciones 
+\begin_inset Formula $\left|X_{i}\right|,\:sg\left(X_{i}\right)$
+\end_inset
+
+ sólo dependen de 
+\begin_inset Formula $X_{i}$
+\end_inset
+
+, los pares 
+\begin_inset Formula $\left(sg\left(X_{i}\right),\left|X_{i}\right|\right)\perp\left(sg\left(X_{j}\right),\left|X_{j}\right|\right)\forall i\neq j$
+\end_inset
+
+.
+ Recordando que como 
+\begin_inset Formula $\theta=0,\:F\in\Omega_{s}\Rightarrow F\left(-t-0\right)=1-F\left(t-0\right),$
+\end_inset
+
+ y veamos que 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $sg\left(X_{i}\right)\perp\left|X_{i}\right|$
+\end_inset
+
+:
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+
+\begin_inset Formula 
+\begin{align*}
+\pr\left(sg\left(X_{i}\right)=0\cap\left|X_{i}\right|\leq k\right) & =\pr\left(X_{i}\leq0\cap-k\leq X_{i}\leq k\right)\\
+ & =\pr\left(-k\leq X_{i}\leq0\right)\\
+ & =F\left(0\right)-F\left(-k\right) & \pr\left(X_{i}=-k\right)=0\\
+ & =\frac{1}{2}\left(1-2F\left(-k\right)\right)\\
+ & =\frac{1}{2}\left[F\left(k\right)-F\left(-k\right)\right]\\
+ & =\pr\left(X_{i}>0\right)\pr\left(-k\leq X_{i}\leq k\right)\\
+\pr\left(sg\left(X_{i}\right)=0\cap\left|X_{i}\right|\leq k\right) & =\pr\left(sg\left(X_{i}\right)\right)\pr\left(\left|X_{i}\right|\leq k\right)
+\end{align*}
+
+\end_inset
+
+Un planteo similar para 
+\begin_inset Formula $sg\left(X_{i}\right)=1$
+\end_inset
+
+ nos permite concluir que 
+\begin_inset Formula $sg\left(X_{i}\right)\perp\left|X_{i}\right|$
+\end_inset
+
+.
+ Como 
+\begin_inset Formula $R_{k}=f\left(\left|X_{1}\right|,\dots,\left|X_{n}\right|\right),\:sg\left(X_{i}\right)\perp\left|X_{j}\right|\forall j\in\left[n\right]\Rightarrow sg\left(X_{i}\right)\perp R_{k}\forall i,k\in\left[n\right]^{2}$
+\end_inset
+
+.
+ Análogamente, 
+\begin_inset Formula $D_{k}=g\left(\left|X_{1}\right|,\dots,\left|X_{n}\right|\right)\Rightarrow sg\left(X_{i}\right)\perp D_{k}\forall i,k\in\left[n\right]^{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Theorem
+Bajo 
+\begin_inset Formula $H_{0}:\theta=0,\:F\in\Omega_{s},\:sg\left(X_{D_{j}}\right)=W_{j}\stackrel{iid}{\sim}Ber\left(\frac{1}{2}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Sea 
+\begin_inset Formula $D=\left(D_{1},\dots,D_{n}\right)$
+\end_inset
+
+ el vector de antirrangos como variables aleatorias, 
+\begin_inset Formula $d=\left(d_{1},\dots,d_{n}\right)$
+\end_inset
+
+ una de las 
+\begin_inset Formula $n!$
+\end_inset
+
+ configuraciones posible de ellos y 
+\begin_inset Formula $s=\left(s_{1},\dots,s_{n}\right)\in\left\{ 0,1\right\} ^{n}$
+\end_inset
+
+.
+ Por el teorema de la probabilidad total,
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\begin{align*}
+\pr\left(\bigcap_{i\in\left[n\right]}sg\left(X_{D_{i}}\right)=s_{i}\right) & =\sum_{d}\left[\pr\left(\bigcap_{i\in\left[n\right]}sg\left(X_{D_{i}}\right)=s_{i}|D=d\right)\pr\left(D=d\right)\right]\\
+ & =\sum_{d}\left[\pr\left(\bigcap_{i\in\left[n\right]}sg\left(X_{d_{i}}\right)=s_{i}\right)\pr\left(D=d\right)\right]\\
+ & =\sum_{d}\left[\left(\prod_{i\in\left[n\right]}\pr\left(sg\left(X_{d_{i}}\right)=s_{i}\right)\right)\pr\left(D=d\right)\right] & sg\left(X_{i}\right)\perp sg\left(X_{j}\right)\\
+ & =\sum_{d}\left[\left[\prod_{i\in\left[n\right]}\frac{1}{2}\right]\pr\left(D=d\right)\right]\\
+ & =\left(\frac{1}{2}\right)^{n}\overbrace{\sum_{d}\left[\pr\left(D=d\right)\right]}^{=1}\\
+\pr\left(\bigcap_{i\in\left[n\right]}sg\left(X_{D_{i}}\right)=s_{i}\right) & =2^{-n}\:\forall\left(s_{1},\dots,s_{n}\right)\in\left\{ 0,1\right\} ^{n}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Es decir, las 
+\begin_inset Formula $2^{n}$
+\end_inset
+
+posibles configuraciones de signos son equiprobables, y 
+\begin_inset Formula $\forall\left(s_{1},\dots,s_{n}\right)\in\left\{ 0,1\right\} ^{n}$
 \end_inset
 
 , 
-\begin_inset Formula $R_{D_{j}}=j$
+\begin_inset Formula $\pr\left(\bigcap_{i\in\left[n\right]}W_{i}=s_{i}\right)=\prod_{i\in\left[n\right]}\pr\left(W_{i}=s_{i}\right)=2^{-n}$
 \end_inset
 
  y 
-\begin_inset Formula $\left[n\right]=\left\{ 1,\dots,n\right\} =\left\{ R_{1},\dots,R_{n}\right\} =\left\{ D_{1},\dots,D_{n}\right\} .$
+\begin_inset Formula $\pr\left(W_{i}=1\right)=\pr\left(W_{i}=0\right)=\frac{1}{2}\:\forall i\in\left[n\right].$
 \end_inset
 
- Recordemos también que 
+Luego, 
+\begin_inset Formula $W_{i}\stackrel{iid}{\sim}Ber\left(p\right)\:\forall i\in\left[n\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Theorem
+Sean 
+\begin_inset Formula $X_{i}\stackrel{iid}{\sim}\e\left(X_{1}\right)=0,\:\var\left(X_{1}\right)=\sigma^{2}\in\left(0,\infty\right)$
+\end_inset
+
+, y defínase 
+\begin_inset Formula $T=n^{-\frac{1}{2}}\sum_{i\in\left[n\right]}a_{i}X_{i}$
+\end_inset
+
+.
+ Si
+\begin_inset Formula 
+\[
+\frac{\max\left|a_{i}\right|}{\sqrt{\sum_{i\in\left[n\right]}a_{i}^{2}}}\rightarrow0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+entonces 
+\begin_inset Formula $\frac{T}{\sqrt{\var\left(T\right)}}\stackrel{D}{\rightarrow}N\left(0,1\right)$
+\end_inset
+
+ con 
+\begin_inset Formula $\var\left(T\right)=n^{-1}\sigma^{2}\sum_{i\in\left[n\right]}a_{i}^{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Es una variante del Teorema Central del Límite de Lindeberg.
+ Cf.
+ Teorema A9 en Hettmansperger, p.
+ 301.
+\end_layout
+
+\begin_layout Standard
+Ahora sí estamos en condiciones de probar la normalidad asintótica de 
+\begin_inset Formula $T^{+}=\sum_{i\in\left[n\right]}i\:sg\left(X_{D_{i}}\right)=\sum_{i\in\left[n\right]}i\:W_{i}$
+\end_inset
+
+ bajo 
+\begin_inset Formula $H_{0}$
+\end_inset
+
+.
+ Sean 
+\begin_inset Formula $X_{i}=W_{i}-\frac{1}{2},\:a_{i}=i$
+\end_inset
+
+.
+ Luego, 
+\begin_inset Formula $\e\left(X_{i}\right)=\e\left(W_{i}\right)-\frac{1}{2}=0$
+\end_inset
+
+ y 
+\begin_inset Formula $\var\left(X_{i}\right)=\var\left(W_{i}\right)=\frac{1}{4}=\sigma^{2}\in\left(0,\infty\right)$
+\end_inset
+
+.
+ Además, cuando 
+\begin_inset Formula $n\rightarrow\infty$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\frac{\max\left|a_{i}\right|}{\sqrt{\sum_{i\in\left[n\right]}a_{i}^{2}}} & =\frac{\max\left|i\right|}{\sqrt{\sum_{i\in\left[n\right]}i^{2}}}=\frac{n}{\sqrt{\frac{n\left(n+1\right)\left(2n+1\right)}{6}}}=\frac{n}{\sqrt{\frac{1}{3}n^{3}+\frac{1}{2}n^{2}+\frac{1}{6}n}}=\frac{\cancel{n}}{\cancel{n}\sqrt{n}\underbrace{\sqrt{\frac{1}{3}+\frac{1}{2n}+\frac{1}{6n^{2}}}}_{\rightarrow\sqrt{\nicefrac{1}{3}}}}=\sqrt{\frac{3}{n}}\rightarrow0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Luego, 
+\begin_inset Formula 
+\begin{align*}
+T & =n^{-\frac{1}{2}}\sum_{i\in\left[n\right]}a_{i}X_{i}=n^{-\frac{1}{2}}\sum_{i\in\left[n\right]}i\left(W_{i}-\frac{1}{2}\right)=\frac{T^{+}-\frac{n(n+1)}{4}}{\sqrt{n}}\\
+\var\left(T\right) & =n^{-1}\sigma^{2}\sum_{i\in\left[n\right]}a_{i}^{2}=\frac{\sum_{i\in\left[n\right]}i^{2}}{4n}=\frac{\left(n+1\right)\left(2n+1\right)}{24}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Y finalmente,
+\begin_inset Formula 
+\[
+\frac{T}{\sqrt{\var\left(T\right)}}=\frac{T^{+}-\frac{n(n+1)}{4}}{\sqrt{\frac{n\left(n+1\right)\left(2n+1\right)}{24}}}\stackrel{D}{\rightarrow}N\left(0,1\right)
+\]
+
+\end_inset
+
+Recordemos también que 
 \begin_inset Formula $T^{+}$
 \end_inset
 
@@ -1710,8 +2042,32 @@ donde
 \noun default
 \color inherit
  .
- Utilicemos esta ultima forma para desarrollar la esperanza y varianza de
- $T^+$, dada cierta distribucion subyacente fija $F_0$.
+ Utilicemos esta ultima forma para desa
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+k
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+rrollar la esperanza y varianza de $T^+$, dada cierta distribucion subyacente
+ fija $F_0$.
  Gracias a la linealidad de la esperanza, y el hecho de que $E(I(Q)) = P(Q)$
  
 \begin_inset Formula 
