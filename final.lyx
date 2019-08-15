@@ -1990,7 +1990,8 @@ Ahora sí estamos en condiciones de probar la normalidad asintótica de
 
 \begin_inset Formula 
 \begin{align*}
-\frac{\max\left|a_{i}\right|}{\sqrt{\sum_{i\in\left[n\right]}a_{i}^{2}}} & =\frac{\max\left|i\right|}{\sqrt{\sum_{i\in\left[n\right]}i^{2}}}=\frac{n}{\sqrt{\frac{n\left(n+1\right)\left(2n+1\right)}{6}}}=\frac{n}{\sqrt{\frac{1}{3}n^{3}+\frac{1}{2}n^{2}+\frac{1}{6}n}}=\frac{\cancel{n}}{\cancel{n}\sqrt{n}\underbrace{\sqrt{\frac{1}{3}+\frac{1}{2n}+\frac{1}{6n^{2}}}}_{\rightarrow\sqrt{\nicefrac{1}{3}}}}=\sqrt{\frac{3}{n}}\rightarrow0
+\frac{\max\left|a_{i}\right|}{\sqrt{\sum_{i\in\left[n\right]}a_{i}^{2}}} & =\frac{\max\left|i\right|}{\sqrt{\sum_{i\in\left[n\right]}i^{2}}}=\frac{n}{\sqrt{\frac{n\left(n+1\right)\left(2n+1\right)}{6}}}=\frac{n}{\sqrt{\frac{1}{3}n^{3}+\frac{1}{2}n^{2}+\frac{1}{6}n}}\\
+ & =\frac{\cancel{n}}{\cancel{n}\sqrt{n}\underbrace{\sqrt{\frac{1}{3}+\frac{1}{2n}+\frac{1}{6n^{2}}}}_{\rightarrow\sqrt{\nicefrac{1}{3}}}}=\sqrt{\frac{3}{n}}\rightarrow0
 \end{align*}
 
 \end_inset
@@ -2447,10 +2448,139 @@ AGREGAR TEOREMA A5 HETTM AL ANEXO
 \end_inset
 
  para las distribuciones 
-\begin_inset Formula $G\in\Omega_{nul},\:G\in\Omega_{c}\subset\Omega_{alt}$
+\begin_inset Formula $F\in\Omega_{nul},\:F\in\Omega_{c}\subset\Omega_{alt}$
 \end_inset
 
 .
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+p_{2}= & \pr\left(X_{1}+X_{2}>0\right)=\pr\left(X_{1}>-X_{2}\right)=\iint\ind(x_{1}>x_{2})f\left(x_{1}\right)f\left(x_{2}\right)dx_{2}dx_{1}\\
+= & \iint_{-x_{2}}^{\infty}f\left(x_{1}\right)f\left(x_{2}\right)dx_{1}dx_{2}=\int f\left(x_{2}\right)\left[F\left(x\right)\Big|_{-x_{_{2}}}^{\infty}\right]dx_{2}=\int f\left(x_{2}\right)\left[1-F\left(-x_{2}\right)\right]dx_{2}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Cuando 
+\begin_inset Formula $F\in\Omega_{s},\:\theta=0\Rightarrow1-F\left(-x\right)=F\left(x\right)$
+\end_inset
+
+, de manera que 
+\begin_inset Formula $f\left(x\right)\left[1-F\left(-x\right)\right]=f\left(x\right)F\left(x\right)$
+\end_inset
+
+, que tiene como primitiva a 
+\begin_inset Formula $\tfrac{1}{2}F\left(x\right)^{2}$
+\end_inset
+
+.
+ Luego,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+p_{2}= & \int f\left(x_{2}\right)\left[1-F\left(-x_{2}\right)\right]dx_{2}=\tfrac{1}{2}\left(F\left(x\right)^{2}\Big|_{-\infty}^{\infty}\right)=\frac{1}{2}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Consideremos ahora la clase de distribuciones 
+\emph on
+estocasticamente positivas
+\emph default
+ 
+\begin_inset Formula $\Omega_{p}$
+\end_inset
+
+.Diremos que 
+\begin_inset Formula $G\in\Omega_{p}$
+\end_inset
+
+si 
+\begin_inset Formula $\forall k\in\mathbb{R},\:1-G\left(k\right)\geq G\left(-k\right),$
+\end_inset
+
+ con desigualdad estricta en un conjunto de medida no-nula.
+ Si 
+\begin_inset Formula $X_{i}\stackrel{iid}{\sim}G\in\Omega_{p}$
+\end_inset
+
+,
+\begin_inset Formula 
+\[
+p_{2}=\int g\left(x_{2}\right)\left[1-G\left(-x_{2}\right)\right]dx_{2}>\int g\left(x_{2}\right)\left[G\left(x_{2}\right)\right]dx_{2}=\tfrac{1}{2}\left(G\left(x\right)^{2}\Big|_{-\infty}^{\infty}\right)=\frac{1}{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+y luego 
+\begin_inset Formula 
+\[
+\overline{T}\stackrel{p}{\rightarrow p_{2}\left(F,\theta\right)=\begin{cases}
+\nicefrac{1}{2} & \text{si }F\left(t-\theta\right)\in\Omega_{s}\land\theta=0\\
+>\nicefrac{1}{2} & \text{si }F\in\Omega_{p}
+\end{cases}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Vale notar que cuando 
+\begin_inset Formula $F\in\Omega_{s},\:\theta>0$
+\end_inset
+
+, la desigualdad que caracteriza a 
+\begin_inset Formula $\Omega_{p}$
+\end_inset
+
+ se cumple estrictamente en todo punto
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+1-F\left(t\right)>1-F\left(t+\theta\right)=F\left(\theta-t\right)>F\left(t\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+y si 
+\begin_inset Formula $\Omega_{>}=\left\{ F\text{ con unica mediana en \theta>0}\right\} $
+\end_inset
+
+ 
+\begin_inset Formula $\left(\Omega_{s}\cap\Omega_{>}\right)\subset\Omega_{p}$
+\end_inset
+
+.
+ Luego, 
+\begin_inset Formula $\overline{T}$
+\end_inset
+
+ es un test consistente para las hipotesis originales.
 \end_layout
 
 \begin_layout Subsection
