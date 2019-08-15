@@ -109,8 +109,8 @@ ggplot(lineas, aes(x=x, y=y, xend=xend, yend=yend)) +
     labels = map(1:n, xord)) +
   scale_y_continuous(
     name = expression(S(theta)),
-    breaks = c(0:3, (n-2):n),
-    labels = c(0:3, (n-2):n)
+    breaks = c(0:n),
+    labels = c(0:n)
   ) +
   theme(line = element_blank(),
         panel.grid.major.x = element_line(color = "white"))
