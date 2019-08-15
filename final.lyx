@@ -139,6 +139,15 @@ LatexCommand tableofcontents
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\simiid}{\stackrel{iid}{\sim}}
+{\stackrel{iid}{\sim}}
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Notación
 \end_layout
@@ -2585,6 +2594,80 @@ y si
 
 \begin_layout Subsection
 Teorema de Proyeccion
+\end_layout
+
+\begin_layout Theorem
+\begin_inset CommandInset label
+LatexCommand label
+name "thm:proyeccion"
+
+\end_inset
+
+(de Proyeccion) Sea 
+\begin_inset Formula $X_{i},\dots,X_{n}$
+\end_inset
+
+una muestra aleatorio con distribucion arbitrataria 
+\begin_inset Formula $X_{i}\simiid F\:\forall i\in\left[n\right]$
+\end_inset
+
+, y 
+\begin_inset Formula $V=f\left(X_{1},\dots,X_{n}\right)$
+\end_inset
+
+ una variable aleatoria con 
+\begin_inset Formula $\e V=0$
+\end_inset
+
+.
+ Si 
+\begin_inset Formula $W$
+\end_inset
+
+ es una variable aleatoria de la forma 
+\begin_inset Formula $W=\sum_{i}g_{i}\left(X_{i}\right)$
+\end_inset
+
+, entonces 
+\begin_inset Formula $\e\left[\left(V-W\right)^{2}\right]$
+\end_inset
+
+ se minimiza eligiendo las funciones 
+\begin_inset Formula $g_{i}=g_{i}^{\star}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+g_{i}^{\star}\left(x\right)=\e\left(V\big|X_{i}=x\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Formula $V_{p}=\sum_{i}g_{i}^{\star}\left(X_{i}\right)$
+\end_inset
+
+ se denomina la 
+\series bold
+proyeccion de V
+\series default
+ sobre la clase de VAs independientes, y se cumple que
+\begin_inset Formula 
+\[
+\e\left[\left(V-V_{p}\right)^{2}\right]=\var\left(V\right)-\var\left(V_{p}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+
 \end_layout
 
 \begin_layout Subsection
