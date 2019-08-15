@@ -60,7 +60,7 @@ theorems-ams
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language french
+\quotes_language english
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -130,6 +130,15 @@ LatexCommand tableofcontents
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\cov}{\mathrm{{cov}}}
+{\mathbf{\mathrm{{cov}}}}
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Notación
 \end_layout
@@ -171,10 +180,10 @@ Notación
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $\e,\var$
+\begin_inset Formula $\e,\var,\cov$
 \end_inset
 
- son los operadores esperanza y varianza, respectivamente.
+ son los operadores esperanza, varianza y covarianza, respectivamente.
 \end_layout
 
 \begin_layout Itemize
@@ -1682,20 +1691,17 @@ Nótese que con
 
 \begin_layout Standard
 Para probar la consistencia de 
-\begin_inset Formula $T_{n}^{+}$
+\begin_inset Formula $\Phi_{n}=\ind\left(T_{n}^{+}>k_{n}\right)$
 \end_inset
 
- para las hipótesis usando el teorema del anexo
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-COMPLETAR ANEXO
-\end_layout
+ para las hipótesis usando el Teorema 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:suf-cons"
 
 \end_inset
 
-, necesitamos las siguientes condiciones:
+ del anexo, necesitamos las siguientes condiciones:
 \end_layout
 
 \begin_layout Itemize
@@ -1723,6 +1729,24 @@ Para probar la normalidad asintótica, veremos que bajo
 
 se puede expresar como combinación lineal de variables independientes entre
  sí.
+ Para la convergencia en probabilidad de 
+\begin_inset Formula $T^{+},$
+\end_inset
+
+ encontraremos la esperanza y varianza exactas del estadístico recurriendo
+ a los promedios de Walsh.
+\end_layout
+
+\begin_layout Subsubsection
+Normalidad asintótica de 
+\begin_inset Formula $T^{+}$
+\end_inset
+
+bajo 
+\begin_inset Formula $H_{0}$
+\end_inset
+
+
 \end_layout
 
 \begin_layout Theorem
@@ -1996,16 +2020,28 @@ Y finalmente,
 
 \end_inset
 
-Recordemos también que 
+
+\end_layout
+
+\begin_layout Subsubsection
+Convergencia en Probabilidad de 
+\begin_inset Formula $\overline{T}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Recordemos que 
 \begin_inset Formula $T^{+}$
 \end_inset
 
- admite la siguiente definición equivalente en base a los promedios de Walsh,
- 
+ admite la siguiente definición en base a los promedios de Walsh, 
 \begin_inset Formula 
-\[
-T^{+}=\#\left\{ i,j:\frac{X_{i}+X_{j}}{2}>0,\ 1\leq i\leq j\leq n\right\} =\sum_{i=1}^{j}\sum_{j=1}^{n}\ind\left(X_{i}+X_{j}>0\right)=\sum_{i=1}^{j}\sum_{j=1}^{n}T_{ij}
-\]
+\begin{align*}
+T^{+} & =\#\left\{ i,j:\frac{X_{i}+X_{j}}{2}>0,\ 1\leq i\leq j\leq n\right\} =\sum_{i=1}^{j}\sum_{j=1}^{n}\ind\left(X_{i}+X_{j}>0\right)\\
+T^{+} & =\sum_{i=1}^{j}\sum_{j=1}^{n}T_{ij}
+\end{align*}
 
 \end_inset
 
@@ -2042,209 +2078,98 @@ donde
 \noun default
 \color inherit
  .
- Utilicemos esta ultima forma para desa
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-k
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\strikeout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
-rrollar la esperanza y varianza de $T^+$, dada cierta distribucion subyacente
- fija $F_0$.
- Gracias a la linealidad de la esperanza, y el hecho de que $E(I(Q)) = P(Q)$
+ Utilicemos esta ultima forma para desarrollar la esperanza y varianza de
  
-\begin_inset Formula 
-\[
-E(T^{+})=E\left(\sum_{i=1}^{j}\sum_{j=1}^{n}I(X_{i}+X_{j}>0)\right)=\sum_{i=1}^{j}\sum_{j=1}^{n}E(I(X_{i}+X_{j}>0))=\sum_{i=1}^{j}\sum_{j=1}^{n}P(X_{i}+X_{j}>0)=\sum_{i=j}P(X_{i}>0)+\sum_{i<j}P(X_{i}+X_{j}>0)
-\]
-
+\begin_inset Formula $T^{+}$
 \end_inset
 
- Sean ahora
-\begin_inset Formula $p_{1}=P(X_{i}>0),\ p_{2}=P(X_{i}+X_{j}>0|i<j)$
+, dada cierta distribucion subyacente fija 
+\begin_inset Formula $F_{0}\in\Omega_{0}$
+\end_inset
+
+
+\begin_inset Formula $\left(F_{0}\in\Omega_{s},\:\theta=0\right)$
 \end_inset
 
 .
- Se observa que hay $n$ sumandos donde $i=j$ (1 por cada elemento $j$),
- y $(n-1)n/2$ sumandos donde $i<j$.
- Luego, $E(T^+)= np_1 + (n-1)n p_2$.
+ Gracias a la linealidad de la esperanza, y el hecho de que 
+\begin_inset Formula $\e\left(\ind\left(Q\right)\right)=\pr\left(Q\right),$
+\end_inset
+
+ 
+\begin_inset Formula 
+\begin{align*}
+\e\left(T^{+}\right) & =\e\left[\sum_{i=1}^{j}\sum_{j=1}^{n}\ind\left(X_{i}+X_{j}>0\right)\right]=\sum_{i=1}^{j}\sum_{j=1}^{n}\e\left[\ind\left(X_{i}+X_{j}>0\right)\right]=\sum_{i=1}^{j}\sum_{j=1}^{n}\pr\left(X+X_{j}>0\right)\\
+\e\left(T^{+}\right) & =\sum_{i=j}\pr\left(X_{i}>0\right)+\sum_{i<j}\pr\left(X_{i}+X_{j}>0\right)
+\end{align*}
+
+\end_inset
+
+ Sean ahora 
+\begin_inset Formula $p_{1}=\pr\left(X_{i}>0\right),\ p_{2}=\pr\left(X_{i}+X_{j}>0|i\neq j\right)$
+\end_inset
+
+ (cuando 
+\begin_inset Formula $i=j,\:\pr\left(X_{i}+X_{j}>0\right)=\pr\left(2X_{i}>0\right)=p_{1}$
+\end_inset
+
+).
+ Se observa que hay 
+\begin_inset Formula $n$
+\end_inset
+
+ sumandos donde 
+\begin_inset Formula $i=j$
+\end_inset
+
+ y 
+\begin_inset Formula $\tfrac{(n-1)n}{2}$
+\end_inset
+
+ sumandos donde 
+\begin_inset Formula $i<j$
+\end_inset
+
+.
+ Luego, 
+\begin_inset Formula $E(T^{+})=np_{1}+\tfrac{(n-1)n}{2}p_{2}$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
-Para el calculo de la varianza de $T^+$, usaremos el hecho de que, en general,
- si $Y = 
-\backslash
-sum_i X_i 
-\backslash
-Rightarrow Var(Y) = 
-\backslash
-mathbb{cov}(Y, Y) = 
-\backslash
-mathbb{cov}(
-\backslash
-sum_i X_i, 
-\backslash
-sum_i X_i) = 
-\backslash
-sum_i Var(X_i) + 2 
-\backslash
-sum_{i<j} 
-\backslash
-mathbb{cov}(X_i, X_j)$.
- Para ello, tendremos que encontrar la expresion de la covarianza para todas
+Para el cálculo de la varianza de 
+\begin_inset Formula $T^{+}$
+\end_inset
+
+, usaremos el hecho de que, en general, si 
+\begin_inset Formula $Y=\sum_{i}X_{i}$
+\end_inset
+
+, entonces 
+\begin_inset Formula 
+\begin{align*}
+\var\left(Y\right) & =\cov\left(Y,Y\right)=\cov\left(\sum_{i}X_{i},\sum_{i}X_{i}\right)\\
+ & =\sum_{i}\sum_{j}\cov\left(X_{i},X_{j}\right)\\
+ & =\sum_{i}\var(X_{i})+2\sum_{i<j}\mathbb{\cov}(X_{i},X_{j})
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para ello, tendremos que encontrar la expresion de la covarianza para todas
  las combinaciones unicas de subindices.
  
 \end_layout
 
 \begin_layout Standard
-$$ 
-\backslash
-begin{split} Var(T^+) &= Var
-\backslash
-left(
-\backslash
-sum_{i=1}^{j} 
-\backslash
-sum_{j=1}^{n} T_{ij} 
-\backslash
-right) = 
-\backslash
-sum_{i=1}^{j} 
-\backslash
-sum_{j=1}^{n} Var(T_{ij}) + 2 
-\backslash
-sum_{i=1}^{k} 
-\backslash
-sum_{j=1}^{l} 
-\backslash
-sum_{k=1}^{l} 
-\backslash
-sum_{l=1}^{n} 
-\backslash
-mathbb{cov}(T_{ij},T_{kl}) 
-\backslash
-end{split} $$
-\end_layout
-
-\begin_layout Standard
-Recordemos que si $X 
-\backslash
-perp Y$ (las VA $X$ y $Y$ son independientes entre si, $cov(X, Y)=0$.
- Ademas, para funciones deterministicas arbitrarias $f, g$, $X 
-\backslash
-perp Y 
-\backslash
-Rightarrow f(X) 
-\backslash
-perp g(Y)$.
- Como $T_{ij}=f(X_i, X_j)$, y $X_i 
-\backslash
-perp X_j 
-\backslash
- 
-\backslash
-forall i 
-\backslash
-neq j$, siempre y cuando los pares$(i,j),(k,l)$ no compartan ningun indice,
- $
-\backslash
-mathbb{cov}(T_{ij},T_{kl})=0$ .
- Consideremos a continuacion los casos en que "ambos T" comparten algun
- subindice: - Hay Usando que $cov(X, Y)=cov(Y,X)$ y $T_{ij}=T_{ji}$, podemos
- limitarnos sin perdida de generalidad a los $i 
-\backslash
-leq k 
-\backslash
-leq j 
-\backslash
-leq l$ y nos basta con limitarnos a los siguientes casos:
-\end_layout
-
-\begin_layout Standard
-$$ cov(T_{ij}, T_{kl}) = 
-\backslash
-begin{cases} Var(T_{ii}) = Var(T_{11}) &
-\backslash
-text{si } i = k = j = l 
-\backslash
-
-\backslash
- Var(T_{ij}) = Var(T_{12}) &
-\backslash
-text{si } i = k < j = l 
-\backslash
-
-\backslash
- cov(T_{ii}, T_{il}) = cov(T_{11}, T_{12}) &
-\backslash
-text{si } i = k = j < l 
-\backslash
-
-\backslash
- cov(T_{ij}, T_{il}) = cov(T_{12}, T_{13}) &
-\backslash
-text{si } i = k < j < l 
-\backslash
-
-\backslash
- 0 &
-\backslash
-text{en otro caso} 
-\backslash
-
-\backslash
- 
-\backslash
-end{cases} $$
-\end_layout
-
-\begin_layout Standard
-Usando que $cov(X, Y) = E(XY) - E(X)E(Y)$ e $I(P) 
-\backslash
-cdot I(Q) = I(P 
-\backslash
-land Q)$ (y por ende $I(P)^2=I(P 
-\backslash
-land P)=I(P)$), calculamos
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula 
 \[
-\begin{split}Var(T_{ii}) & =E(T_{11}^{2})-E(T_{11})^{2}=E(I(X_{1}>0)^{2})-E(I(X_{1}>0))^{2}\\
- & =E(I(X_{1}>0))(1-E(I(X_{1}>0)))\\
- & =P(X_{1}>0)(1-P(X_{1}>0))\\
- & =p_{1}(1-p_{1})\\
-Var(T_{ij}) & =E(T_{12}^{2})-E(T_{ij})^{2}=E(I(X_{1}+X_{2}>0)^{2})-E(I(X_{1}+X_{2}>0))^{2}\\
- & =E(I(X_{1}+X_{2}>0))(1-E(I(X_{1}+X_{2}>0)))\\
- & =P(X_{1}+X_{2}>0)(1-P(X_{1}+X_{2}>0))\\
- & =p_{2}(1-p_{2})\\
-cov(T_{ii},T_{il}) & =E(T_{11}T_{12})-E(T_{11})E(T_{12})\\
- & =E(I(X_{1}>0\land X_{1}+X_{2}>0))-E(I(X_{1}>0)E(I(X_{1}+X_{2}>0))\\
- & =P(X_{1}>0\land X_{1}+X_{2}>0)-p_{1}\cdot p_{2}\\
- & =p_{3}-p_{1}\cdot p_{2}\quad\text{, digamos}\\
-cov(T_{ij},T_{il}) & =E(T_{12}T_{13})-E(T_{12})E(T_{13})\\
- & =E(I(X_{1}+X_{2}>0\land X_{1}+X_{3}>0))-E(I(X_{1}+X_{2}>0)E(I(X_{1}+X_{3}>0))\\
- & =P(X_{1}+X_{2}>0\land X_{1}+X_{3}>0)-p_{2}^{2}\\
- & =p_{4}-p_{2}^{2}\quad\text{, digamos}
-\end{split}
+\begin{split}\var\left(T^{+}\right) & =\var\left(\sum_{i\leq j}T_{ij}\right)=\sum_{i\leq j}\:\sum_{k\leq l}\cov\left(T_{ij},T_{kl}\right)\end{split}
 \]
 
 \end_inset
@@ -2253,32 +2178,62 @@ cov(T_{ij},T_{il}) & =E(T_{12}T_{13})-E(T_{12})E(T_{13})\\
 \end_layout
 
 \begin_layout Standard
-Para concluir, basta ver cuantos de cada tipo de termino en la expansion
- de $Var(T^+)$ en sus terminos de covarianza.
- Cuando los 4 subindices son identicos, $cov(T_{ij}, T_{kl})=Var(T_{ii})$,
- y hay ${n 
-\backslash
-choose 1}=n$ de elegir un subindice entre $n$, asi que $Var(T_{ii})$ aparece
- $n$ veces.
- Similarmente, hay ${n 
-\backslash
-choose 2}=n(n-1)/2$ formas de elegir 2 subindices unicos, asi que tanto
- $cov(T_{11}, T_{22}), cov(T_11), T_tanto $cov(T_{ii}, T_{ij})$ como $Var(T_{ij}
-)$ aparecen ${n 
-\backslash
-choose 2}=n(n-1)/2$ veces.
- Por ultimo, hay ${n 
-\backslash
-choose 3}=n(n-1)(n-2)/6$ formas de elegir 3 subindices unicos, de manera
- que 
-\end_layout
+Recordemos que si 
+\begin_inset Formula $X\perp Y\Rightarrow\e\left(XY\right)=\e\left(X\right)\e\left(Y\right)\Rightarrow\cov\left(X,Y\right)=0$
+\end_inset
 
-\begin_layout Standard
-formas de elegir 2 subindices, de manera que $Var(T_{ij})$ aparece $(n-1)n/2$
- veces, y tanto $cov(T_{ii}, T_{ij})$ como $cov(T_{ij}, T_{ii})$aparece
- - $cov(T_{ii}, T_{il})$ aparece tambien $n(n-1)/2$ veces ($l-1$ veces por
- cada $l=1,...,n$), al igual que $cov(T_{il}, T_{ii})$, para un total de $n(n-1)$
- veces, y -en $cov(T_{ij}, T_{il})$
+.
+ Además, para funciones deterministicas arbitrarias 
+\begin_inset Formula $f,\:g$
+\end_inset
+
+, si 
+\begin_inset Formula $X\perp Y\Rightarrow f(X)\perp g(Y)$
+\end_inset
+
+.
+ Como 
+\begin_inset Formula $T_{ij}=f\left(X_{i},X_{j}\right)$
+\end_inset
+
+, y 
+\begin_inset Formula $X_{i}\perp X_{j}\ \forall i\neq j$
+\end_inset
+
+, siempre y cuando los pares 
+\begin_inset Formula $(i,j),(k,l)$
+\end_inset
+
+ no compartan ningun índice, 
+\begin_inset Formula $\cov\left(T_{ij},T_{kl}\right)=0$
+\end_inset
+
+.
+ ¿Cuántos pares 
+\begin_inset Formula $\left(T_{ij},T_{kl}\right)$
+\end_inset
+
+ comparten algún índice en la expresión de 
+\begin_inset Formula $\var\left(T^{+}\right)$
+\end_inset
+
+? Tengamos en cuenta que cada elemento 
+\begin_inset Formula $T_{ij}$
+\end_inset
+
+ figura en exactamente 
+\begin_inset Formula $\tfrac{n\left(n+1\right)}{2}$
+\end_inset
+
+ términos, 
+\begin_inset Quotes eld
+\end_inset
+
+cruzado
+\begin_inset Quotes erd
+\end_inset
+
+ una vez con cada uno de los promedios de Walsh:
 \end_layout
 
 \begin_layout Standard
@@ -2300,6 +2255,204 @@ formas de elegir 2 subindices, de manera que $Var(T_{ij})$ aparece $(n-1)n/2$
 
 \end_layout
 
+\begin_layout Standard
+Cuando 
+\begin_inset Formula $i<j,\:T_{ij}$
+\end_inset
+
+ comparte 2 índices con 
+\begin_inset Formula $T_{ij},\:T_{ii},\:T_{jj}$
+\end_inset
+
+y 1 índice con
+\begin_inset Formula $\overbrace{\left(i-1\right)}^{col\:i}+\overbrace{\left(n-i-1\right)}^{fila\:i}+\overbrace{\left(j-2\right)}^{col\:j}+\overbrace{\left(n-j\right)}^{fila\:j}=2\left(n-2\right)$
+\end_inset
+
+ elementos.
+ Cuando 
+\begin_inset Formula $i=j,\:T_{ii}$
+\end_inset
+
+ comparte 2 índices con 
+\begin_inset Formula $T_{ii}$
+\end_inset
+
+, y 1 índice con 
+\begin_inset Formula $\overbrace{\left(i-1\right)}^{col\:i}+\overbrace{\left(n-i\right)}^{fila\:i}=n-1$
+\end_inset
+
+ elementos.
+ Luego, sólo tenemos que preocuparnos por términos de las formas 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\cov\left(T_{11},T_{11}\right)=\var T_{11}\quad\cov\left(T_{12},T_{12}\right)=\var T_{12}\quad\cov\left(T_{11,}T_{12}\right)\quad\cov\left(T_{12},T_{13}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Luego,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\forall i\neq j,\quad & \sum_{k\leq l}\cov\left(T_{ij},T_{kl}\right) & =\var\left(T_{12}\right)+2\cov\left(T_{11},T_{12}\right)+2\left(n-2\right)\cov\left(T_{12},T_{13}\right)\\
+\forall i=j,\quad & \sum_{k\leq l}\cov\left(T_{ii},T_{kl}\right) & =\var\left(T_{11}\right)+\left(n-1\right)\cov\left(T_{11},T_{12}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Y entonces 
+\begin_inset Formula 
+\begin{align*}
+\var\left(T^{+}\right)= & \sum_{i=j}\:\sum_{k\leq l}\cov\left(T_{ij},T_{kl}\right)+\sum_{i<j}\:\sum_{k\leq l}\cov\left(T_{ij},T_{kl}\right)\\
+= & n\left(\sum_{k\leq l}\cov\left(T_{ii},T_{kl}\right)\right)+\frac{n\left(n-1\right)}{2}\left(\sum_{k\leq l}\cov\left(T_{ij},T_{kl}\right)\right)\\
+= & \frac{n\left(n-1\right)}{2}\var\left(T_{12}\right)+2\frac{n\left(n-1\right)}{2}\cov\left(T_{11},T_{12}\right)+2\frac{n\left(n-1\right)}{2}\left(n-2\right)\cov\left(T_{12},T_{13}\right)\\
+ & +n\var\left(T_{11}\right)+n\left(n-1\right)\cov\left(T_{11},T_{12}\right)\\
+\var\left(T^{+}\right)= & n\var\left(T_{11}\right)+\frac{n\left(n-1\right)}{2}\var\left(T_{12}\right)+2n\left(n-1\right)\cov\left(T_{11},T_{12}\right)\\
+ & +n\left(n-1\right)\left(n-2\right)\cov\left(T_{12},T_{13}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Recordemos las definiciones de 
+\begin_inset Formula $p_{1}=\pr\left(X_{1}>0\right),\ p_{2}=\pr\left(X_{1}+X_{2}>0\right).$
+\end_inset
+
+ Usando que 
+\begin_inset Formula $\cov\left(X,Y\right)=\e\left(XY\right)-\e\left(X\right)\e\left(Y\right)$
+\end_inset
+
+ y 
+\begin_inset Formula $\ind\left(P\right)\times\ind\left(Q\right)=\ind\left(P\land Q\right)$
+\end_inset
+
+ (y por ende 
+\begin_inset Formula $\left[\ind\left(P\right)\right]^{2}=\ind\left(P\land P\right)=\ind\left(P\right)$
+\end_inset
+
+), calculamos
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\begin{split}\var\left(T_{11}\right) & =\e T_{11}^{2})-\e(T_{11})^{2}=\e(\ind(X_{1}>0)^{2})-\e(\ind(X_{1}>0))^{2}\\
+ & =\e(\ind(X_{1}>0))(1-\e(\ind(X_{1}>0)))\\
+ & =\pr(X_{1}>0)(1-\pr(X_{1}>0))\\
+ & =p_{1}(1-p_{1})\\
+\var\left(T_{12}\right) & =\e(T_{12}^{2})-\e(T_{12})^{2}=\e(\ind(X_{1}+X_{2}>0)^{2})-\e(\ind(X_{1}+X_{2}>0))^{2}\\
+ & =\e(\ind(X_{1}+X_{2}>0))(1-\e(\ind(X_{1}+X_{2}>0)))\\
+ & =\pr(X_{1}+X_{2}>0)(1-\pr(X_{1}+X_{2}>0))\\
+ & =p_{2}(1-p_{2})\\
+\cov\left(T_{11},T_{12}\right) & =\e(T_{11}T_{12})-\e(T_{11})\e(T_{12})\\
+ & =\e(\ind(X_{1}>0\land X_{1}+X_{2}>0))-\e(\ind(X_{1}>0)\e(\ind(X_{1}+X_{2}>0))\\
+ & =\pr(X_{1}>0\land X_{1}+X_{2}>0)-p_{1}\cdot p_{2}\\
+ & =p_{3}-p_{1}\cdot p_{2}\quad\text{, digamos}\\
+\cov\left(T_{12},T_{13}\right) & =\e(T_{12}T_{13})-\e(T_{12})\e(T_{13})\\
+ & =\e(\ind(X_{1}+X_{2}>0\land X_{1}+X_{3}>0))-\e(\ind(X_{1}+X_{2}>0)\e(\ind(X_{1}+X_{3}>0))\\
+ & =\pr(X_{1}+X_{2}>0\land X_{1}+X_{3}>0)-p_{2}^{2}\\
+ & =p_{4}-p_{2}^{2}\quad\text{, digamos}
+\end{split}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Finalmente,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\var\left(T^{+}\right)= & np_{1}\left(1-p_{1}\right)+\frac{n\left(n-1\right)}{2}p_{2}\left(1-p_{2}\right)+2n\left(n-1\right)\left(p_{3}-p_{1}\cdot p_{2}\right)+n\left(n-1\right)\left(n-2\right)\left(p_{4}-p_{2}^{2}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Consideremos la esperanza y varianza del estadístico 
+\begin_inset Formula $\overline{T}=\frac{T^{+}}{\frac{n\left(n+1\right)}{2}}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\e\left(\overline{T}\right)= & \e\left(\frac{T^{+}}{\frac{n\left(n+1\right)}{2}}\right)=\frac{2}{n\left(n+1\right)}\e\left(T^{+}\right)=\frac{2}{n\left(n+1\right)}\left(np_{1}+\tfrac{(n-1)n}{2}p_{2}\right)\\
+\e\left(\overline{T}\right)= & \tfrac{2}{n+1}p_{1}+\tfrac{n-1}{n+1}p_{2}\stackrel{n\rightarrow\infty}{\longrightarrow}p_{2}\\
+\var\left(\overline{T}\right)= & \tfrac{4}{n^{2}\left(n+1\right)^{2}}\var\left(T^{+}\right)\\
+\var\left(\overline{T}\right)= & n^{-3}k_{1}+n^{-2}k_{2}+n^{-1}k_{3}\stackrel{n\rightarrow\infty}{\longrightarrow}0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+donde 
+\begin_inset Formula $k_{1},k_{2},k_{3}$
+\end_inset
+
+son las expresiones constantes e independientes de 
+\begin_inset Formula $n$
+\end_inset
+
+ que resultan al distribuir el coeficiente 
+\begin_inset Formula $\tfrac{4}{n^{2}\left(n+1\right)^{2}}$
+\end_inset
+
+ entre la cornucopia de términos de 
+\begin_inset Formula $\var\left(T^{+}\right)$
+\end_inset
+
+.
+ En consecuencia, 
+\begin_inset Formula $\overline{T}\stackrel{p}{\rightarrow}p_{2}$
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+AGREGAR TEOREMA A5 HETTM AL ANEXO
+\end_layout
+
+\end_inset
+
+.
+ Nos resta calcular 
+\begin_inset Formula $p_{2}$
+\end_inset
+
+ para las distribuciones 
+\begin_inset Formula $G\in\Omega_{nul},\:G\in\Omega_{c}\subset\Omega_{alt}$
+\end_inset
+
+.
+\end_layout
+
 \begin_layout Subsection
 Teorema de Proyeccion
 \end_layout
@@ -2317,211 +2470,147 @@ Distribución exacta de los estadísticos del test de Mann-Whitney-Wilcoxon
 Apendice
 \end_layout
 
-\begin_layout Standard
-## Condiciones suficientes de consistencia
+\begin_layout Subsection
+Condiciones suficientes de consistencia
+\end_layout
+
+\begin_layout Definition
+Sea 
+\begin_inset Formula $X_{1},...,X_{n}$
+\end_inset
+
+ una muestra aleatoria tal que 
+\begin_inset Formula $\forall\ i\in\left[n\right],\ X_{i}\stackrel{iid}{\sim}F\in\Omega$
+\end_inset
+
+.
+ Se dice que la sucesión de tests 
+\begin_inset Formula $\{\Phi_{n}\}$
+\end_inset
+
+ de nivel asintotico 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ es consistente para las hipótesis 
+\begin_inset Formula $H_{0}:F\in\Omega_{0}\subset\Omega\text{ vs. }H_{1}:F\in\Omega_{1}\subset\Omega$
+\end_inset
+
+, si
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\alpha\geq E_{F_{0}}(\Phi_{n})\geq\gamma>0\quad\forall\ F_{0}\in\Omega_{0}$
+\end_inset
+
+, y 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $E_{F_{1}}(\Phi_{n})\to1\quad\forall\ F_{1}\in\Omega_{1}$
+\end_inset
+
+,
 \end_layout
 
 \begin_layout Standard
-### Definicion:
+donde 
+\begin_inset Formula $E_{G}(T(X_{1},...,X_{n}))=E(T|X_{i}\stackrel{iid}{\sim}G)$
+\end_inset
+
+.
+ Es decir, que el nivel de significación del test se mantiene acotado por
+ encima del cero para toda la sucesión, mientras que la potencia tiende
+ a 1 para la alternativa, a medida que aumenta el tamaño muestral.
 \end_layout
 
 \begin_layout Standard
-Sea $X_1, ..., X_n$ una muestra aleatoria tal que $
-\backslash
-forall 
-\backslash
- i=1,..., n 
-\backslash
-Rightarrow
-\backslash
- X_i 
-\backslash
-stackrel{iid}{
-\backslash
-sim} F 
-\backslash
-in 
-\backslash
-Omega$.
- Se dice que la sucesion de tests $
-\backslash
-{
-\backslash
-Phi_n
-\backslash
-}$ de nivel asintotico $
-\backslash
-alpha$ es consistente para las hipotesis $H_0 : F 
-\backslash
-in 
-\backslash
-Omega_{0} 
-\backslash
-subset 
-\backslash
-Omega
-\backslash
-text{ vs.
- } H_1 : F 
-\backslash
-in 
-\backslash
-Omega_1
-\backslash
-subset 
-\backslash
-Omega$, si - $
-\backslash
-alpha 
-\backslash
-geq E_{F_0}(
-\backslash
-Phi_n) 
-\backslash
-geq 
-\backslash
-gamma > 0 
-\backslash
-quad 
-\backslash
-forall 
-\backslash
- F_0 
-\backslash
-in 
-\backslash
-Omega_0$, y - $E_{F_1}(
-\backslash
-Phi_n) 
-\backslash
-to 1 
-\backslash
-quad 
-\backslash
-forall 
-\backslash
- F_1 
-\backslash
-in 
-\backslash
-Omega_1$, donde $E_G(T(X_1, ..., X_n)) = E(T | F = G)$.
- Es decir, que el nivel de significacion del test se mantiene acotado encima
- del cero para la sucesion, mientras que la potencia tiende a 1 para la
- alternativa, a medida que aumenta el tamano muestral.
+El conjunto de todas las distribuciones para las cuales 
+\begin_inset Formula $\{\Phi_{n}\}$
+\end_inset
+
+ es consistente se denomina 
+\emph on
+clase de consistencia
+\emph default
+ 
+\begin_inset Formula $\Omega_{c}\subset\Omega_{1}$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
-El conjunto de todas las distribuciones para las cuales $
-\backslash
-{
-\backslash
-Phi_n
-\backslash
-}$ es consistente se denomina _clase de consistencia_ $
-\backslash
-Omega_c 
-\backslash
-subset 
-\backslash
-Omega_1$.
-\end_layout
-
-\begin_layout Standard
-El siguiente teorema es util para determinar la clase de consistencia en
+El siguiente teorema es útil para determinar la clase de consistencia en
  ciertos test comunes.
 \end_layout
 
-\begin_layout Standard
-### Teorema Sea $
-\backslash
-Phi_n$ un test de nivel asintotico $
-\backslash
-alpha$ basado en $T_n$ que rechaza $H_0$ para valores grandes, para las
- hipotesis previamente definidas.
+\begin_layout Theorem
+\begin_inset CommandInset label
+LatexCommand label
+name "thm:suf-cons"
+
+\end_inset
+
+Sea 
+\begin_inset Formula $\Phi_{n}$
+\end_inset
+
+ un test de nivel asintótico 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ basado en 
+\begin_inset Formula $T_{n}$
+\end_inset
+
+ que rechaza 
+\begin_inset Formula $H_{0}$
+\end_inset
+
+ para valores grandes, para las hipotesis previamente definidas.
  Si
 \end_layout
 
 \begin_layout Standard
-$$ T_n 
-\backslash
-stackrel{p}{
-\backslash
-to} 
-\backslash
-mu(F) = 
-\backslash
-begin{cases} 
-\backslash
-mu_0 &
-\backslash
-forall F 
-\backslash
-in 
-\backslash
-Omega_0 
-\backslash
+\begin_inset Formula 
+\[
+T_{n}\stackrel{p}{\to}\mu(F)=\begin{cases}
+\mu_{0} & \forall F\in\Omega_{0}\\
+>\mu_{0} & \forall F\in\Omega_{c}
+\end{cases}
+\]
 
-\backslash
- > 
-\backslash
-mu_0 &
-\backslash
-forall F 
-\backslash
-in 
-\backslash
-Omega_c 
-\backslash
+\end_inset
 
-\backslash
- 
-\backslash
-end{cases} $$ y ademas existe $
-\backslash
-sigma_0$ tal que 
+y ademas existe 
+\begin_inset Formula $\sigma_{0}$
+\end_inset
+
+ tal que 
 \end_layout
 
 \begin_layout Standard
-$$ 
-\backslash
-sqrt{n}
-\backslash
-frac{T_n - 
-\backslash
-mu_0}{
-\backslash
-sigma_0} 
-\backslash
-stackrel{D}{
-\backslash
-to} N(0,1) 
-\backslash
-quad 
-\backslash
-forall F 
-\backslash
-in 
-\backslash
-Omega_0 $$ entonces existe una sucesion de valores $k_n$ tal que la sucesion
- de tests $
-\backslash
-Phi_n = I(T_n 
-\backslash
-geq k_n)$ es consistente para la clase $
-\backslash
-Omega_c$.
-\end_layout
+\begin_inset Formula 
+\[
+\sqrt{n}\frac{T_{n}-\mu_{0}}{\sigma_{0}}\stackrel{D}{\to}N(0,1)\quad\forall F\in\Omega_{0}
+\]
 
-\begin_layout Standard
-### Demostracion
-\end_layout
+\end_inset
 
-\begin_layout Part
-Demostraciones
-\end_layout
+entonces existe una sucesion de valores 
+\begin_inset Formula $k_{n}$
+\end_inset
 
-\begin_layout Part
-Anexo
+ tal que la sucesion de tests 
+\begin_inset Formula $\Phi_{n}=\ind\left(T_{n}\geq k_{n}\right)$
+\end_inset
+
+ es consistente para la clase 
+\begin_inset Formula $\Omega_{c}$
+\end_inset
+
+.
 \end_layout
 
 \end_body
