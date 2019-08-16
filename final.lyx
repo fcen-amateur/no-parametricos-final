@@ -2467,7 +2467,7 @@ AGREGAR TEOREMA A5 HETTM AL ANEXO
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
-p_{2}= & \pr\left(X_{1}+X_{2}>0\right)=\pr\left(X_{1}>-X_{2}\right)=\iint\ind(x_{1}>x_{2})f\left(x_{1}\right)f\left(x_{2}\right)dx_{2}dx_{1}\\
+p_{2}= & \pr\left(X_{1}+X_{2}>0\right)=\pr\left(X_{1}>-X_{2}\right)=\iint\ind(x_{1}>-x_{2})f\left(x_{1}\right)f\left(x_{2}\right)dx_{2}dx_{1}\\
 = & \iint_{-x_{2}}^{\infty}f\left(x_{1}\right)f\left(x_{2}\right)dx_{1}dx_{2}=\int f\left(x_{2}\right)\left[F\left(x\right)\Big|_{-x_{_{2}}}^{\infty}\right]dx_{2}=\int f\left(x_{2}\right)\left[1-F\left(-x_{2}\right)\right]dx_{2}
 \end{align*}
 
@@ -2667,7 +2667,152 @@ proyeccion de V
 \end_layout
 
 \begin_layout Proof
+Sumando y restando 
+\begin_inset Formula $V_{p}$
+\end_inset
 
+,
+\begin_inset Formula 
+\begin{align*}
+\e\left[\left(V-W\right)^{2}\right]= & \e\left[\left(\left(V-V_{p}\right)+\left(V_{p}-W\right)\right)^{2}\right]\\
+= & \e\left[\left(V-V_{p}\right)^{2}\right]+\e\left[\left(V_{p}-W\right)^{2}\right]+2\e\left(V-V_{p}\right)\e\left(V_{p}-W\right)\\
+\\
+\e\left(V-V_{p}\right)= & \e\left(V-\sum_{i}g_{i}^{\star}\left(X_{i}\right)\right)=\e\left(V-g_{i}^{\star}\left(X_{i}\right)-\sum_{i\neq j}g_{j}^{\star}\left(X_{j}\right)\right)\\
+= & \e\left[\e\left(V-g_{i}^{\star}\left(X_{i}\right)-\sum_{i\neq j}g_{j}^{\star}\left(X_{j}\right)\right)\Big|X_{i}\right]\\
+= & \e\left[\e\left(V\big|X_{i}\right)-\e\left(g_{i}^{\star}\left(X_{i}\right)\right)-\sum_{i\neq j}\e\left(g_{j}^{\star}\left(X_{j}\right)\big|X_{i}\right)\right]\\
+= & \e\left[\cancel{\e\left(V\big|X_{i}\right)}-\cancel{\e\left(V\big|X_{i}\right)}-\sum_{i\neq j}\e\left(g_{j}^{\star}\left(X_{j}\right)\right)\right] & g_{j}^{\star}\left(X_{j}\right)\perp X_{i}\\
+= & \e\left[-\sum_{i\neq j}\e\left(\e\left(V\big|X_{j}\right)\right)\right]=\e\left[-\sum_{i\neq j}\e V\right]=0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+\begin_inset Newpage pagebreak
+\end_inset
+
+Retomando la expresion anterior,
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\begin{align*}
+\e\left[\left(V-W\right)^{2}\right]= & \e\left[\left(V-V_{p}\right)^{2}\right]+\e\left[\left(V_{p}-W\right)^{2}\right]+\cancel{2\times0\times\e\left(V_{p}-W\right)}\\
+\e\left[\left(V-W\right)^{2}\right]\geq & \e\left[\left(V-V_{p}\right)^{2}\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+con igualdad estricta 
+\begin_inset Formula $\Leftrightarrow W=V_{p}$
+\end_inset
+
+.
+ Ademas, 
+\begin_inset Formula $\e V_{p}=\sum_{i}\e\left[\e\left(V\big|X_{i}\right)\right]=n\e V=0$
+\end_inset
+
+, de manera que tomando 
+\begin_inset Formula $W=0$
+\end_inset
+
+, obtenemos la expresion de la varianza:
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\[
+\e V^{2}=\e\left(V-V_{p}\right)^{2}+\e V_{p}^{2}\Rightarrow\e\left(V-V_{p}\right)^{2}=\var V-\var V_{p}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En general, bajo la hipotesis nula, los estadisticos de los test no parametricos
+ que consideramos se pueden expresar como una suma (de funciones) de variables
+ aleatorias independienets entre si, y contamos con toda una artilleria
+ para probar la normalidad asintotica de expresiones bajo esas condiciones.
+ Bajo la hipotesis alternativa, sin embargo, es comun perder la independencia
+ entre dichas expresiones, y por ende necesitamos una expresion alternativa
+ de los estadisticos sobre la que podamos dar alguna aproximacion en grandes
+ numeros.
+\end_layout
+
+\begin_layout Standard
+Intuitivamente, el teorema de proyeccion nos ofrece una solucion elegante.
+ Primero, hay que notar que 
+\begin_inset Formula $\forall i,\:g_{i}^{\star}\left(X_{i}\right)=\e\left(V\big|X_{i}\right)$
+\end_inset
+
+ es una VA que 
+\emph on
+dependen unicamente de 
+\emph default
+
+\begin_inset Formula $X_{i}$
+\end_inset
+
+, entonces 
+\begin_inset Formula $\forall i\neq j,\:g_{i}^{\star}\left(X_{i}\right)\perp g_{j}^{\star}\left(X_{j}\right)$
+\end_inset
+
+ y 
+\begin_inset Formula $V=\sum_{i}g_{i}^{\star}$
+\end_inset
+
+es nuevamente una funcion lineal de VA independientes con 
+\begin_inset Formula $\e=0$
+\end_inset
+
+.
+ Luego, a medida que 
+\begin_inset Formula $n\rightarrow\infty$
+\end_inset
+
+, podemos pensar que salvo casos patologicos, la influencia de cada 
+\begin_inset Formula $X_{i}$
+\end_inset
+
+ particular sobre 
+\begin_inset Formula $\e V$
+\end_inset
+
+ tiende a cero
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+De mas esta decir que estas afirmaciones se pueden cuantificar formalmente,
+ y de hecho eso lo que debemos hacer al aplicar este teorema sobre estadisticos
+ particulares.
+\end_layout
+
+\end_inset
+
+, y 
+\begin_inset Formula $\e\left(V-V_{p}\right)^{2}\rightarrow0$
+\end_inset
+
+, de manera que si 
+\begin_inset Formula $f\left(V_{p}\right)\stackrel{D}{\rightarrow}N\left(0,1\right)$
+\end_inset
+
+, 
+\begin_inset Formula $f\left(V\right)$
+\end_inset
+
+ tambien lo hara.
+ Con la distribucion asintotica bajo la alternativa, podemos explorar caracteris
+ticas del estimador como su eficiencia asintotica relativa.
 \end_layout
 
 \begin_layout Subsection
