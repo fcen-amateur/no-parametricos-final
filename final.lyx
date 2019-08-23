@@ -3098,7 +3098,15 @@ status open
 
 \begin_layout Plain Layout
 Resulta ser que en teoría de números este tema se conoce con el nombre de
- particiones, y su tratamiento es bastante más áspero de lo que uno se imagina.
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "particiones"
+target "https://en.wikipedia.org/wiki/Partition_(number_theory)"
+
+\end_inset
+
+, y su tratamiento es bastante más áspero de lo que uno se imagina.
 \end_layout
 
 \end_inset
@@ -3494,16 +3502,6 @@ probs <- dW(rango, n, m)
 \begin_layout Plain Layout
 
 tibble(rango, probs)
-\end_layout
-
-\begin_layout Plain Layout
-
-@
-\end_layout
-
-\begin_layout Plain Layout
-
-<<m-10-n-15,fig=T,width=7,height=7,eps=T,pdf=T,echo=F>>=
 \end_layout
 
 \begin_layout Plain Layout
