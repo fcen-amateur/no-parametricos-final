@@ -28,6 +28,7 @@ theorems-ams
 \output_sync 0
 \bibtex_command default
 \index_command default
+\float_placement tph
 \paperfontsize default
 \spacing single
 \use_hyperref false
@@ -74,7 +75,7 @@ theorems-ams
 \begin_body
 
 \begin_layout Title
-Metodos No Parametricos - Final
+Métodos No Paramétricos - Final
 \end_layout
 
 \begin_layout Author
@@ -82,7 +83,7 @@ Gonzalo Barrera Borla
 \end_layout
 
 \begin_layout Date
-Lunes 15/08/2019
+Viernes 23/08/2019
 \end_layout
 
 \begin_layout Standard
@@ -148,7 +149,7 @@ LatexCommand tableofcontents
 
 \end_layout
 
-\begin_layout Section
+\begin_layout Section*
 Notación
 \end_layout
 
@@ -157,7 +158,7 @@ Notación
 \end_inset
 
  representa el conjunto de los naturales de 1 hasta n, 
-\begin_inset Formula ${1,2,3,\dots,n}$
+\begin_inset Formula $\left\{ 1,2,3,\dots,n\right\} $
 \end_inset
 
 
@@ -178,14 +179,14 @@ Notación
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $\pr(X)$
+\begin_inset Formula $\pr\left(X\right)$
 \end_inset
 
  es la probabilidad del evento 
 \begin_inset Formula $X$
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Itemize
@@ -193,6 +194,26 @@ Notación
 \end_inset
 
  son los operadores esperanza, varianza y covarianza, respectivamente.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\pr_{Q}\left(X\right)=\pr\left(X\big|Q\right)$
+\end_inset
+
+ es la probabilidad de 
+\begin_inset Formula $X$
+\end_inset
+
+ condicional a 
+\begin_inset Formula $Q$
+\end_inset
+
+.
+ De ella se deriva 
+\begin_inset Formula $\e_{Q}$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Itemize
@@ -204,6 +225,10 @@ Notación
 \end_inset
 
  son independientes entre sí.
+\begin_inset Newpage pagebreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -211,7 +236,7 @@ Ejercicios
 \end_layout
 
 \begin_layout Subsection
-Practica 1, ej.
+Práctica 1, ej.
  4
 \end_layout
 
@@ -263,16 +288,16 @@ no rechazada
 \emph default
 ), nos sugiere que coloquemos la afirmación del empresario en la hipótesis
  nula.
- Este arreglo es equivalente a la 
+ Esto equivale a declararlo 
 \begin_inset Quotes eld
 \end_inset
 
-inocencia hasta que se pruebe lo contario
+inocente hasta que se pruebe lo contario
 \begin_inset Quotes erd
 \end_inset
 
-, e implica que salvo que haya clara evidencia contra la proporción de frascos
- defectuosos, asumiremos que está debajo del 10%:
+, y salvo que haya clara evidencia en contra, asumiremos que la proporción
+ de frascos defectuosos está debajo del 10%:
 \end_layout
 
 \begin_layout Standard
@@ -290,8 +315,8 @@ inocencia hasta que se pruebe lo contario
 \color none
 \begin_inset Formula 
 \begin{align*}
- & H_{0}:\text{Menos del 10\% de los frascos contienen menos café del garantizado.}\\
-vs.\quad & H_{1}:\text{Más del 10\% de los frascos contiene menos café del garantizado.}
+H_{0}\coloneqq & \text{Menos del 10\% de los frascos contienen menos café del garantizado.}\\
+vs.\quad H_{1}\coloneqq & \text{Más del 10\% de los frascos contiene menos café del garantizado.}
 \end{align*}
 
 \end_inset
@@ -301,29 +326,17 @@ vs.\quad & H_{1}:\text{Más del 10\% de los frascos contiene menos café del gar
 
 \begin_layout Standard
 La estrategia tradicional, sin embargo, consiste en colocar "lo que se desea
- probar" en la hipótesis alternativa, de manera que sólo se acepte su afirmación
+ probar" en la hipótesis alternativa, de manera que sólo se acepte la afirmación
  si la evidencia está a su favor.
- Por razones que quedarán claras al resolver el punto (5), esta parece ser
+ Por razones que quedarán claras al resolver el punto (5), ésta parece ser
  la estrategia correcta en el ejercicio:
 \end_layout
 
 \begin_layout Standard
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
 \begin_inset Formula 
 \begin{align*}
- & H_{0}:\text{10\% o más de los frascos contienen menos café del garantizado.}\\
-vs.\quad & H_{1}:\text{Menos del 10\% de los frascos contiene menos café del garantizado.}
+H_{0}\coloneqq & \text{10\% o más de los frascos contienen menos café del garantizado.}\\
+vs.\quad H_{1}\coloneqq & \text{Menos del 10\% de los frascos contiene menos café del garantizado.}
 \end{align*}
 
 \end_inset
@@ -342,20 +355,16 @@ Sea
 \begin_inset Formula $p$
 \end_inset
 
- de que un frasco de café contenga menos café del garantizado, es constante
- e idéntica para todos los frascos de manera que 
+ de que un frasco contenga menos café del garantizado es constante e idéntica
+ para todos, de manera que 
 \begin_inset Formula $X_{i}\stackrel{iid}{\sim}Ber\left(p\right)\,\forall i\in\left[n\right]$
 \end_inset
 
 , y 
-\begin_inset Formula $\sum_{i=1}^{n}X_{i}=T\sim Bi\left(n,p\right)$
+\begin_inset Formula $\sum_{i=1}^{n}X_{i}=T\sim Bi\left(n,p\right),\:n=15$
 \end_inset
 
- (en nuestro caso, 
-\begin_inset Formula $n=15$
-\end_inset
-
-).
+.
  Bajo estos supuestos, dos formas equivalentes y matemáticamente tratables
  de las hipótesis son 
 \begin_inset Formula 
@@ -381,7 +390,7 @@ H_{0}\coloneqq p\in\Theta_{0}=\left[0.1,1\right]\quad vs.\quad H_{1}\coloneqq p\
 
 \begin_layout Standard
 Sea 
-\begin_inset Formula $\Phi(T)=\ind\left(T\leq k\right)$
+\begin_inset Formula $\Phi\left(T\right)=\ind\left(T\leq k\right)$
 \end_inset
 
  un test que rechaza la hipótesis nula (
@@ -401,7 +410,7 @@ acepta
  En general, 
 \begin_inset Formula 
 \[
-\e\left(\Phi|p=p_{0}\right)=\e_{p_{0}}\left(\ind\left(T\leq k\right)\right)=\pr_{p_{0}}\left(T\leq k\right)=\pr\left(Bi\left(n,p_{0}\right)\leq k\right)
+\e\left(\Phi\big|p=p_{0}\right)=\e_{p_{0}}\left(\ind\left(T\leq k\right)\right)=\pr_{p_{0}}\left(T\leq k\right)=\pr\left(Bi\left(n,p_{0}\right)\leq k\right)
 \]
 
 \end_inset
@@ -433,7 +442,7 @@ izquierda
 
  dados.
  
-\begin_inset Formula $f$
+\begin_inset Formula $f_{n,k}$
 \end_inset
 
  es 
@@ -452,12 +461,12 @@ estrictamente decreciente
 \begin_inset Formula $T$
 \end_inset
 
- realice un valor por debajo de 
+ realice un valor menor o igual a 
 \begin_inset Formula $k$
 \end_inset
 
  , de manera que 
-\begin_inset Formula $\sup_{p\in[a,b]}f_{n,k}(p)=f(a)$
+\begin_inset Formula $\sup_{p\in[a,b]}f_{n,k}(p)=f_{n,k}(a)$
 \end_inset
 
 .
@@ -496,7 +505,7 @@ La probabilidad de que la afirmación del empresario sea aceptada cuando
  caiga en la región de rechazo
 \begin_inset Formula 
 \begin{align*}
-\pr\left(\Phi=1|p=p_{0}\right)= & \pr_{p_{0}}\left(T\leq k\right)=\pr\left(Bi\left(n,p_{0}\right)\leq k\right)=\sum_{i=0}^{k}{n \choose i}p_{0}^{i}(1-p_{0})^{n-i}\\
+\pr\left(\Phi=1\big|p=p_{0}\right)= & \pr_{p_{0}}\left(T\leq k\right)=\pr\left(Bi\left(n,p_{0}\right)\leq k\right)=\sum_{i=0}^{k}{n \choose i}p_{0}^{i}(1-p_{0})^{n-i}\\
 \pr_{0.05}\left(T\leq2\right)= & \sum_{i=0}^{2}{15 \choose i}0.05^{i}0.95^{15-i}\approx0.9638\\
 \pr_{0.1}\left(T\leq2\right)\approx & 0.8159\\
 \pr_{0.2}\left(T\leq2\right)\approx & 0.3980
@@ -509,17 +518,17 @@ La probabilidad de que la afirmación del empresario sea aceptada cuando
 
 \begin_layout Standard
 Se dice que el test 
-\begin_inset Formula $\Phi(T)$
+\begin_inset Formula $\Phi\left(T\right)$
 \end_inset
 
  es insesgado para las hipótesis 
 \begin_inset Formula $H_{0},H_{1}$
 \end_inset
 
-cuando es menos probable rechazar la hipótesis nula en caso de que esta
+cuando es menos probable rechazar la hipótesis nula en caso de que ésta
  sea verdadera, que cuando es falsa.
  Más formalmente, dado un test 
-\begin_inset Formula $\Phi(T)=\ind\left(T\in RR\right)$
+\begin_inset Formula $\Phi\left(T\right)=\ind\left(T\in RR\right)$
 \end_inset
 
  basado en un estadístico cuya función de distribución está unívocamente
@@ -562,8 +571,8 @@ cuando es menos probable rechazar la hipótesis nula en caso de que esta
 
 \begin_inset Formula 
 \begin{align*}
-\pr\left(\text{rech. }H_{0}|H_{0}\text{ es V}\right) & <\pr\left(\text{rech. }H_{0}|H_{0}\text{ es F}\right)\\
-\pr\left(\Phi=1|\theta\in\Theta_{0}\right) & <\pr\left(\Phi=1|\theta\in\Theta_{1}\right)\\
+\pr\left(\text{rech. }H_{0}\big|H_{0}\text{ es V}\right) & <\pr\left(\text{rech. }H_{0}\big|H\text{ es F}\right)\\
+\pr\left(\Phi=1\big|\theta\in\Theta_{0}\right) & <\pr\left(\Phi=1\big|\theta\in\Theta_{1}\right)\\
 \e_{\theta_{0}}\left(\Phi\right) & <\e_{\theta_{1}}\left(\Phi\right) & \forall\quad\theta_{0}\in\Theta_{0},\theta_{1}\in\Theta_{1}\\
 \sup_{\theta\in\Theta_{0}}\e_{\theta}\left(\Phi\right) & <\inf_{\theta\in\Theta_{1}}\e_{\theta}\left(\Phi\right) & \Rightarrow\Phi\text{{es\,insesgado\,para\,}}H_{0},H_{1}
 \end{align*}
@@ -632,11 +641,59 @@ decreciente
 \end_inset
 
  es insesgado para 
-\begin_inset Formula $H_{0},H_{1}$
+\begin_inset Formula $\left(H_{0},H_{1}\right)$
 \end_inset
 
 .
- La 
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+propiamente dicha).
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ En la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:potencia-phi"
+
+\end_inset
+
+ se intuye claramente la insesgadez.
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+La 
 \family default
 \series default
 \shape default
@@ -662,7 +719,7 @@ cuando
 \begin_inset Formula $\theta\in\Theta_{0}$
 \end_inset
 
-, el supremo de la funcion de potencia nos da el nivel de signifcacion 
+, el supremo de la función de potencia nos da el nivel de signifcación 
 \begin_inset Formula $\alpha$
 \end_inset
 
@@ -674,36 +731,17 @@ cuando
 \begin_inset Formula $\theta\in\Theta_{1}$
 \end_inset
 
-, obtenemos la probabilidad de detectar la hipotesis alternativa (la potencia
- propiamente dicha).
+, obtenemos la probabilidad de detectar la hipótesis alternativa (la potencia
+ 
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-Con una simple función de R, agregando referencias horizontales para el
- nivel de significacion del test (
-\begin_inset Formula $\alpha\approx0.8159$
-\end_inset
-
-) y 
-\begin_inset Formula $p=0.1$
-\end_inset
-
-, se intuye claramente la insesgadez que antes demostramos:
-\end_layout
-
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset ERT
 status open
 
@@ -767,13 +805,83 @@ ggplot(df, aes(p, E_phi)) +
 
 \end_layout
 
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Potencia de 
+\begin_inset Formula $\Phi$
+\end_inset
+
+ como función de 
+\begin_inset Formula $p$
+\end_inset
+
+.
+ 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+La referencia vertical 
+\begin_inset Formula $\left(p=0.1\right)$
+\end_inset
+
+ separa 
+\begin_inset Formula $\Theta_{0},\:\Theta_{1}$
+\end_inset
+
+ y corta la curva de potencia justo en el nivel de significación
+\begin_inset Formula $\left(\alpha\approx0.8159\right)$
+\end_inset
+
+.
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:potencia-phi"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 Finalmente, debemos encontrar el mínimo 
 \begin_inset Formula $n$
 \end_inset
 
- tal que el nivel de significación del test sea 
-\begin_inset Formula $\leq0.05$
+ tal que 
+\begin_inset Formula $\alpha\leq0.05$
 \end_inset
 
 , manteniendo la misma 
@@ -805,12 +913,16 @@ centrales
 \begin_inset Formula $RR=\left\{ 3,...,n\right\} $
 \end_inset
 
-, consideremos 
+, consideremos el nivel de significación en función de 
+\begin_inset Formula $n$
+\end_inset
+
+, 
 \begin_inset Formula $g_{k,p}\left(n\right)=\pr_{p}\left(T\in RR\right)=\pr\left(Bi\left(n,p\right)>k\right)$
 \end_inset
 
  para 
-\begin_inset Formula $0\leq k<n,\,0<p<1$
+\begin_inset Formula $0<k<n,\,0<p<1$
 \end_inset
 
  dados.
@@ -818,12 +930,12 @@ centrales
 \begin_inset Formula $g_{k,p}$
 \end_inset
 
- es una función estrictamente creciente en 
+ es estrictamente creciente en 
 \begin_inset Formula $n$
 \end_inset
 
-, de manera que subiendo el tamaño muestral, ¡aumentaría 
-\begin_inset Formula $\alpha$
+, y ¡
+\begin_inset Formula $\alpha_{n}=g_{k,p}\left(n\right)\stackrel{n\rightarrow\infty}{\longrightarrow}1$
 \end_inset
 
 ! Evidentemente, esta última consigna sólo tiene sentido si planteamos las
@@ -865,7 +977,7 @@ estrictamente decreciente
 \end_inset
 
 , y por ende alcanza su máximo en 
-\begin_inset Formula $p=\inf\Theta_{0}=0.1\,\forall n$
+\begin_inset Formula $p=\inf\Theta_{0}=0.1\:\forall\:n$
 \end_inset
 
 .
@@ -878,9 +990,17 @@ estrictamente decreciente
 \end_inset
 
  con la ayuda de R, y encontramos que 
-\begin_inset Formula $\pr\left(Bi\left(60,0.1\right)\leq2\right)\approx0.0530>0.05>0.0491\approx\pr\left(Bi\left(61,0.1\right)\leq2\right),$
+\begin_inset Formula 
+\[
+\pr\left(Bi\left(60,0.1\right)\leq2\right)\approx0.0530>0.05>0.0491\approx\pr\left(Bi\left(61,0.1\right)\leq2\right)
+\]
+
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 de manera que el mínimo tamaño muestral que nos garantiza 
 \begin_inset Formula $\alpha\leq0.05$
 \end_inset
@@ -893,10 +1013,23 @@ de manera que el mínimo tamaño muestral que nos garantiza
 \begin_inset Formula $n=61$
 \end_inset
 
+, como se observa en la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:alpha-n"
+
+\end_inset
+
 .
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
 \begin_inset ERT
 status open
 
@@ -943,6 +1076,42 @@ ggplot(df, aes(n, alfa)) +
 \begin_layout Plain Layout
 
 @
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Nivel de significación 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ para 
+\begin_inset Formula $\Phi$
+\end_inset
+
+ en función de 
+\begin_inset Formula $n$
+\end_inset
+
+.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:alpha-n"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1137,12 +1306,18 @@ Y resulta que
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
 \begin_inset ERT
 status open
 
 \begin_layout Plain Layout
 
-<<S-tita,fig=T,width=7,height=7,eps=T,pdf=T,echo=F>>=
+<<S-tita,fig=T,width=7,height=5,eps=T,pdf=T,echo=F>>=
 \end_layout
 
 \begin_layout Plain Layout
@@ -1299,12 +1474,12 @@ ggplot(lineas, aes(x=x, y=y, xend=xend, yend=yend)) +
 
 \begin_layout Plain Layout
 
-    breaks = c(0:3, (n-2):n),
+    breaks = c(0:n),
 \end_layout
 
 \begin_layout Plain Layout
 
-    labels = c(0:3, (n-2):n)
+    labels = c(0:n)
 \end_layout
 
 \begin_layout Plain Layout
@@ -1332,13 +1507,37 @@ ggplot(lineas, aes(x=x, y=y, xend=xend, yend=yend)) +
 
 \end_layout
 
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $S\left(\theta\right)$
+\end_inset
+
+ para 
+\begin_inset Formula $n=9$
+\end_inset
+
+ (impar).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 vemos que cuando 
-\begin_inset Formula $\theta<X^{\left(\frac{n+1}{2}\right)}\Rightarrow S\left(\theta\right)<\frac{n-1}{2}$
+\begin_inset Formula $\theta<X^{\left(\frac{n+1}{2}\right)}\Rightarrow S\left(\theta\right)>\frac{n-1}{2}$
 \end_inset
 
  y si 
-\begin_inset Formula $\theta\geq X^{\left(\frac{n+1}{2}\right)}\Rightarrow S\left(\theta\right)>\frac{n+1}{2}$
+\begin_inset Formula $\theta\geq X^{\left(\frac{n+1}{2}\right)}\Rightarrow S\left(\theta\right)<\frac{n+1}{2}$
 \end_inset
 
  .
@@ -1381,7 +1580,7 @@ Usando que
 \end_inset
 
  está simétricamente distribuída alrededor de 
-\begin_inset Formula $\mu_{0}/2$
+\begin_inset Formula $\nicefrac{\mu_{0}}{2}$
 \end_inset
 
 , Hint: Muestre que 
@@ -1618,7 +1817,7 @@ Sea
 
  (distribuciones simétricas con única mediana en 0), y las hipótesis a testear
  
-\begin_inset Formula $H_{0}:\theta=0\quad vs.\quad H_{1}:\theta>0.$
+\begin_inset Formula $H_{0}\coloneqq\theta=0\quad vs.\quad H_{1}\coloneqq\theta>0.$
 \end_inset
 
  Definamos 
@@ -1715,8 +1914,8 @@ reference "thm:suf-cons"
 
 \begin_layout Itemize
 \begin_inset Formula $T_{n}^{+}\stackrel{{p}}{\rightarrow}\mu\left(G\right)=\begin{cases}
-\mu_{0} & \forall\:G\in\Omega_{nul}\\
->\mu_{0} & \forall\:G\in\Omega_{c}\subset\Omega_{alt}
+\mu_{0} & \forall\:G\in\Omega_{0}\\
+>\mu_{0} & \forall\:G\in\Omega_{c}\subset\Omega_{1}
 \end{cases}$
 \end_inset
 
@@ -1771,7 +1970,7 @@ y el vector
 \begin_inset Formula $\left(R_{1},\dots,R_{n}\right)$
 \end_inset
 
-son mutuamente independientes.
+ son mutuamente independientes.
 \end_layout
 
 \begin_layout Proof
@@ -1792,7 +1991,7 @@ Como
 \end_inset
 
 .
- Recordando que como 
+ Recordemos que como 
 \begin_inset Formula $\theta=0,\:F\in\Omega_{s}\Rightarrow F\left(-t-0\right)=1-F\left(t-0\right),$
 \end_inset
 
@@ -1891,7 +2090,7 @@ Sea
 \begin_layout Proof
 \begin_inset Formula 
 \begin{align*}
-\pr\left(\bigcap_{i\in\left[n\right]}sg\left(X_{D_{i}}\right)=s_{i}\right) & =\sum_{d}\left[\pr\left(\bigcap_{i\in\left[n\right]}sg\left(X_{D_{i}}\right)=s_{i}|D=d\right)\pr\left(D=d\right)\right]\\
+\pr\left(\bigcap_{i\in\left[n\right]}sg\left(X_{D_{i}}\right)=s_{i}\right) & =\sum_{d}\left[\pr\left(\bigcap_{i\in\left[n\right]}sg\left(X_{D_{i}}\right)=s_{i}\big|D=d\right)\pr\left(D=d\right)\right]\\
  & =\sum_{d}\left[\pr\left(\bigcap_{i\in\left[n\right]}sg\left(X_{d_{i}}\right)=s_{i}\right)\pr\left(D=d\right)\right]\\
  & =\sum_{d}\left[\left(\prod_{i\in\left[n\right]}\pr\left(sg\left(X_{d_{i}}\right)=s_{i}\right)\right)\pr\left(D=d\right)\right] & sg\left(X_{i}\right)\perp sg\left(X_{j}\right)\\
  & =\sum_{d}\left[\left[\prod_{i\in\left[n\right]}\frac{1}{2}\right]\pr\left(D=d\right)\right]\\
@@ -1921,11 +2120,25 @@ posibles configuraciones de signos son equiprobables, y
 \begin_inset Formula $\pr\left(W_{i}=1\right)=\pr\left(W_{i}=0\right)=\frac{1}{2}\:\forall i\in\left[n\right].$
 \end_inset
 
-Luego, 
+ Luego, 
 \begin_inset Formula $W_{i}\stackrel{iid}{\sim}Ber\left(p\right)\:\forall i\in\left[n\right]$
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+Hemos alcanzado una expresión de 
+\begin_inset Formula $T^{+}$
+\end_inset
+
+como suma de VA independientes 
+\begin_inset Formula $\left(\sum_{j}\:j\cdot W_{j}\right)$
+\end_inset
+
+, pero no idénticamente distribuidas.
+ El siguiente teorema es la pieza faltante para encontrar la distribución
+ asintótica.
 \end_layout
 
 \begin_layout Theorem
@@ -1969,16 +2182,7 @@ Es una variante del Teorema Central del Límite de Lindeberg.
 \end_layout
 
 \begin_layout Standard
-Ahora sí estamos en condiciones de probar la normalidad asintótica de 
-\begin_inset Formula $T^{+}=\sum_{i\in\left[n\right]}i\:sg\left(X_{D_{i}}\right)=\sum_{i\in\left[n\right]}i\:W_{i}$
-\end_inset
-
- bajo 
-\begin_inset Formula $H_{0}$
-\end_inset
-
-.
- Sean 
+Sean 
 \begin_inset Formula $X_{i}=W_{i}-\frac{1}{2},\:a_{i}=i$
 \end_inset
 
@@ -2116,7 +2320,7 @@ donde
 \end_inset
 
  Sean ahora 
-\begin_inset Formula $p_{1}=\pr\left(X_{i}>0\right),\ p_{2}=\pr\left(X_{i}+X_{j}>0|i\neq j\right)$
+\begin_inset Formula $p_{1}=\pr\left(X_{i}>0\right),\ p_{2}=\pr\left(X_{i}+X_{j}>0\big|i\neq j\right)$
 \end_inset
 
  (cuando 
@@ -2215,7 +2419,7 @@ Recordemos que si
 \end_inset
 
  no compartan ningun índice, 
-\begin_inset Formula $\cov\left(T_{ij},T_{kl}\right)=0$
+\begin_inset Formula $T_{ij}\perp T_{kl}\Rightarrow\cov\left(T_{ij},T_{kl}\right)=0$
 \end_inset
 
 .
@@ -2275,10 +2479,18 @@ Cuando
 \end_inset
 
 y 1 índice con
-\begin_inset Formula $\overbrace{\left(i-1\right)}^{col\:i}+\overbrace{\left(n-i-1\right)}^{fila\:i}+\overbrace{\left(j-2\right)}^{col\:j}+\overbrace{\left(n-j\right)}^{fila\:j}=2\left(n-2\right)$
+\begin_inset Formula 
+\[
+\overbrace{\left(i-1\right)}^{col\:i}+\overbrace{\left(n-i-1\right)}^{fila\:i}+\overbrace{\left(j-2\right)}^{col\:j}+\overbrace{\left(n-j\right)}^{fila\:j}=2\left(n-2\right)
+\]
+
 \end_inset
 
- elementos.
+
+\end_layout
+
+\begin_layout Standard
+elementos.
  Cuando 
 \begin_inset Formula $i=j,\:T_{ii}$
 \end_inset
@@ -2288,29 +2500,41 @@ y 1 índice con
 \end_inset
 
 , y 1 índice con 
-\begin_inset Formula $\overbrace{\left(i-1\right)}^{col\:i}+\overbrace{\left(n-i\right)}^{fila\:i}=n-1$
+\begin_inset Formula 
+\[
+\overbrace{\left(i-1\right)}^{col\:i}+\overbrace{\left(n-i\right)}^{fila\:i}=n-1
+\]
+
 \end_inset
 
- elementos.
+ 
+\end_layout
+
+\begin_layout Standard
+elementos.
  Luego, sólo tenemos que preocuparnos por términos de las formas 
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $\cov\left(T_{11},T_{11}\right)=\var T_{11}\quad\cov\left(T_{12},T_{12}\right)=\var T_{12}\quad\cov\left(T_{11,}T_{12}\right)\quad\cov\left(T_{12},T_{13}\right)$
+\begin_inset Formula 
+\[
+\cov\left(T_{11},T_{11}\right)=\var T_{11}\quad\cov\left(T_{12},T_{12}\right)=\var T_{12}\quad\cov\left(T_{11,}T_{12}\right)\quad\cov\left(T_{12},T_{13}\right)
+\]
+
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
-Luego,
+Y de lo expuesto,
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
-\forall i\neq j,\quad & \sum_{k\leq l}\cov\left(T_{ij},T_{kl}\right) & =\var\left(T_{12}\right)+2\cov\left(T_{11},T_{12}\right)+2\left(n-2\right)\cov\left(T_{12},T_{13}\right)\\
-\forall i=j,\quad & \sum_{k\leq l}\cov\left(T_{ii},T_{kl}\right) & =\var\left(T_{11}\right)+\left(n-1\right)\cov\left(T_{11},T_{12}\right)
+\forall i\neq j,\quad & \sum_{k\leq l}\cov\left(T_{ij},T_{kl}\right)=\var\left(T_{12}\right)+2\cov\left(T_{11},T_{12}\right)+2\left(n-2\right)\cov\left(T_{12},T_{13}\right)\\
+\forall i=j,\quad & \sum_{k\leq l}\cov\left(T_{ii},T_{kl}\right)=\var\left(T_{11}\right)+\left(n-1\right)\cov\left(T_{11},T_{12}\right)
 \end{align*}
 
 \end_inset
@@ -2319,7 +2543,7 @@ Luego,
 \end_layout
 
 \begin_layout Standard
-Y entonces 
+Entonces, 
 \begin_inset Formula 
 \begin{align*}
 \var\left(T^{+}\right)= & \sum_{i=j}\:\sum_{k\leq l}\cov\left(T_{ij},T_{kl}\right)+\sum_{i<j}\:\sum_{k\leq l}\cov\left(T_{ij},T_{kl}\right)\\
@@ -2442,11 +2666,15 @@ son las expresiones constantes e independientes de
 \end_inset
 
 
-\begin_inset Note Note
+\begin_inset Foot
 status open
 
 \begin_layout Plain Layout
-AGREGAR TEOREMA A5 HETTM AL ANEXO
+Resulta de una aplicación directa de Chebyshev a 
+\begin_inset Formula $Z=\overline{T}-\e\overline{T}$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -2457,7 +2685,7 @@ AGREGAR TEOREMA A5 HETTM AL ANEXO
 \end_inset
 
  para las distribuciones 
-\begin_inset Formula $F\in\Omega_{nul},\:F\in\Omega_{c}\subset\Omega_{alt}$
+\begin_inset Formula $F\in\Omega_{0},\:F\in\Omega_{c}\subset\Omega_{1}$
 \end_inset
 
 .
@@ -2477,7 +2705,11 @@ p_{2}= & \pr\left(X_{1}+X_{2}>0\right)=\pr\left(X_{1}>-X_{2}\right)=\iint\ind(x_
 \end_layout
 
 \begin_layout Standard
-Cuando 
+Bajo 
+\begin_inset Formula $H_{0}$
+\end_inset
+
+, 
 \begin_inset Formula $F\in\Omega_{s},\:\theta=0\Rightarrow1-F\left(-x\right)=F\left(x\right)$
 \end_inset
 
@@ -2507,13 +2739,14 @@ p_{2}= & \int f\left(x_{2}\right)\left[1-F\left(-x_{2}\right)\right]dx_{2}=\tfra
 \begin_layout Standard
 Consideremos ahora la clase de distribuciones 
 \emph on
-estocasticamente positivas
+estocasticámente positivas
 \emph default
  
 \begin_inset Formula $\Omega_{p}$
 \end_inset
 
-.Diremos que 
+.
+ Diremos que 
 \begin_inset Formula $G\in\Omega_{p}$
 \end_inset
 
@@ -2541,10 +2774,10 @@ p_{2}=\int g\left(x_{2}\right)\left[1-G\left(-x_{2}\right)\right]dx_{2}>\int g\l
 y luego 
 \begin_inset Formula 
 \[
-\overline{T}\stackrel{p}{\rightarrow p_{2}\left(F,\theta\right)=\begin{cases}
-\nicefrac{1}{2} & \text{si }F\left(t-\theta\right)\in\Omega_{s}\land\theta=0\\
+\overline{T}\rightarrow p_{2}\left(F,\theta\right)=\begin{cases}
+\nicefrac{1}{2} & \text{si }F\in\Omega_{0}\left(F\in\Omega_{s}\land\theta=0\right)\\
 >\nicefrac{1}{2} & \text{si }F\in\Omega_{p}
-\end{cases}}
+\end{cases}
 \]
 
 \end_inset
@@ -2577,23 +2810,23 @@ Vale notar que cuando
 
 \begin_layout Standard
 y si 
-\begin_inset Formula $\Omega_{>}=\left\{ F\text{ con unica mediana en \theta>0}\right\} $
-\end_inset
-
- 
-\begin_inset Formula $\left(\Omega_{s}\cap\Omega_{>}\right)\subset\Omega_{p}$
+\begin_inset Formula $\Omega_{>}=\left\{ F\text{ con única mediana en \theta>0}\right\} \Rightarrow\Omega_{1}=\left(\Omega_{s}\cap\Omega_{>}\right)\subset\Omega_{p}$
 \end_inset
 
 .
- Luego, 
+ Luego, el test basado en 
 \begin_inset Formula $\overline{T}$
 \end_inset
 
- es un test consistente para las hipotesis originales.
+ (o equivalentemente, 
+\begin_inset Formula $T^{+}$
+\end_inset
+
+) será test consistente para las hipótesis originales.
 \end_layout
 
 \begin_layout Subsection
-Teorema de Proyeccion
+Teorema de Proyección
 \end_layout
 
 \begin_layout Theorem
@@ -2603,11 +2836,11 @@ name "thm:proyeccion"
 
 \end_inset
 
-(de Proyeccion) Sea 
+(de Proyección) Sea 
 \begin_inset Formula $X_{i},\dots,X_{n}$
 \end_inset
 
-una muestra aleatorio con distribucion arbitrataria 
+ una muestra aleatoria con distribución arbitrataria 
 \begin_inset Formula $X_{i}\simiid F\:\forall i\in\left[n\right]$
 \end_inset
 
@@ -2653,7 +2886,7 @@ g_{i}^{\star}\left(x\right)=\e\left(V\big|X_{i}=x\right)
 
  se denomina la 
 \series bold
-proyeccion de V
+proyección de V
 \series default
  sobre la clase de VAs independientes, y se cumple que
 \begin_inset Formula 
@@ -2680,7 +2913,7 @@ Sumando y restando
 \e\left(V-V_{p}\right)= & \e\left(V-\sum_{i}g_{i}^{\star}\left(X_{i}\right)\right)=\e\left(V-g_{i}^{\star}\left(X_{i}\right)-\sum_{i\neq j}g_{j}^{\star}\left(X_{j}\right)\right)\\
 = & \e\left[\e\left(V-g_{i}^{\star}\left(X_{i}\right)-\sum_{i\neq j}g_{j}^{\star}\left(X_{j}\right)\right)\Big|X_{i}\right]\\
 = & \e\left[\e\left(V\big|X_{i}\right)-\e\left(g_{i}^{\star}\left(X_{i}\right)\right)-\sum_{i\neq j}\e\left(g_{j}^{\star}\left(X_{j}\right)\big|X_{i}\right)\right]\\
-= & particiones\e\left[\cancel{\e\left(V\big|X_{i}\right)}-\cancel{\e\left(V\big|X_{i}\right)}-\sum_{i\neq j}\e\left(g_{j}^{\star}\left(X_{j}\right)\right)\right] & g_{j}^{\star}\left(X_{j}\right)\perp X_{i}\\
+= & \e\left[\cancel{\e\left(V\big|X_{i}\right)}-\cancel{\e\left(V\big|X_{i}\right)}-\sum_{i\neq j}\e\left(g_{j}^{\star}\left(X_{j}\right)\right)\right] & g_{j}^{\star}\left(X_{j}\right)\perp X_{i}\\
 = & \e\left[-\sum_{i\neq j}\e\left(\e\left(V\big|X_{j}\right)\right)\right]=\e\left[-\sum_{i\neq j}\e V\right]=0
 \end{align*}
 
@@ -2690,9 +2923,6 @@ Sumando y restando
 \end_layout
 
 \begin_layout Proof
-\begin_inset Newpage pagebreak
-\end_inset
-
 Retomando la expresion anterior,
 \end_layout
 
@@ -2722,7 +2952,7 @@ con igualdad estricta
 \begin_inset Formula $W=0$
 \end_inset
 
-, obtenemos la expresion de la varianza:
+, obtenemos la expresión de las varianzas:
 \end_layout
 
 \begin_layout Proof
@@ -2737,25 +2967,25 @@ con igualdad estricta
 \end_layout
 
 \begin_layout Standard
-En general, bajo la hipotesis nula, los estadisticos de los test no parametricos
+En general, bajo la hipótesis nula, los estadísticos de los test no paramétricos
  que consideramos se pueden expresar como una suma (de funciones) de variables
- aleatorias independienets entre si, y contamos con toda una artilleria
- para probar la normalidad asintotica de expresiones bajo esas condiciones.
- Bajo la hipotesis alternativa, sin embargo, es comun perder la independencia
- entre dichas expresiones, y por ende necesitamos una expresion alternativa
- de los estadisticos sobre la que podamos dar alguna aproximacion en grandes
- numeros.
+ aleatorias independientes entre sí, y contamos con toda una artillería
+ para probar la normalidad asintótica de expresiones bajo esas condiciones.
+ Sin embargo, bajo la hipótesis alternativa es común perder la independencia
+ entre dichas expresiones, y por ende necesitamos una expresión alternativa
+ de los estadísticos sobre la que podamos dar alguna aproximación en grandes
+ números.
 \end_layout
 
 \begin_layout Standard
-Intuitivamente, el teorema de proyeccion nos ofrece una solucion elegante.
+Intuitivamente, el teorema de proyección nos ofrece una solucion elegante.
  Primero, hay que notar que 
 \begin_inset Formula $\forall i,\:g_{i}^{\star}\left(X_{i}\right)=\e\left(V\big|X_{i}\right)$
 \end_inset
 
  es una VA que 
 \emph on
-dependen unicamente de 
+depende únicamente de 
 \emph default
 
 \begin_inset Formula $X_{i}$
@@ -2769,7 +2999,7 @@ dependen unicamente de
 \begin_inset Formula $V=\sum_{i}g_{i}^{\star}$
 \end_inset
 
-es nuevamente una funcion lineal de VA independientes con 
+es una función lineal de VA independientes con 
 \begin_inset Formula $\e=0$
 \end_inset
 
@@ -2778,27 +3008,15 @@ es nuevamente una funcion lineal de VA independientes con
 \begin_inset Formula $n\rightarrow\infty$
 \end_inset
 
-, podemos pensar que salvo casos patologicos, la influencia de cada 
-\begin_inset Formula $X_{i}$
+, podemos pensar que salvo casos patológicos, el espacio de las 
+\begin_inset Formula $g_{i}^{\star}\left(X_{i}\right)$
 \end_inset
 
- particular sobre 
-\begin_inset Formula $\e V$
+ contará con suficiente información para que 
+\begin_inset Formula $V_{p}\approx V$
 \end_inset
 
- tiende a cero
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-De mas esta decir que estas afirmaciones se pueden cuantificar formalmente,
- y de hecho eso lo que debemos hacer al aplicar este teorema sobre estadisticos
- particulares.
-\end_layout
-
-\end_inset
-
-, y 
+ y 
 \begin_inset Formula $\e\left(V-V_{p}\right)^{2}\rightarrow0$
 \end_inset
 
@@ -2810,9 +3028,21 @@ De mas esta decir que estas afirmaciones se pueden cuantificar formalmente,
 \begin_inset Formula $f\left(V\right)$
 \end_inset
 
- tambien lo hara.
- Con la distribucion asintotica bajo la alternativa, podemos explorar caracteris
-ticas del estimador como su eficiencia asintotica relativa.
+ también lo haga
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+De más esta decir que se deben cuantificar formalmente estas afirmaciones,
+ y de hecho eso lo que debemos hacer al aplicar este teorema sobre estadísticos
+ particulares.
+\end_layout
+
+\end_inset
+
+.
+ Con la distribución asintótica bajo la alternativa, podemos explorar caracterís
+ticas del estimador como su eficiencia relativa y potencia asintóticas.
 \end_layout
 
 \begin_layout Subsection
@@ -2843,13 +3073,13 @@ Sean
 \end_inset
 
  simétrica, pero sí que la diferencia entre ambas distribuciones es únicamente
- de posición, n de forma.
+ de posición, no de forma.
  Sea 
 \begin_inset Formula $\Delta=\theta_{x}-\theta_{y}$
 \end_inset
 
 , y se desea testear 
-\begin_inset Formula $H_{0}:\Delta=0\;vs.\;H_{1}:\Delta>0$
+\begin_inset Formula $H_{0}\coloneqq\Delta=0\;vs.\;H_{1}\coloneqq\Delta>0$
 \end_inset
 
 .
@@ -2932,7 +3162,7 @@ Si
 \end_inset
 
  en la muestra combinada, y 
-\begin_inset Formula $R\prime_{j}$
+\begin_inset Formula $R{}_{j}^{\prime}$
 \end_inset
 
  expresa el rango de 
@@ -2947,8 +3177,8 @@ Si
 \begin_inset Formula 
 \begin{align*}
 R\left(Y_{k}\right) & =\#\left\{ i:X_{i}<Y_{k},i\in\left[n\right]\right\} +\#\left\{ j:Y_{j}\leq Y_{k},j\in\left[m\right]\right\} \\
-R\left(Y_{k}\right) & =\sum_{i\in\left[n\right]}\ind\left(Y_{j}>X_{i}\right)+R\prime_{k}\\
-\sum_{k\in\left[m\right]}R\left(Y_{k}\right) & =\sum_{k\in\left[m\right]}\sum_{i\in\left[n\right]}\ind\left(Y_{j}>X_{i}\right)+\sum_{k\in\left[m\right]}R\prime_{k}\\
+R\left(Y_{k}\right) & =\sum_{i\in\left[n\right]}\ind\left(Y_{j}>X_{i}\right)+R{}_{k}^{\prime}\\
+\sum_{k\in\left[m\right]}R\left(Y_{k}\right) & =\sum_{k\in\left[m\right]}\sum_{i\in\left[n\right]}\ind\left(Y_{j}>X_{i}\right)+\sum_{k\in\left[m\right]}R{}_{k}^{\prime}\\
 U & =W+\tfrac{m\left(m+1\right)}{2}
 \end{align*}
 
@@ -2962,12 +3192,11 @@ Nos abocamos luego a derivar la distribución exacta de
 \begin_inset Formula $U$
 \end_inset
 
-, a partir de la cual se pueden obtener las distribuciones exactas para
- 
-\begin_inset Formula $U,\:W$
+, que será idéntica a las de 
+\begin_inset Formula $T,W$
 \end_inset
 
- con mínimo esfuerzo.
+ salvo por un desplazamiento y/o rotación.
 \end_layout
 
 \begin_layout Standard
@@ -3224,7 +3453,7 @@ B Siempre que
 \labelwidthstring 00.00.0000
 C Hay una única forma de sumar 0, y es con 0 elementos.
  Si 
-\begin_inset Formula $\left(m=0\lor k=0\right)\Rightarrow\Delta\left(k,0,n\right)=\begin{cases}
+\begin_inset Formula $\left(m=0\lor k=0\right)\Rightarrow\Delta\left(k,m,n\right)=\begin{cases}
 1 & \text{si }\left(m=0\land k=0\right)\\
 0 & \text{en otro caso}
 \end{cases}$
@@ -3509,7 +3738,14 @@ tablaU(2,2)
 \end_layout
 
 \begin_layout Standard
-Grafiquemos la distribución de 
+La figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:U-10-15"
+
+\end_inset
+
+ muestra la distribución de 
 \begin_inset Formula $U$
 \end_inset
 
@@ -3521,7 +3757,8 @@ Grafiquemos la distribución de
 \begin_inset Formula $\left(m=10,n=15\right)$
 \end_inset
 
-, y convenzámosmos (intuitivamente) de la normalidad asintótica del estadístico
+, y al menos a mí me alcanza para convencerme (intuitivamente) de la normalidad
+ asintótica del estadístico
 \begin_inset Foot
 status open
 
@@ -3535,12 +3772,18 @@ status open
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
 \begin_inset ERT
 status open
 
 \begin_layout Plain Layout
 
-<<S-tita,fig=T,width=7,height=7,eps=T,pdf=T>>=
+<<MWW-10-15,fig=T,width=7,height=7,eps=T,pdf=T>>=
 \end_layout
 
 \begin_layout Plain Layout
@@ -3558,8 +3801,39 @@ tablaU(10, 15) %>% ggplot(aes(rango, probs)) + geom_col(width = 0.5)
 
 \end_layout
 
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $p_{10,15}\left(k\right),$
+\end_inset
+
+o probabilidad puntual de para 
+\begin_inset Formula $m=10,n=15$
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:U-10-15"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
-Apendice
+Apéndice
 \end_layout
 
 \begin_layout Subsection
@@ -3615,13 +3889,13 @@ Sea
 
 \begin_layout Standard
 donde 
-\begin_inset Formula $E_{G}(T(X_{1},...,X_{n}))=E(T|X_{i}\stackrel{iid}{\sim}G)$
+\begin_inset Formula $E_{G}\left(T\left(X_{1},...,X_{n}\right)\right)=E\left(T\big|X_{i}\stackrel{iid}{\sim}G\right)$
 \end_inset
 
 .
  Es decir, que el nivel de significación del test se mantiene acotado por
- encima del cero para toda la sucesión, mientras que la potencia tiende
- a 1 para la alternativa, a medida que aumenta el tamaño muestral.
+ encima de 0 para toda la sucesión, mientras que la potencia tiende a 1
+ para la alternativa, a medida que aumenta el tamaño muestral.
 \end_layout
 
 \begin_layout Standard
@@ -3815,7 +4089,7 @@ Pero por definición de convergencia en probabilidad,
 \begin_inset Formula $\forall F^{\prime}\in\Omega_{c}$
 \end_inset
 
-
+.
 \end_layout
 
 \end_body
