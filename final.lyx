@@ -2680,7 +2680,7 @@ Sumando y restando
 \e\left(V-V_{p}\right)= & \e\left(V-\sum_{i}g_{i}^{\star}\left(X_{i}\right)\right)=\e\left(V-g_{i}^{\star}\left(X_{i}\right)-\sum_{i\neq j}g_{j}^{\star}\left(X_{j}\right)\right)\\
 = & \e\left[\e\left(V-g_{i}^{\star}\left(X_{i}\right)-\sum_{i\neq j}g_{j}^{\star}\left(X_{j}\right)\right)\Big|X_{i}\right]\\
 = & \e\left[\e\left(V\big|X_{i}\right)-\e\left(g_{i}^{\star}\left(X_{i}\right)\right)-\sum_{i\neq j}\e\left(g_{j}^{\star}\left(X_{j}\right)\big|X_{i}\right)\right]\\
-= & \e\left[\cancel{\e\left(V\big|X_{i}\right)}-\cancel{\e\left(V\big|X_{i}\right)}-\sum_{i\neq j}\e\left(g_{j}^{\star}\left(X_{j}\right)\right)\right] & g_{j}^{\star}\left(X_{j}\right)\perp X_{i}\\
+= & particiones\e\left[\cancel{\e\left(V\big|X_{i}\right)}-\cancel{\e\left(V\big|X_{i}\right)}-\sum_{i\neq j}\e\left(g_{j}^{\star}\left(X_{j}\right)\right)\right] & g_{j}^{\star}\left(X_{j}\right)\perp X_{i}\\
 = & \e\left[-\sum_{i\neq j}\e\left(\e\left(V\big|X_{j}\right)\right)\right]=\e\left[-\sum_{i\neq j}\e V\right]=0
 \end{align*}
 
@@ -3197,8 +3197,8 @@ base
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-A La suma de elementos positivos (rangos) es siempre positiva:
-\begin_inset Formula $\Delta\left(k,m,n\right)=0\:\forall\:k<0$
+A La suma de elementos positivos (rangos) nunca es negativa: si 
+\begin_inset Formula $k<0\Rightarrow\Delta\left(k,m,n\right)=0$
 \end_inset
 
 
@@ -3222,18 +3222,15 @@ B Siempre que
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-C Siempre que 
-\begin_inset Formula $m=0\Rightarrow U=0$
-\end_inset
-
-: 
-\begin_inset Formula $\Delta\left(k,0,n\right)=\begin{cases}
-1 & \text{si }k=0\\
+C Hay una única forma de sumar 0, y es con 0 elementos.
+ Si 
+\begin_inset Formula $\left(m=0\lor k=0\right)\Rightarrow\Delta\left(k,0,n\right)=\begin{cases}
+1 & \text{si }\left(m=0\land k=0\right)\\
 0 & \text{en otro caso}
 \end{cases}$
 \end_inset
 
-
+ 
 \end_layout
 
 \begin_layout Standard
@@ -3249,12 +3246,12 @@ Veamos que la fórmula es consistente con el ejemplo anterior con
 \begin{align*}
 \Delta\left(1,2,2\right) & =\Delta\left(1-\left(2+2\right),2-1,2\right)+\Delta\left(1,2,2-1\right)\\
  & =\cancelto{0\left(A\right)}{\Delta\left(-3,1,2\right)}+\Delta\left(1,2,1\right)\\
- & =\cancelto{0\left(A\right)}{\Delta\left(-2,1,2\right)}+\cancelto{0\left(B\right)}{\Delta\left(1,2,0\right)}\\
+ & =\cancelto{0\left(A\right)}{\Delta\left(-2,1,1\right)}+\cancelto{0\left(B\right)}{\Delta\left(1,2,0\right)}\\
  & =0 & p_{2,2}\left(1\right)=\tfrac{0}{6}\\
 \left(\dots\right)\\
 \Delta\left(5,2,2\right) & =\Delta\left(1,1,2\right)+\Delta\left(5,2,1\right)\\
- & =\cancelto{0\left(A\right)}{\Delta\left(-2,0,2\right)}+\cancelto{1\left(B\right)}{\Delta\left(1,1,0\right)}+\Delta\left(2,1,1\right)+\cancelto{0\left(B\right)}{\Delta\left(5,2,0\right)}\\
- & =1+\cancelto{1\left(C\right)}{\Delta\left(0,0,1\right)}+\cancelto{0\left(B\right)}{\Delta\left(2,1,0\right)}\\
+ & =\cancelto{0\left(A\right)}{\Delta\left(-2,0,2\right)}+\Delta\left(1,1,1\right)+\Delta\left(2,1,1\right)+\cancelto{0\left(B\right)}{\Delta\left(5,2,0\right)}\\
+ & =\cancelto{0\left(A\right)}{\Delta\left(-1,0,1\right)}+\cancelto{1\left(B\right)}{\Delta\left(1,1,0\right)}+\cancelto{1\left(C\right)}{\Delta\left(0,0,1\right)}+\cancelto{0\left(B\right)}{\Delta\left(2,1,0\right)}\\
 \Delta\left(5,2,2\right) & =2 & p_{2,2}\left(5\right)=\tfrac{2}{6}\\
 \left(\dots\right)
 \end{align*}
@@ -3303,19 +3300,7 @@ explote
 
  rápidamente.
  A continuación, proponemos una implementación en R, y la usamos para computar
- la distribución exacta del ejemplo, y graficar la distribución de 
-\begin_inset Formula $U$
-\end_inset
-
- bajo 
-\begin_inset Formula $H_{0}$
-\end_inset
-
- para un ejemplo moderadamente grande 
-\begin_inset Formula $\left(m=10,n=15\right)$
-\end_inset
-
- y convencernos de la distribución asintóticamente normal del estadístico:
+ la distribución exacta del ejemplo:
 \end_layout
 
 \begin_layout Standard
@@ -3329,7 +3314,7 @@ status open
 
 \begin_layout Plain Layout
 
-library(tidyverse)
+# Defino el cache/memoria de la funcion
 \end_layout
 
 \begin_layout Plain Layout
@@ -3349,7 +3334,7 @@ max_k <- sum( (max_m+1):(max_n+max_m) )
 
 \begin_layout Plain Layout
 
-memW <- array(dim = c(max_n, max_n, max_k))
+memU <- array(dim = c(max_k, max_m, max_n))
 \end_layout
 
 \begin_layout Plain Layout
@@ -3358,7 +3343,12 @@ memW <- array(dim = c(max_n, max_n, max_k))
 
 \begin_layout Plain Layout
 
-A <- function(n, m ,k) {
+# A falta del caracter 'Delta', usamos 'A'
+\end_layout
+
+\begin_layout Plain Layout
+
+A <- function(k, m, n) {
 \end_layout
 
 \begin_layout Plain Layout
@@ -3368,32 +3358,22 @@ A <- function(n, m ,k) {
 
 \begin_layout Plain Layout
 
-  if (k < 0) { return(0) }
+  if (k < 0) { return(0) } # Regla A
 \end_layout
 
 \begin_layout Plain Layout
 
-  if (k == 0 | n == 0 | m == 0) {
+  if (n == 0) { return(k==m*(m+1)/2) } # Regla B
 \end_layout
 
 \begin_layout Plain Layout
 
-    if (n == 0 & k == 0) { return(1) 
+  if (m == 0 | k == 0) { return(k==0 & m == 0) } # Regla C
 \end_layout
 
 \begin_layout Plain Layout
 
-    } else if (m == 0 & (k==n*(n+1)/2)) { return(1)
-\end_layout
-
-\begin_layout Plain Layout
-
-    } else { return (0) }
-\end_layout
-
-\begin_layout Plain Layout
-
-  }
+  
 \end_layout
 
 \begin_layout Plain Layout
@@ -3403,7 +3383,12 @@ A <- function(n, m ,k) {
 
 \begin_layout Plain Layout
 
-  if (!is.na(memW[n,m,k])) { return(memW[n,m,k]) }
+  if (!is.na(memU[k,m,n])) { return(memU[k,m,n]) }
+\end_layout
+
+\begin_layout Plain Layout
+
+  
 \end_layout
 
 \begin_layout Plain Layout
@@ -3413,12 +3398,12 @@ A <- function(n, m ,k) {
 
 \begin_layout Plain Layout
 
-  valor <- A(n-1, m, k-(m+n)) + A(n, m-1, k)
+  valor <- A(k-(m+n), m-1, n) + A(k, m, n-1)
 \end_layout
 
 \begin_layout Plain Layout
 
-  memW[n,m,k] <<- valor
+  memU[k,m,n] <<- valor
 \end_layout
 
 \begin_layout Plain Layout
@@ -3437,22 +3422,27 @@ A <- function(n, m ,k) {
 
 \begin_layout Plain Layout
 
-dW <- function(x, n, m) {
+# En R, `dX` es la densidad de la distribucion X
 \end_layout
 
 \begin_layout Plain Layout
 
-  # Devuelve Pr(W = xi | n, m) para cada xi en x
+dU <- function(x, m, n) {
 \end_layout
 
 \begin_layout Plain Layout
 
-  posibles <- map_dbl(x, A, n=n, m=m)
+  # Devuelve Pr(U = xi | n, m) para cada xi en x
 \end_layout
 
 \begin_layout Plain Layout
 
-  totales <- choose(n+m, n)
+  posibles <- map_dbl(x, A, m=m, n=n)
+\end_layout
+
+\begin_layout Plain Layout
+
+  totales <- choose(m+n, m)
 \end_layout
 
 \begin_layout Plain Layout
@@ -3471,37 +3461,91 @@ dW <- function(x, n, m) {
 
 \begin_layout Plain Layout
 
-n <- 2
+tablaU <- function(m, n) {
 \end_layout
 
 \begin_layout Plain Layout
 
-m <- 2
+  tibble(
 \end_layout
 
 \begin_layout Plain Layout
 
-N <- n + m
+	# Dados n, m, el soporte de U esta dado por
 \end_layout
 
 \begin_layout Plain Layout
 
-# Dados n, m, W esta siempre en el rango [n*(n+1)/2, nm + n*(n+1)/2]
+	rango = (m*(m+1)/2):(m*n + m*(m+1)/2),
 \end_layout
 
 \begin_layout Plain Layout
 
-rango <- (n*(n+1)/2):(n*m + n*(n+1)/2)
+	probs = dU(rango, m, n))
 \end_layout
 
 \begin_layout Plain Layout
 
-probs <- dW(rango, n, m)
+}
 \end_layout
 
 \begin_layout Plain Layout
 
-tibble(rango, probs)
+\end_layout
+
+\begin_layout Plain Layout
+
+tablaU(2,2)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Grafiquemos la distribución de 
+\begin_inset Formula $U$
+\end_inset
+
+ bajo 
+\begin_inset Formula $H_{0}$
+\end_inset
+
+ para un ejemplo moderadamente grande 
+\begin_inset Formula $\left(m=10,n=15\right)$
+\end_inset
+
+, y convenzámosmos (intuitivamente) de la normalidad asintótica del estadístico
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+¡Y con qué breve comando se puede conseguir!
+\end_layout
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<S-tita,fig=T,width=7,height=7,eps=T,pdf=T>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+tablaU(10, 15) %>% ggplot(aes(rango, probs)) + geom_col(width = 0.5)
 \end_layout
 
 \begin_layout Plain Layout
@@ -3531,20 +3575,28 @@ Sea
 \begin_inset Formula $\forall\ i\in\left[n\right],\ X_{i}\stackrel{iid}{\sim}F\in\Omega$
 \end_inset
 
-.
- Se dice que la sucesión de tests 
+, y 
 \begin_inset Formula $\{\Phi_{n}\}$
 \end_inset
 
- de nivel asintotico 
+ una sucesión de tests de nivel asintotico 
 \begin_inset Formula $\alpha$
 \end_inset
 
- es consistente para las hipótesis 
+ para las hipótesis 
 \begin_inset Formula $H_{0}:F\in\Omega_{0}\subset\Omega\text{ vs. }H_{1}:F\in\Omega_{1}\subset\Omega$
 \end_inset
 
-, si
+.
+ Se dice que 
+\begin_inset Formula $\{\Phi_{n}\}$
+\end_inset
+
+ es consistente para 
+\begin_inset Formula $F_{1}\in\Omega_{1}$
+\end_inset
+
+ si
 \end_layout
 
 \begin_layout Itemize
@@ -3555,10 +3607,10 @@ Sea
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $E_{F_{1}}(\Phi_{n})\to1\quad\forall\ F_{1}\in\Omega_{1}$
+\begin_inset Formula $E_{F_{1}}(\Phi_{n})\to1$
 \end_inset
 
-,
+
 \end_layout
 
 \begin_layout Standard
@@ -3616,29 +3668,29 @@ Sea
 \begin_inset Formula $H_{0}$
 \end_inset
 
- para valores grandes, para las hipotesis previamente definidas.
+ para valores grandes, para las hipótesis previamente definidas.
  Si
 \end_layout
 
-\begin_layout Standard
+\begin_layout Theorem
 \begin_inset Formula 
 \[
 T_{n}\stackrel{p}{\to}\mu(F)=\begin{cases}
 \mu_{0} & \forall F\in\Omega_{0}\\
->\mu_{0} & \forall F\in\Omega_{c}
+>\mu_{0} & \forall F\in\Omega_{c}\subset\Omega_{1}
 \end{cases}
 \]
 
 \end_inset
 
-y ademas existe 
+y además existe 
 \begin_inset Formula $\sigma_{0}$
 \end_inset
 
  tal que 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Theorem
 \begin_inset Formula 
 \[
 \sqrt{n}\frac{T_{n}-\mu_{0}}{\sigma_{0}}\stackrel{D}{\to}N(0,1)\quad\forall F\in\Omega_{0}
@@ -3646,11 +3698,11 @@ y ademas existe
 
 \end_inset
 
-entonces existe una sucesion de valores 
+entonces existe una sucesión de valores 
 \begin_inset Formula $k_{n}$
 \end_inset
 
- tal que la sucesion de tests 
+ tal que la sucesión de tests 
 \begin_inset Formula $\Phi_{n}=\ind\left(T_{n}\geq k_{n}\right)$
 \end_inset
 
@@ -3659,6 +3711,111 @@ entonces existe una sucesion de valores
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Proof
+Sea 
+\begin_inset Formula $z_{\alpha}\coloneqq k:\pr\left(N\left(0,1\right)>k\right)=\alpha$
+\end_inset
+
+ el cuantil 
+\begin_inset Formula $1-\alpha$
+\end_inset
+
+ de la distribución normal estándar, y elijamos 
+\begin_inset Formula $k_{n}=\mu_{0}+\tfrac{\sigma_{0}}{\sqrt{n}}z_{\alpha}$
+\end_inset
+
+.
+ Luego, el nivel asintótico de 
+\begin_inset Formula $\Phi_{n}$
+\end_inset
+
+ es
+\begin_inset Formula 
+\[
+\alpha_{n}=\e_{H_{0}}\Phi_{n}=\pr_{H_{0}}\left(T_{n}\geq\mu_{0}+\tfrac{\sigma_{0}}{\sqrt{n}}z_{\alpha}\right)=\pr_{H_{0}}\left(\sqrt{n}\frac{T_{n}-\mu_{0}}{\sigma_{0}}\geq z_{\alpha}\right)\rightarrow\alpha
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Tomemos ahora una 
+\begin_inset Formula $F^{\prime}\in\Omega_{c}$
+\end_inset
+
+ fija, y definamos 
+\begin_inset Formula 
+\[
+\epsilon=\frac{\mu\left(F^{\prime}\right)-\mu_{0}}{2}>0
+\]
+
+\end_inset
+
+ Nótese de su definición que 
+\begin_inset Formula $k_{n}\stackrel{n\rightarrow\infty}{\longrightarrow}\mu_{0}$
+\end_inset
+
+ , de manera que para 
+\begin_inset Formula $n^{\prime}$
+\end_inset
+
+ suficientemente grande, 
+\begin_inset Formula $k_{n^{\prime}}<\mu_{0}+\epsilon$
+\end_inset
+
+.
+ Luego,
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\[
+k_{n^{\prime}}<\mu_{0}+\epsilon=\mu\left(F^{\prime}\right)-2\epsilon+\epsilon=\mu\left(F^{\prime}\right)-\epsilon
+\]
+
+\end_inset
+
+Si se cumple que 
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\[
+\left|T_{n}-\mu\left(F^{\prime}\right)\right|\leq\epsilon\Rightarrow T_{n}-\mu\left(F^{\prime}\right)\geq-\epsilon\Rightarrow T_{n}\geq\mu\left(F^{\prime}\right)-\epsilon=k_{n}
+\]
+
+\end_inset
+
+y por ende 
+\begin_inset Formula 
+\[
+\pr_{F^{\prime}}\left(\left|T_{n}-\mu\left(F^{\prime}\right)\leq\epsilon\right|\right)\leq\pr_{F^{\prime}}\left(T-\mu\left(F^{\prime}\right)\geq-\epsilon\right)=\pr_{F^{\prime}}\left(T_{n}\geq k_{n}\right)\leq1
+\]
+
+\end_inset
+
+Pero por definición de convergencia en probabilidad, 
+\begin_inset Formula $\pr_{F^{\prime}}\left(\left|T_{n}-\mu\left(F^{\prime}\right)\leq\epsilon\right|\right)\rightarrow1$
+\end_inset
+
+.
+ En consecuencia 
+\begin_inset Formula $\pr_{F^{\prime}}\left(T_{n}\geq k_{n}\right)\rightarrow1$
+\end_inset
+
+, y 
+\begin_inset Formula $\Phi_{n}$
+\end_inset
+
+ es consistente 
+\begin_inset Formula $\forall F^{\prime}\in\Omega_{c}$
+\end_inset
+
+
 \end_layout
 
 \end_body
