@@ -2824,6 +2824,698 @@ Distribución exacta de los estadísticos del test de Mann-Whitney-Wilcoxon
 
 \end_layout
 
+\begin_layout Standard
+Sean 
+\begin_inset Formula $X_{1}\dots,X_{n}$
+\end_inset
+
+ y 
+\begin_inset Formula $Y_{1},\dots,Y_{m}$
+\end_inset
+
+ dos muestras aleatorias tales que 
+\begin_inset Formula $\forall i\in\left[n\right],\ X_{i}\stackrel{iid}{\sim}F\left(t-\theta_{x}\right),\;\forall j\in\left[m\right],\ Y_{j}\stackrel{iid}{\sim}F\left(t-\theta_{y}\right),\:F\in\Omega_{0}$
+\end_inset
+
+.
+ No hace falta suponer 
+\begin_inset Formula $F$
+\end_inset
+
+ simétrica, pero sí que la diferencia entre ambas distribuciones es únicamente
+ de posición, n de forma.
+ Sea 
+\begin_inset Formula $\Delta=\theta_{x}-\theta_{y}$
+\end_inset
+
+, y se desea testear 
+\begin_inset Formula $H_{0}:\Delta=0\;vs.\;H_{1}:\Delta>0$
+\end_inset
+
+.
+ Wilcoxon (1945) plantea los siguientes estadísticos análogos a 
+\begin_inset Formula $T^{+}$
+\end_inset
+
+ en el problema de una muestra: 
+\begin_inset Formula 
+\[
+U=\sum_{j\in\left[m\right]}R\left(Y_{j}\right)\qquad T=\sum_{i\in\left[n\right]}R\left(X_{i}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+donde 
+\begin_inset Formula $R\left(W_{k}\right)$
+\end_inset
+
+ es el rango del 
+\begin_inset Formula $k$
+\end_inset
+
+-ésimo elemento de 
+\begin_inset Formula $W\in\left\{ X,Y\right\} $
+\end_inset
+
+ en la muestra combinada 
+\begin_inset Formula $\left(X_{1,}\dots,X_{n},Y_{1},\dots,Y_{m}\right)$
+\end_inset
+
+ de tamaño 
+\begin_inset Formula $N=m+n$
+\end_inset
+
+.
+ Cuando 
+\begin_inset Formula $F\in\Omega_{0}$
+\end_inset
+
+ es absolutamente continua y no hay empates, por lo cual 
+\begin_inset Formula $U+T=\tfrac{N\left(N+1\right)}{2}$
+\end_inset
+
+, y basta con conocer la distribución exacta de uno de los dos estadísticos
+ para conocer la de ambos.
+\end_layout
+
+\begin_layout Standard
+Mann y Whitney (1947) proponen un estadístico equivalente con forma 
+\begin_inset Quotes eld
+\end_inset
+
+contable
+\begin_inset Quotes erd
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+W=\sum_{j\in\left[m\right]}\sum_{i\in\left[n\right]}\ind\left(Y_{j}>X_{i}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Si 
+\begin_inset Formula $R_{j}=R\left(Y_{j}\right)$
+\end_inset
+
+ el rango de 
+\begin_inset Formula $Y_{j}$
+\end_inset
+
+ en la muestra combinada, y 
+\begin_inset Formula $R\prime_{j}$
+\end_inset
+
+ expresa el rango de 
+\begin_inset Formula $Y_{j}$
+\end_inset
+
+ en la muestra 
+\begin_inset Formula $Y_{1},\dots,Y_{m}$
+\end_inset
+
+,
+\begin_inset Formula 
+\begin{align*}
+R\left(Y_{k}\right) & =\#\left\{ i:X_{i}<Y_{k},i\in\left[n\right]\right\} +\#\left\{ j:Y_{j}\leq Y_{k},j\in\left[m\right]\right\} \\
+R\left(Y_{k}\right) & =\sum_{i\in\left[n\right]}\ind\left(Y_{j}>X_{i}\right)+R\prime_{k}\\
+\sum_{k\in\left[m\right]}R\left(Y_{k}\right) & =\sum_{k\in\left[m\right]}\sum_{i\in\left[n\right]}\ind\left(Y_{j}>X_{i}\right)+\sum_{k\in\left[m\right]}R\prime_{k}\\
+U & =W+\tfrac{m\left(m+1\right)}{2}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Nos abocamos luego a derivar la distribución exacta de 
+\begin_inset Formula $U$
+\end_inset
+
+, a partir de la cual se pueden obtener las distribuciones exactas para
+ 
+\begin_inset Formula $U,\:W$
+\end_inset
+
+ con mínimo esfuerzo.
+\end_layout
+
+\begin_layout Standard
+Bajo 
+\begin_inset Formula $H_{0}$
+\end_inset
+
+, la muestra combinada 
+\begin_inset Formula $\left(X_{1,}\dots,X_{n},Y_{1},\dots,Y_{m}\right)$
+\end_inset
+
+ tiene 
+\begin_inset Formula $N=m+n$
+\end_inset
+
+ elementos con idéntica distribución, de manera que cualquiera de las 
+\begin_inset Formula $\binom{N}{m}=\tfrac{\left(n+m\right)!}{n!\cdot m!}$
+\end_inset
+
+ formas de elegir 
+\begin_inset Formula $m$
+\end_inset
+
+ posiciones para las 
+\begin_inset Formula $Y_{j}$
+\end_inset
+
+ entre los 
+\begin_inset Formula $N$
+\end_inset
+
+ rangos de la muestra combinada es equiprobable.
+ Basta con contar qué valor toma 
+\begin_inset Formula $U$
+\end_inset
+
+ en cada combinación, y tenemos la distribución exacta.
+\end_layout
+
+\begin_layout Standard
+Por ejemplo, si 
+\begin_inset Formula $n=m=2\Rightarrow N=4$
+\end_inset
+
+ y hay 
+\begin_inset Formula $\binom{4}{2}=6$
+\end_inset
+
+ formas de elegir 2 elementos 
+\begin_inset Formula $\left(R\left(Y_{1}\right),R\left(Y_{2}\right)\right)$
+\end_inset
+
+ entre 4 
+\begin_inset Formula $\left(\left\{ 1,2,3,4\right\} \right)$
+\end_inset
+
+: 
+\begin_inset Formula $\left(1,2\right),\left(1,3\right),\left(1,4\right),\left(2,3\right),\left(2,4\right),\left(3,4\right)$
+\end_inset
+
+.
+ Cada configuración es equiprobable con 
+\begin_inset Formula $p=\tfrac{1}{6}$
+\end_inset
+
+ y 
+\begin_inset Formula $U$
+\end_inset
+
+ vale, respectivamente, 
+\begin_inset Formula $3,4,5,5,6,7$
+\end_inset
+
+.
+ Finalmente, 
+\begin_inset Formula 
+\[
+p_{U}\left(k\big|n=m=2\right)=\begin{cases}
+\nicefrac{1}{6} & \text{si }k\in\left\{ 3,4,6,7\right\} \\
+\nicefrac{1}{3} & \text{si }k=5\\
+0 & \text{en otro caso}
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Este trabajo 
+\begin_inset Quotes eld
+\end_inset
+
+casero
+\begin_inset Quotes erd
+\end_inset
+
+ se vuelve tedioso rápidamente, y como buen matemático vago uno se siente
+ motivado a encontrar alguna definición recursiva fácilmente programable.
+ Ya vimos que aún sin hacer suposición alguna sobre la forma de 
+\begin_inset Formula $F$
+\end_inset
+
+, las 
+\begin_inset Formula $\binom{N}{m}$
+\end_inset
+
+ combinaciones de rangos son equiprobables, de manera que calcular 
+\begin_inset Formula $p_{m,n}\left(k\right)=\pr_{H_{0}}\left(U=k\big|m,n\right)$
+\end_inset
+
+ se reduce a contar de cúantas maneras se puede sumar 
+\begin_inset Formula $k$
+\end_inset
+
+ con 
+\begin_inset Formula $m$
+\end_inset
+
+ enteros distintos menores o iguales a 
+\begin_inset Formula $N=m+n$
+\end_inset
+
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Resulta ser que en teoría de números este tema se conoce con el nombre de
+ particiones, y su tratamiento es bastante más áspero de lo que uno se imagina.
+\end_layout
+
+\end_inset
+
+.
+ Llamémosle 
+\begin_inset Formula $\Delta(k,m,n)$
+\end_inset
+
+ a esta cantidad
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+La fórmula recursiva que sigue es equivalente a la que plantea Hettmansperger,
+ pero la notación difiere considerablemente.
+ En clase no la entendí pero me gustó el ejercicio y la desarrollé por mi
+ cuenta más tarde.
+\end_layout
+
+\end_inset
+
+.
+ Todos los conjuntos de 
+\begin_inset Formula $m$
+\end_inset
+
+ elementos distintos menores o iguales a 
+\begin_inset Formula $N$
+\end_inset
+
+ se pueden dividir de manera mutuamente excluyente y conjuntamente exhaustiva
+ entre aquellos que:
+\end_layout
+
+\begin_layout Itemize
+contienen a 
+\begin_inset Formula $N=m+n$
+\end_inset
+
+ como elemento (y los 
+\begin_inset Formula $m-1$
+\end_inset
+
+ restantes son menores o iguales a 
+\begin_inset Formula $N-1$
+\end_inset
+
+), y los que
+\end_layout
+
+\begin_layout Itemize
+no contienen a 
+\begin_inset Formula $N$
+\end_inset
+
+ (y sus 
+\begin_inset Formula $m$
+\end_inset
+
+ elementos son menores o iguales a 
+\begin_inset Formula $N-1$
+\end_inset
+
+).
+ Luego,
+\begin_inset Formula 
+\begin{align*}
+\Delta\left(k,m,n\right) & =\Delta\left(k-\left(m+n\right),m-1,n\right)+\Delta\left(k,m,n-1\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Como valores 
+\begin_inset Quotes eld
+\end_inset
+
+base
+\begin_inset Quotes erd
+\end_inset
+
+ de la recursión, tenemos que considerar que
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+A La suma de elementos positivos (rangos) es siempre positiva:
+\begin_inset Formula $\Delta\left(k,m,n\right)=0\:\forall\:k<0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+B Siempre que 
+\begin_inset Formula $n=0\Rightarrow U=\tfrac{m\left(m+1\right)}{2}$
+\end_inset
+
+: 
+\begin_inset Formula $\Delta\left(k,m,0\right)=\begin{cases}
+1 & \text{si }k=\tfrac{m\left(m+1\right)}{2}\\
+0 & \text{en otro caso}
+\end{cases}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+C Siempre que 
+\begin_inset Formula $m=0\Rightarrow U=0$
+\end_inset
+
+: 
+\begin_inset Formula $\Delta\left(k,0,n\right)=\begin{cases}
+1 & \text{si }k=0\\
+0 & \text{en otro caso}
+\end{cases}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Veamos que la fórmula es consistente con el ejemplo anterior con 
+\begin_inset Formula $n=m=2,\:\binom{2+2}{2}=6$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\Delta\left(1,2,2\right) & =\Delta\left(1-\left(2+2\right),2-1,2\right)+\Delta\left(1,2,2-1\right)\\
+ & =\cancelto{0\left(A\right)}{\Delta\left(-3,1,2\right)}+\Delta\left(1,2,1\right)\\
+ & =\cancelto{0\left(A\right)}{\Delta\left(-2,1,2\right)}+\cancelto{0\left(B\right)}{\Delta\left(1,2,0\right)}\\
+ & =0 & p_{2,2}\left(1\right)=\tfrac{0}{6}\\
+\left(\dots\right)\\
+\Delta\left(5,2,2\right) & =\Delta\left(1,1,2\right)+\Delta\left(5,2,1\right)\\
+ & =\cancelto{0\left(A\right)}{\Delta\left(-2,0,2\right)}+\cancelto{1\left(B\right)}{\Delta\left(1,1,0\right)}+\Delta\left(2,1,1\right)+\cancelto{0\left(B\right)}{\Delta\left(5,2,0\right)}\\
+ & =1+\cancelto{1\left(C\right)}{\Delta\left(0,0,1\right)}+\cancelto{0\left(B\right)}{\Delta\left(2,1,0\right)}\\
+\Delta\left(5,2,2\right) & =2 & p_{2,2}\left(5\right)=\tfrac{2}{6}\\
+\left(\dots\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Además, se cumple que
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+p_{m,n}\left(k\right)= & \frac{\Delta\left(k,m,n\right)}{\binom{n+m}{m}}=\frac{n!\cdot m!}{\left(n+m\right)!}\Delta\left(k,m,n\right)\\
+= & \frac{m}{\left(m+n\right)}\frac{n!\cdot\left(m-1\right)!}{\left(n+m-1\right)!}\Delta\left(k-\left(m+n\right),m-1,n\right)+\\
+ & \frac{n}{\left(m+n\right)}\frac{\left(n-1\right)!\cdot m!}{\left(n+m-1\right)!}\Delta\left(k,m,n-1\right)\\
+= & \frac{m}{\left(m+n\right)}\frac{\Delta\left(k-\left(m+n\right),m-1,n\right)}{\binom{n+m-1}{m-1}}+\frac{n}{\left(m+n\right)}\frac{\Delta\left(k,m,n-1\right)}{\binom{n-1+m}{n-1}}\\
+p_{m,n}\left(k\right)= & p_{m-1,n}\left(k-\left(m+n\right)\right)+p_{m,n-1}\left(k\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Al programar una función recursiva, se vuelve imperioso 
+\emph on
+cachear
+\emph default
+ (
+\emph on
+i.e.
+\emph default
+, almacenar los resultados computados previamente) cada resultado obtenido,
+ para que la cantidad de instrucciones a ejecutar no 
+\begin_inset Quotes eld
+\end_inset
+
+explote
+\begin_inset Quotes erd
+\end_inset
+
+ rápidamente.
+ A continuación, proponemos una implementación en R, y la usamos para computar
+ la distribución exacta del ejemplo, y graficar la distribución de 
+\begin_inset Formula $U$
+\end_inset
+
+ bajo 
+\begin_inset Formula $H_{0}$
+\end_inset
+
+ para un ejemplo moderadamente grande 
+\begin_inset Formula $\left(m=10,n=15\right)$
+\end_inset
+
+ y convencernos de la distribución asintóticamente normal del estadístico:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<distrib-U>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(tidyverse)
+\end_layout
+
+\begin_layout Plain Layout
+
+max_n <- 50
+\end_layout
+
+\begin_layout Plain Layout
+
+max_m <- 50
+\end_layout
+
+\begin_layout Plain Layout
+
+max_k <- sum( (max_m+1):(max_n+max_m) )
+\end_layout
+
+\begin_layout Plain Layout
+
+memW <- array(dim = c(max_n, max_n, max_k))
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+A <- function(n, m ,k) {
+\end_layout
+
+\begin_layout Plain Layout
+
+  # Devolver valores limites
+\end_layout
+
+\begin_layout Plain Layout
+
+  if (k < 0) { return(0) }
+\end_layout
+
+\begin_layout Plain Layout
+
+  if (k == 0 | n == 0 | m == 0) {
+\end_layout
+
+\begin_layout Plain Layout
+
+    if (n == 0 & k == 0) { return(1) 
+\end_layout
+
+\begin_layout Plain Layout
+
+    } else if (m == 0 & (k==n*(n+1)/2)) { return(1)
+\end_layout
+
+\begin_layout Plain Layout
+
+    } else { return (0) }
+\end_layout
+
+\begin_layout Plain Layout
+
+  }
+\end_layout
+
+\begin_layout Plain Layout
+
+  # De estar precomputado, devolver el valor
+\end_layout
+
+\begin_layout Plain Layout
+
+  if (!is.na(memW[n,m,k])) { return(memW[n,m,k]) }
+\end_layout
+
+\begin_layout Plain Layout
+
+  # Si no, calcularlo, cachearlo y devolverlo
+\end_layout
+
+\begin_layout Plain Layout
+
+  valor <- A(n-1, m, k-(m+n)) + A(n, m-1, k)
+\end_layout
+
+\begin_layout Plain Layout
+
+  memW[n,m,k] <<- valor
+\end_layout
+
+\begin_layout Plain Layout
+
+  return(valor)
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+dW <- function(x, n, m) {
+\end_layout
+
+\begin_layout Plain Layout
+
+  # Devuelve Pr(W = xi | n, m) para cada xi en x
+\end_layout
+
+\begin_layout Plain Layout
+
+  posibles <- map_dbl(x, A, n=n, m=m)
+\end_layout
+
+\begin_layout Plain Layout
+
+  totales <- choose(n+m, n)
+\end_layout
+
+\begin_layout Plain Layout
+
+  return(posibles / totales)
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+n <- 2
+\end_layout
+
+\begin_layout Plain Layout
+
+m <- 2
+\end_layout
+
+\begin_layout Plain Layout
+
+N <- n + m
+\end_layout
+
+\begin_layout Plain Layout
+
+# Dados n, m, W esta siempre en el rango [n*(n+1)/2, nm + n*(n+1)/2]
+\end_layout
+
+\begin_layout Plain Layout
+
+rango <- (n*(n+1)/2):(n*m + n*(n+1)/2)
+\end_layout
+
+\begin_layout Plain Layout
+
+probs <- dW(rango, n, m)
+\end_layout
+
+\begin_layout Plain Layout
+
+tibble(rango, probs)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\begin_layout Plain Layout
+
+<<m-10-n-15,fig=T,width=7,height=7,eps=T,pdf=T,echo=F>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Apendice
 \end_layout
