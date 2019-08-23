@@ -28,7 +28,7 @@ theorems-ams
 \output_sync 0
 \bibtex_command default
 \index_command default
-\float_placement tph
+\float_placement H
 \paperfontsize default
 \spacing single
 \use_hyperref false
@@ -549,7 +549,7 @@ cuando es menos probable rechazar la hipótesis nula en caso de que ésta
 \noun off
 \color none
  
-\begin_inset Formula $H_{0}:\theta\in\Theta_{0}\quad vs.\quad H_{1}:\theta\in\Theta_{1}$
+\begin_inset Formula $H_{0}:\theta\in\Theta_{0}\:vs.\:H_{1}:\theta\in\Theta_{1}$
 \end_inset
 
 
@@ -565,10 +565,9 @@ cuando es menos probable rechazar la hipótesis nula en caso de que ésta
 \noun default
 \color inherit
  
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
-
+\begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
 \pr\left(\text{rech. }H_{0}\big|H_{0}\text{ es V}\right) & <\pr\left(\text{rech. }H_{0}\big|H\text{ es F}\right)\\
@@ -1231,10 +1230,30 @@ S\left(\theta\right)>k & \Leftrightarrow\theta<X^{\left(n-k\right)}
 \noun off
 \color none
 Nótese que bajo 
-\begin_inset Formula $H_{0},\:\forall\left(F,\theta,i\right)\in\left(\Omega_{0}\times\mathbb{R}\times\left[n\right]\right),\:Y_{i}=\ind\left(X_{i}-\theta>0\right)\stackrel{iid}{\sim}Ber\left(\frac{1}{2}\right)$
+\begin_inset Formula 
+\[
+H_{0},\:\forall\left(F,\theta,i\right)\in\left(\Omega_{0}\times\mathbb{R}\times\left[n\right]\right),\:Y_{i}=\ind\left(X_{i}-\theta>0\right)\stackrel{iid}{\sim}Ber\left(\tfrac{1}{2}\right)
+\]
+
 \end_inset
 
-, y por ende 
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+y por ende 
 \begin_inset Formula $S\left(\theta\right)\sim Bi\left(n,\frac{1}{2}\right)$
 \end_inset
 
@@ -1262,7 +1281,7 @@ Nótese que bajo
 
 \begin_inset Formula 
 \begin{align*}
-1-\alpha= & 1-\frac{\alpha}{2}-\frac{\alpha}{2}\\
+1-\alpha= & 1-\tfrac{\alpha}{2}-\tfrac{\alpha}{2}\\
 = & \pr\left(S\in\mathbb{R}\right)-\pr\left(S\leq k\right)-\pr\left(S\geq n-k\right)\\
 = & \pr\left(k<S<n-k\right)\\
 \pr\left(k<S<n-k\right)= & \pr\left(S\leq n-(k+1)\cap S>k\right)\\
@@ -1619,13 +1638,19 @@ Para simplificar la notación, consideremos el vector aleatorio
 \end_inset
 
 .
+ Para todo 
+\begin_inset Formula $k\in\mathbb{R}$
+\end_inset
+
+,
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
-\[
-\forall k\in\mathbb{R},\:\pr\left(g\left(\bar{X}\right)\leq k\right)=\pr\left(\mu_{0}-g\left(-\bar{X}\right)\leq k\right)=\pr\left(\mu_{0}-k\leq g\left(-\bar{X}\right)\right)=\pr\left(\mu_{0}-k\leq g\left(\bar{X}\right)\right)
-\]
+\begin{align*}
+\pr\left(g\left(\bar{X}\right)\leq k\right) & =\pr\left(\mu_{0}-g\left(-\bar{X}\right)\leq k\right)=\pr\left(\mu_{0}-k\leq g\left(-\bar{X}\right)\right)\\
+ & =\pr\left(\mu_{0}-k\leq g\left(\bar{X}\right)\right)
+\end{align*}
 
 \end_inset
 
@@ -1638,10 +1663,18 @@ Tomando
 \end_inset
 
 , 
-\begin_inset Formula $\pr\left(g\left(\bar{X}\right)\leq\frac{\mu_{0}}{2}-t\right)=\pr\left(\mu_{0}-\frac{\mu_{0}}{2}-t\leq g\left(\bar{X}\right)\right)=\pr\left(g\left(\bar{X}\right)\geq\frac{\mu_{0}}{2}+t\right)$
+\begin_inset Formula 
+\[
+\pr\left(g\left(\bar{X}\right)\leq\frac{\mu_{0}}{2}-t\right)=\pr\left(\mu_{0}-\frac{\mu_{0}}{2}-t\leq g\left(\bar{X}\right)\right)=\pr\left(g\left(\bar{X}\right)\geq\frac{\mu_{0}}{2}+t\right)
+\]
+
 \end_inset
 
- y por definición, 
+
+\end_layout
+
+\begin_layout Standard
+y 
 \begin_inset Formula $g$
 \end_inset
 
@@ -1717,7 +1750,11 @@ es función de
 
 .
  Luego, 
-\begin_inset Formula $T^{+}\left(\bar{X}\right),T^{+}\left(-\bar{X}\right)$
+\begin_inset Formula $T^{+}\left(\bar{X}\right)$
+\end_inset
+
+ y 
+\begin_inset Formula $T^{+}\left(-\bar{X}\right)$
 \end_inset
 
  tienen la misma distribución
@@ -1725,7 +1762,31 @@ es función de
 status open
 
 \begin_layout Plain Layout
-Se puede probar que si 
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Para completar la demostración
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+, se puede probar que si 
 \begin_inset Formula $\forall i\in\left[n\right],\ X_{i}\stackrel{iid}{\sim}F\in\Omega_{s},\;g\left(X_{1},\dots,X_{n}\right):\mathbb{\mathbb{R}}^{n}\rightarrow\mathbb{R}$
 \end_inset
 
@@ -1749,11 +1810,16 @@ Se puede probar que si
 \begin_inset Formula $T^{+}$
 \end_inset
 
-para completar la demostración, pero ya que el enunciado dice 
+.
+ Como el enunciado dice 
 \begin_inset Quotes eld
 \end_inset
 
-usando...
+usando que 
+\begin_inset Formula $g\dots$
+\end_inset
+
+
 \begin_inset Quotes erd
 \end_inset
 
@@ -1771,7 +1837,11 @@ usando...
 \begin_inset Formula $R_{i}=R\left(X_{i}\right)=R\left(-X_{i}\right)$
 \end_inset
 
- en la muestra ordenada por valores absolutos,
+ en la muestra 
+\emph on
+ordenada por valores absolutos
+\emph default
+,
 \end_layout
 
 \begin_layout Standard
@@ -1787,7 +1857,11 @@ usando...
 
 \end_inset
 
-Y 
+
+\end_layout
+
+\begin_layout Standard
+y 
 \begin_inset Formula $T^{+}$
 \end_inset
 
@@ -1796,6 +1870,10 @@ Y
 \end_inset
 
 .
+\begin_inset Newpage pagebreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -1808,15 +1886,19 @@ Consistencia del test de Wilcoxon
 
 \begin_layout Standard
 Sea 
-\begin_inset Formula $\overrightarrow{X}=(X_{1},...,X_{n})$
+\begin_inset Formula $X_{1},...,X_{n}$
 \end_inset
 
  una muestra aleatoria tal que 
-\begin_inset Formula $\forall i\in\left[n\right],\ X_{i}\stackrel{iid}{\sim}F\left(t-\theta\right),\:F\in\Omega_{s}$
+\begin_inset Formula $\forall i\in\left[n\right],\ X_{i}\stackrel{iid}{\sim}F\left(t-\theta\right)$
 \end_inset
 
- (distribuciones simétricas con única mediana en 0), y las hipótesis a testear
- 
+, con 
+\begin_inset Formula $F\in\Omega_{s}$
+\end_inset
+
+ (distribuciones simétricas con única mediana en 0), y sean las hipótesis
+ a testear 
 \begin_inset Formula $H_{0}\coloneqq\theta=0\quad vs.\quad H_{1}\coloneqq\theta>0.$
 \end_inset
 
@@ -1824,7 +1906,11 @@ Sea
 \end_layout
 
 \begin_layout Itemize
-el rango de 
+el 
+\emph on
+rango
+\emph default
+ de 
 \begin_inset Formula $\left|X_{i}\right|$
 \end_inset
 
@@ -1866,7 +1952,11 @@ función inversa
 \end_layout
 
 \begin_layout Itemize
-la "función signo" 
+la 
+\emph on
+función signo
+\emph default
+ 
 \begin_inset Formula $sg\left(x\right)=\ind\left(x>0\right)$
 \end_inset
 
@@ -1890,8 +1980,16 @@ Nótese que con
 \begin_inset Formula $F$
 \end_inset
 
- absolutamente continua no hay empates, y 
-\begin_inset Formula $D_{R_{i}}=i,\:R_{D_{j}}=j,\:\left[n\right]=\left\{ 1,\dots,n\right\} =\left\{ R_{1},\dots,R_{n}\right\} =\left\{ D_{1},\dots,D_{n}\right\} .$
+ absolutamente continua no hay empates, así que 
+\begin_inset Formula $D_{R_{i}}=i$
+\end_inset
+
+, 
+\begin_inset Formula $R_{D_{j}}=j$
+\end_inset
+
+ y 
+\begin_inset Formula $\left[n\right]=\left\{ 1,\dots,n\right\} =\left\{ R_{1},\dots,R_{n}\right\} =\left\{ D_{1},\dots,D_{n}\right\} .$
 \end_inset
 
 
@@ -1935,7 +2033,7 @@ Para probar la normalidad asintótica, veremos que bajo
 \begin_inset Formula $H_{0},\:T^{+}$
 \end_inset
 
-se puede expresar como combinación lineal de variables independientes entre
+ se puede expresar como combinación lineal de variables independientes entre
  sí.
  Para la convergencia en probabilidad de 
 \begin_inset Formula $T^{+},$
@@ -1991,39 +2089,16 @@ Como
 \end_inset
 
 .
- Recordemos que como 
-\begin_inset Formula $\theta=0,\:F\in\Omega_{s}\Rightarrow F\left(-t-0\right)=1-F\left(t-0\right),$
+ Como 
+\begin_inset Formula $F$
 \end_inset
 
- y veamos que 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-
-\begin_inset Formula $sg\left(X_{i}\right)\perp\left|X_{i}\right|$
+ es simétrica alrededor del 0, 
+\begin_inset Formula $F\left(-t\right)=1-F\left(t\right)$
 \end_inset
 
-:
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\strikeout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
-
+.
+ Luego, 
 \begin_inset Formula 
 \begin{align*}
 \pr\left(sg\left(X_{i}\right)=0\cap\left|X_{i}\right|\leq k\right) & =\pr\left(X_{i}\leq0\cap-k\leq X_{i}\leq k\right)\\
@@ -2047,12 +2122,24 @@ Un planteo similar para
 
 .
  Como 
-\begin_inset Formula $R_{k}=f\left(\left|X_{1}\right|,\dots,\left|X_{n}\right|\right),\:sg\left(X_{i}\right)\perp\left|X_{j}\right|\forall j\in\left[n\right]\Rightarrow sg\left(X_{i}\right)\perp R_{k}\forall i,k\in\left[n\right]^{2}$
+\begin_inset Formula $R_{k}=f\left(\left|X_{1}\right|,\dots,\left|X_{n}\right|\right)$
+\end_inset
+
+ y 
+\begin_inset Formula $sg\left(X_{i}\right)\perp\left|X_{j}\right|\forall j\in\left[n\right]$
+\end_inset
+
+, entonces 
+\begin_inset Formula $sg\left(X_{i}\right)\perp R_{k}\:\forall\:i,k\in\left[n\right]^{2}$
 \end_inset
 
 .
  Análogamente, 
-\begin_inset Formula $D_{k}=g\left(\left|X_{1}\right|,\dots,\left|X_{n}\right|\right)\Rightarrow sg\left(X_{i}\right)\perp D_{k}\forall i,k\in\left[n\right]^{2}$
+\begin_inset Formula $D_{k}=g\left(\left|X_{1}\right|,\dots,\left|X_{n}\right|\right)$
+\end_inset
+
+ y 
+\begin_inset Formula $sg\left(X_{i}\right)\perp D_{k}\:\forall\:i,k\in\left[n\right]^{2}$
 \end_inset
 
 .
@@ -2093,7 +2180,7 @@ Sea
 \pr\left(\bigcap_{i\in\left[n\right]}sg\left(X_{D_{i}}\right)=s_{i}\right) & =\sum_{d}\left[\pr\left(\bigcap_{i\in\left[n\right]}sg\left(X_{D_{i}}\right)=s_{i}\big|D=d\right)\pr\left(D=d\right)\right]\\
  & =\sum_{d}\left[\pr\left(\bigcap_{i\in\left[n\right]}sg\left(X_{d_{i}}\right)=s_{i}\right)\pr\left(D=d\right)\right]\\
  & =\sum_{d}\left[\left(\prod_{i\in\left[n\right]}\pr\left(sg\left(X_{d_{i}}\right)=s_{i}\right)\right)\pr\left(D=d\right)\right] & sg\left(X_{i}\right)\perp sg\left(X_{j}\right)\\
- & =\sum_{d}\left[\left[\prod_{i\in\left[n\right]}\frac{1}{2}\right]\pr\left(D=d\right)\right]\\
+ & =\sum_{d}\left[\left[\prod_{i\in\left[n\right]}\tfrac{1}{2}\right]\pr\left(D=d\right)\right]\\
  & =\left(\frac{1}{2}\right)^{n}\overbrace{\sum_{d}\left[\pr\left(D=d\right)\right]}^{=1}\\
 \pr\left(\bigcap_{i\in\left[n\right]}sg\left(X_{D_{i}}\right)=s_{i}\right) & =2^{-n}\:\forall\left(s_{1},\dots,s_{n}\right)\in\left\{ 0,1\right\} ^{n}
 \end{align*}
@@ -2108,16 +2195,27 @@ Es decir, las
 \begin_inset Formula $2^{n}$
 \end_inset
 
-posibles configuraciones de signos son equiprobables, y 
-\begin_inset Formula $\forall\left(s_{1},\dots,s_{n}\right)\in\left\{ 0,1\right\} ^{n}$
+ posibles configuraciones de signos son equiprobables, y para todo 
+\begin_inset Formula $\left(s_{1},\dots,s_{n}\right)\in\left\{ 0,1\right\} ^{n}$
 \end_inset
 
 , 
-\begin_inset Formula $\pr\left(\bigcap_{i\in\left[n\right]}W_{i}=s_{i}\right)=\prod_{i\in\left[n\right]}\pr\left(W_{i}=s_{i}\right)=2^{-n}$
+\begin_inset Formula 
+\[
+\pr\left(\bigcap_{i\in\left[n\right]}W_{i}=s_{i}\right)=\prod_{i\in\left[n\right]}\pr\left(W_{i}=s_{i}\right)=2^{-n}
+\]
+
 \end_inset
 
- y 
-\begin_inset Formula $\pr\left(W_{i}=1\right)=\pr\left(W_{i}=0\right)=\frac{1}{2}\:\forall i\in\left[n\right].$
+
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\[
+\pr\left(W_{i}=1\right)=\pr\left(W_{i}=0\right)=\frac{1}{2}\:\forall i\in\left[n\right]
+\]
+
 \end_inset
 
  Luego, 
@@ -2182,7 +2280,7 @@ Es una variante del Teorema Central del Límite de Lindeberg.
 \end_layout
 
 \begin_layout Standard
-Sean 
+Sean ahora 
 \begin_inset Formula $X_{i}=W_{i}-\frac{1}{2},\:a_{i}=i$
 \end_inset
 
@@ -2313,22 +2411,25 @@ donde
  
 \begin_inset Formula 
 \begin{align*}
-\e\left(T^{+}\right) & =\e\left[\sum_{i=1}^{j}\sum_{j=1}^{n}\ind\left(X_{i}+X_{j}>0\right)\right]=\sum_{i=1}^{j}\sum_{j=1}^{n}\e\left[\ind\left(X_{i}+X_{j}>0\right)\right]=\sum_{i=1}^{j}\sum_{j=1}^{n}\pr\left(X+X_{j}>0\right)\\
+\e\left(T^{+}\right) & =\e\left[\sum_{i=1}^{j}\sum_{j=1}^{n}\ind\left(X_{i}+X_{j}>0\right)\right]=\sum_{i=1}^{j}\sum_{j=1}^{n}\pr\left(X+X_{j}>0\right)\\
 \e\left(T^{+}\right) & =\sum_{i=j}\pr\left(X_{i}>0\right)+\sum_{i<j}\pr\left(X_{i}+X_{j}>0\right)
 \end{align*}
 
 \end_inset
 
  Sean ahora 
-\begin_inset Formula $p_{1}=\pr\left(X_{i}>0\right),\ p_{2}=\pr\left(X_{i}+X_{j}>0\big|i\neq j\right)$
+\begin_inset Formula 
+\[
+p_{1}=\pr\left(X_{i}>0\right)\qquad p_{2}=\pr\left(X_{i}+X_{j}>0\big|i\neq j\right)
+\]
+
 \end_inset
 
- (cuando 
-\begin_inset Formula $i=j,\:\pr\left(X_{i}+X_{j}>0\right)=\pr\left(2X_{i}>0\right)=p_{1}$
-\end_inset
 
-).
- Se observa que hay 
+\end_layout
+
+\begin_layout Standard
+Se observa que hay 
 \begin_inset Formula $n$
 \end_inset
 
@@ -2513,21 +2614,26 @@ elementos.
 \begin_layout Standard
 elementos.
  Luego, sólo tenemos que preocuparnos por términos de las formas 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-\cov\left(T_{11},T_{11}\right)=\var T_{11}\quad\cov\left(T_{12},T_{12}\right)=\var T_{12}\quad\cov\left(T_{11,}T_{12}\right)\quad\cov\left(T_{12},T_{13}\right)
-\]
-
+\begin_inset Formula $\cov\left(T_{11},T_{11}\right)=\var\left(T_{11}\right)$
 \end_inset
 
+, 
+\begin_inset Formula $\cov\left(T_{12},T_{12}\right)=\var\left(T_{12}\right)$
+\end_inset
 
+, 
+\begin_inset Formula $\cov\left(T_{11,}T_{12}\right)$
+\end_inset
+
+ y 
+\begin_inset Formula $\cov\left(T_{12},T_{13}\right)$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
-Y de lo expuesto,
+De lo expuesto surge que
 \end_layout
 
 \begin_layout Standard
@@ -2547,10 +2653,20 @@ Entonces,
 \begin_inset Formula 
 \begin{align*}
 \var\left(T^{+}\right)= & \sum_{i=j}\:\sum_{k\leq l}\cov\left(T_{ij},T_{kl}\right)+\sum_{i<j}\:\sum_{k\leq l}\cov\left(T_{ij},T_{kl}\right)\\
-= & n\left(\sum_{k\leq l}\cov\left(T_{ii},T_{kl}\right)\right)+\frac{n\left(n-1\right)}{2}\left(\sum_{k\leq l}\cov\left(T_{ij},T_{kl}\right)\right)\\
-= & \frac{n\left(n-1\right)}{2}\var\left(T_{12}\right)+2\frac{n\left(n-1\right)}{2}\cov\left(T_{11},T_{12}\right)+2\frac{n\left(n-1\right)}{2}\left(n-2\right)\cov\left(T_{12},T_{13}\right)\\
- & +n\var\left(T_{11}\right)+n\left(n-1\right)\cov\left(T_{11},T_{12}\right)\\
-\var\left(T^{+}\right)= & n\var\left(T_{11}\right)+\frac{n\left(n-1\right)}{2}\var\left(T_{12}\right)+2n\left(n-1\right)\cov\left(T_{11},T_{12}\right)\\
+= & n\sum_{k\leq l}\cov\left(T_{ii},T_{kl}\right)+\tfrac{n\left(n-1\right)}{2}\sum_{k\leq l}\cov\left(T_{ij},T_{kl}\right)\\
+= & \tfrac{n\left(n-1\right)}{2}\var\left(T_{12}\right)+2\tfrac{n\left(n-1\right)}{2}\cov\left(T_{11},T_{12}\right)+\tfrac{n\left(n-1\right)}{2}2\left(n-2\right)\cov\left(T_{12},T_{13}\right)\\
+ & +n\var\left(T_{11}\right)+n\left(n-1\right)\cov\left(T_{11},T_{12}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\var\left(T^{+}\right)= & n\var\left(T_{11}\right)+\tfrac{n\left(n-1\right)}{2}\var\left(T_{12}\right)+2n\left(n-1\right)\cov\left(T_{11},T_{12}\right)\\
  & +n\left(n-1\right)\left(n-2\right)\cov\left(T_{12},T_{13}\right)
 \end{align*}
 
@@ -2613,7 +2729,8 @@ Finalmente,
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
-\var\left(T^{+}\right)= & np_{1}\left(1-p_{1}\right)+\frac{n\left(n-1\right)}{2}p_{2}\left(1-p_{2}\right)+2n\left(n-1\right)\left(p_{3}-p_{1}\cdot p_{2}\right)+n\left(n-1\right)\left(n-2\right)\left(p_{4}-p_{2}^{2}\right)
+\var\left(T^{+}\right)= & np_{1}\left(1-p_{1}\right)+\frac{n\left(n-1\right)}{2}p_{2}\left(1-p_{2}\right)+2n\left(n-1\right)\left(p_{3}-p_{1}\cdot p_{2}\right)\\
+ & +n\left(n-1\right)\left(n-2\right)\left(p_{4}-p_{2}^{2}\right)
 \end{align*}
 
 \end_inset
@@ -2626,14 +2743,46 @@ Consideremos la esperanza y varianza del estadístico
 \begin_inset Formula $\overline{T}=\frac{T^{+}}{\frac{n\left(n+1\right)}{2}}$
 \end_inset
 
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Elena Martínez sigue a Hettmansperger y divide a 
+\begin_inset Formula $T^{+}$
+\end_inset
+
+por 
+\begin_inset Formula $\frac{n\left(n+1\right)}{4}$
+\end_inset
+
+.
+ El resultado es equivalente, pero 
+\begin_inset Formula $\frac{n\left(n+1\right)}{2}$
+\end_inset
+
+me parece más razonable como coeficiente, ya que la forma contable de 
+\begin_inset Formula $T^{+}$
+\end_inset
+
+tiene, justamente, 
+\begin_inset Formula $\frac{n\left(n+1\right)}{2}$
+\end_inset
+
+ términos.
+\end_layout
+
+\end_inset
+
 :
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
-\e\left(\overline{T}\right)= & \e\left(\frac{T^{+}}{\frac{n\left(n+1\right)}{2}}\right)=\frac{2}{n\left(n+1\right)}\e\left(T^{+}\right)=\frac{2}{n\left(n+1\right)}\left(np_{1}+\tfrac{(n-1)n}{2}p_{2}\right)\\
+\e\left(\overline{T}\right)= & \tfrac{2}{n\left(n+1\right)}\e\left(T^{+}\right)=\tfrac{2}{n\left(n+1\right)}\left(np_{1}+\tfrac{(n-1)n}{2}p_{2}\right)\\
 \e\left(\overline{T}\right)= & \tfrac{2}{n+1}p_{1}+\tfrac{n-1}{n+1}p_{2}\stackrel{n\rightarrow\infty}{\longrightarrow}p_{2}\\
+\\
 \var\left(\overline{T}\right)= & \tfrac{4}{n^{2}\left(n+1\right)^{2}}\var\left(T^{+}\right)\\
 \var\left(\overline{T}\right)= & n^{-3}k_{1}+n^{-2}k_{2}+n^{-1}k_{3}\stackrel{n\rightarrow\infty}{\longrightarrow}0
 \end{align*}
@@ -2648,7 +2797,7 @@ donde
 \begin_inset Formula $k_{1},k_{2},k_{3}$
 \end_inset
 
-son las expresiones constantes e independientes de 
+ son las expresiones constantes e independientes de 
 \begin_inset Formula $n$
 \end_inset
 
@@ -2695,8 +2844,10 @@ Resulta de una aplicación directa de Chebyshev a
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
-p_{2}= & \pr\left(X_{1}+X_{2}>0\right)=\pr\left(X_{1}>-X_{2}\right)=\iint\ind(x_{1}>-x_{2})f\left(x_{1}\right)f\left(x_{2}\right)dx_{2}dx_{1}\\
-= & \iint_{-x_{2}}^{\infty}f\left(x_{1}\right)f\left(x_{2}\right)dx_{1}dx_{2}=\int f\left(x_{2}\right)\left[F\left(x\right)\Big|_{-x_{_{2}}}^{\infty}\right]dx_{2}=\int f\left(x_{2}\right)\left[1-F\left(-x_{2}\right)\right]dx_{2}
+p_{2}= & \pr\left(X_{1}+X_{2}>0\right)=\pr\left(X_{1}>-X_{2}\right)\\
+= & \iint\ind(x_{1}>-x_{2})f\left(x_{1}\right)f\left(x_{2}\right)dx_{2}dx_{1}\\
+= & \iint_{-x_{2}}^{\infty}f\left(x_{1}\right)f\left(x_{2}\right)dx_{1}dx_{2}=\int f\left(x_{2}\right)\left[F\left(x\right)\Big|_{-x_{_{2}}}^{\infty}\right]dx_{2}\\
+= & \int f\left(x_{2}\right)\left[1-F\left(-x_{2}\right)\right]dx_{2}
 \end{align*}
 
 \end_inset
@@ -2706,14 +2857,10 @@ p_{2}= & \pr\left(X_{1}+X_{2}>0\right)=\pr\left(X_{1}>-X_{2}\right)=\iint\ind(x_
 
 \begin_layout Standard
 Bajo 
-\begin_inset Formula $H_{0}$
+\begin_inset Formula $H_{0},\:F$
 \end_inset
 
-, 
-\begin_inset Formula $F\in\Omega_{s},\:\theta=0\Rightarrow1-F\left(-x\right)=F\left(x\right)$
-\end_inset
-
-, de manera que 
+ es simétrica alrededor del 0, de manera que 
 \begin_inset Formula $f\left(x\right)\left[1-F\left(-x\right)\right]=f\left(x\right)F\left(x\right)$
 \end_inset
 
@@ -2728,7 +2875,7 @@ Bajo
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
-p_{2}= & \int f\left(x_{2}\right)\left[1-F\left(-x_{2}\right)\right]dx_{2}=\tfrac{1}{2}\left(F\left(x\right)^{2}\Big|_{-\infty}^{\infty}\right)=\frac{1}{2}
+p_{2}= & \int f\left(x_{2}\right)\left[1-F\left(-x_{2}\right)\right]dx_{2}=\frac{1}{2}\left(F\left(x\right)^{2}\Big|_{-\infty}^{\infty}\right)=\frac{1}{2}
 \end{align*}
 
 \end_inset
@@ -2761,9 +2908,10 @@ si
 
 ,
 \begin_inset Formula 
-\[
-p_{2}=\int g\left(x_{2}\right)\left[1-G\left(-x_{2}\right)\right]dx_{2}>\int g\left(x_{2}\right)\left[G\left(x_{2}\right)\right]dx_{2}=\tfrac{1}{2}\left(G\left(x\right)^{2}\Big|_{-\infty}^{\infty}\right)=\frac{1}{2}
-\]
+\begin{align*}
+p_{2} & =\int g\left(x_{2}\right)\left[1-G\left(-x_{2}\right)\right]dx_{2}\\
+ & >\int g\left(x_{2}\right)\left[G\left(x_{2}\right)\right]dx_{2}=\frac{1}{2}\left(G\left(x\right)^{2}\Big|_{-\infty}^{\infty}\right)=\frac{1}{2}
+\end{align*}
 
 \end_inset
 
@@ -3064,7 +3212,19 @@ Sean
 \end_inset
 
  dos muestras aleatorias tales que 
-\begin_inset Formula $\forall i\in\left[n\right],\ X_{i}\stackrel{iid}{\sim}F\left(t-\theta_{x}\right),\;\forall j\in\left[m\right],\ Y_{j}\stackrel{iid}{\sim}F\left(t-\theta_{y}\right),\:F\in\Omega_{0}$
+\begin_inset Formula $X_{i}\stackrel{iid}{\sim}F\left(t-\theta_{x}\right)$
+\end_inset
+
+ para todo 
+\begin_inset Formula $i\in\left[n\right]$
+\end_inset
+
+, 
+\begin_inset Formula $Y_{j}\stackrel{iid}{\sim}F\left(t-\theta_{y}\right)\:\forall\:j\in\left[m\right]$
+\end_inset
+
+ y 
+\begin_inset Formula $F\in\Omega_{0}$
 \end_inset
 
 .
@@ -3401,7 +3561,10 @@ no contienen a
 \end_inset
 
 ).
- Luego,
+\end_layout
+
+\begin_layout Standard
+Luego,
 \begin_inset Formula 
 \begin{align*}
 \Delta\left(k,m,n\right) & =\Delta\left(k-\left(m+n\right),m-1,n\right)+\Delta\left(k,m,n-1\right)
@@ -3421,7 +3584,7 @@ base
 \begin_inset Quotes erd
 \end_inset
 
- de la recursión, tenemos que considerar que
+ de la recursión, consideremos que
 \end_layout
 
 \begin_layout Labeling
@@ -3808,7 +3971,11 @@ tablaU(10, 15) %>% ggplot(aes(rango, probs)) + geom_col(width = 0.5)
 \begin_inset Formula $p_{10,15}\left(k\right),$
 \end_inset
 
-o probabilidad puntual de para 
+o probabilidad puntual de 
+\begin_inset Formula $U$
+\end_inset
+
+ para 
 \begin_inset Formula $m=10,n=15$
 \end_inset
 
